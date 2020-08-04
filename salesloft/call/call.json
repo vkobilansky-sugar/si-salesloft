@@ -1,0 +1,12 @@
+{
+    "definition": {
+        "createdDate": "2020-05-20 18:42:36.079509",
+        "fields": [],
+        "objectName": "call",
+        "vdrShared": false,
+        "vdrShareLevel": "account"
+    },
+    "transformation": {},
+    "vdrName": "call",
+    "vdrVersion": "v2"
+}

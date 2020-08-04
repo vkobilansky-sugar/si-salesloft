@@ -1,0 +1,13 @@
+console.log(steps.updateOrCreate.continue);
+
+if (steps.updateOrCreate.continue === false) {
+  var person = steps.updateSugarLead.response.body;
+} else {
+  var person = steps.createSugarLead.response.body;
+}
+
+person['sugar_object'] = 'Leads';
+person['sugar_id'] = person.sugar_id;
+person['sugar_url'] = `https://sg-vlad-test.demo.sugarcrm.com/#Leads/${person.sugar_id}`;
+
+done({ payload: person });

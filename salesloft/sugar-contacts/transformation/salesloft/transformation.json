@@ -1,0 +1,32 @@
+{
+    "configuration": [
+        {
+            "level": "account",
+            "type": "addToDocumentation"
+        },
+        {
+            "level": "account",
+            "type": "inherit"
+        }
+    ],
+    "elementKey": "salesloft",
+    "fields": [
+        {
+            "level": "account",
+            "path": "sugar_email",
+            "type": "string",
+            "vendorPath": "",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "sugar_id",
+            "type": "string",
+            "vendorPath": "id",
+            "vendorType": "string"
+        }
+    ],
+    "isLegacy": false,
+    "objectName": "sugar-contacts",
+    "vendorName": "contacts"
+}

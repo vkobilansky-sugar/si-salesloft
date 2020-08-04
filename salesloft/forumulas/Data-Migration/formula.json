@@ -1,0 +1,70 @@
+{
+    "active": true,
+    "configuration": [
+        {
+            "key": "contacts",
+            "name": "contacts",
+            "required": true,
+            "type": "value"
+        },
+        {
+            "key": "from",
+            "name": "from",
+            "required": true,
+            "type": "elementInstance"
+        },
+        {
+            "key": "stepTwoId",
+            "name": "stepTwoId",
+            "required": true,
+            "type": "value"
+        },
+        {
+            "key": "to",
+            "name": "to",
+            "required": true,
+            "type": "elementInstance"
+        }
+    ],
+    "debugLoggingEnabled": false,
+    "engine": "v3",
+    "id": 34656,
+    "name": "Data Migration",
+    "singleThreaded": false,
+    "steps": [
+        {
+            "name": "buildMetaData",
+            "onFailure": [],
+            "onSuccess": [
+                "bulkQuery"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "bulkQuery",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {
+                "api": "/bulk/query",
+                "elementInstanceId": "${config.from}",
+                "headers": "${steps.buildMetaData.headers}",
+                "method": "POST",
+                "query": "${steps.buildMetaData.query}"
+            },
+            "type": "elementRequest"
+        }
+    ],
+    "triggers": [
+        {
+            "async": true,
+            "name": "trigger",
+            "onFailure": [],
+            "onSuccess": [
+                "buildMetaData"
+            ],
+            "properties": {},
+            "type": "manual"
+        }
+    ]
+}

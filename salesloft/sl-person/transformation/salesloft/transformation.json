@@ -1,0 +1,99 @@
+{
+    "configuration": [
+        {
+            "level": "account",
+            "type": "inherit"
+        },
+        {
+            "level": "account",
+            "properties": {
+                "fromVendor": false,
+                "toVendor": false
+            },
+            "type": "passThrough"
+        }
+    ],
+    "elementKey": "salesloft",
+    "fields": [
+        {
+            "level": "account",
+            "path": "sugar_city",
+            "type": "string",
+            "vendorPath": "city",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "sugar_country",
+            "type": "string",
+            "vendorPath": "country",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "sugar_email",
+            "type": "string",
+            "vendorPath": "email_address",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "sugar_first_name",
+            "type": "string",
+            "vendorPath": "first_name",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "sugar_id",
+            "type": "string",
+            "vendorPath": "custom_fields.sugarid",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "sugar_last_name",
+            "type": "string",
+            "vendorPath": "last_name",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "sugar_mobile",
+            "type": "string",
+            "vendorPath": "mobile_phone",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "sugar_object",
+            "type": "string",
+            "vendorPath": "custom_fields.sugarobject",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "sugar_office_phone",
+            "type": "string",
+            "vendorPath": "phone",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "sugar_state",
+            "type": "string",
+            "vendorPath": "state",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "sugar_title",
+            "type": "string",
+            "vendorPath": "title",
+            "vendorType": "string"
+        }
+    ],
+    "isLegacy": false,
+    "objectName": "sl-person",
+    "vendorName": "person"
+}

@@ -1,0 +1,180 @@
+{
+    "active": true,
+    "configuration": [
+        {
+            "key": "destination",
+            "name": "destination",
+            "required": false,
+            "type": "elementInstance"
+        },
+        {
+            "key": "source",
+            "name": "source",
+            "required": false,
+            "type": "elementInstance"
+        }
+    ],
+    "debugLoggingEnabled": true,
+    "debugLoggingExpires": "2020-07-22T06:58:28Z",
+    "engine": "v3",
+    "id": 37878,
+    "name": "create-sugar-lead-from-salesloft-person",
+    "singleThreaded": false,
+    "steps": [
+        {
+            "name": "filterEvent",
+            "onFailure": [
+                "exitWrongEvent"
+            ],
+            "onSuccess": [
+                "getPersonDetails"
+            ],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "getPersonDetails",
+            "onFailure": [],
+            "onSuccess": [
+                "prepSugarLeadQuery"
+            ],
+            "properties": {
+                "api": "/sl-person/${trigger.event.objectId}",
+                "elementInstanceId": "${config.source}",
+                "method": "GET"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "prepSugarLeadQuery",
+            "onFailure": [],
+            "onSuccess": [
+                "checkSugarLead"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "checkSugarLead",
+            "onFailure": [],
+            "onSuccess": [
+                "processLeadRecord"
+            ],
+            "properties": {
+                "api": "/sugar-leads",
+                "elementInstanceId": "${config.destination}",
+                "method": "GET",
+                "query": "${steps.prepSugarLeadQuery.query}"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "processLeadRecord",
+            "onFailure": [
+                "exitCantCreateLead"
+            ],
+            "onSuccess": [
+                "prepCreateLeadPayload"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "prepCreateLeadPayload",
+            "onFailure": [],
+            "onSuccess": [
+                "updateOrCreate"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "updateOrCreate",
+            "onFailure": [
+                "updateSugarLead"
+            ],
+            "onSuccess": [
+                "createSugarLead"
+            ],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "createSugarLead",
+            "onFailure": [],
+            "onSuccess": [
+                "prepUpdatePersonPayload"
+            ],
+            "properties": {
+                "api": "/sugar-leads",
+                "body": "${steps.prepCreateLeadPayload.payload}",
+                "elementInstanceId": "${config.destination}",
+                "method": "POST"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "prepUpdatePersonPayload",
+            "onFailure": [],
+            "onSuccess": [
+                "updatePerson"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "updatePerson",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {
+                "api": "/sl-person/${trigger.event.objectId}",
+                "body": "${steps.prepUpdatePersonPayload.payload}",
+                "elementInstanceId": "${config.source}",
+                "method": "PUT"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "updateSugarLead",
+            "onFailure": [],
+            "onSuccess": [
+                "prepUpdatePersonPayload"
+            ],
+            "properties": {
+                "api": "/sugar-leads/${steps.checkSugarLead.response.body[0].sugar_id}",
+                "body": "${steps.prepCreateLeadPayload.payload}",
+                "elementInstanceId": "${config.destination}",
+                "method": "PATCH"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "exitCantCreateLead",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "exitWrongEvent",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "script"
+        }
+    ],
+    "triggers": [
+        {
+            "async": true,
+            "name": "trigger",
+            "onFailure": [],
+            "onSuccess": [
+                "filterEvent"
+            ],
+            "properties": {
+                "elementInstanceId": "${config.source}"
+            },
+            "type": "event"
+        }
+    ]
+}

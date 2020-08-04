@@ -1,0 +1,132 @@
+{
+    "active": true,
+    "configuration": [
+        {
+            "key": "destination",
+            "name": "destination",
+            "required": false,
+            "type": "elementInstance"
+        },
+        {
+            "key": "source",
+            "name": "source",
+            "required": false,
+            "type": "elementInstance"
+        }
+    ],
+    "debugLoggingEnabled": false,
+    "debugLoggingExpires": "2020-07-17T21:59:02Z",
+    "engine": "v3",
+    "id": 37553,
+    "name": "update-sugar-lead-or-contact-from-salesloft-person",
+    "singleThreaded": false,
+    "steps": [
+        {
+            "name": "filterEvent",
+            "onFailure": [
+                "exitWrongEvent"
+            ],
+            "onSuccess": [
+                "getPersonDetails"
+            ],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "getPersonDetails",
+            "onFailure": [],
+            "onSuccess": [
+                "validateRecord"
+            ],
+            "properties": {
+                "api": "/sl-person/${trigger.event.objectId}",
+                "elementInstanceId": "${config.source}",
+                "method": "GET"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "validateRecord",
+            "onFailure": [
+                "badPersonRecord"
+            ],
+            "onSuccess": [
+                "prepPayload"
+            ],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "prepPayload",
+            "onFailure": [],
+            "onSuccess": [
+                "isLead"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "isLead",
+            "onFailure": [
+                "updateSugarContact"
+            ],
+            "onSuccess": [
+                "updateSugarLead"
+            ],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "updateSugarLead",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {
+                "api": "/sugar-leads/${steps.getPersonDetails.response.body.sugar_id}",
+                "body": "${steps.prepPayload.payload}",
+                "elementInstanceId": "${config.destination}",
+                "method": "PATCH"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "updateSugarContact",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {
+                "api": "/sugar-contacts/${steps.getPersonDetails.response.body.sugar_id}",
+                "body": "${steps.prepPayload.payload}",
+                "elementInstanceId": "${config.destination}",
+                "method": "PATCH"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "badPersonRecord",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "exitWrongEvent",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "script"
+        }
+    ],
+    "triggers": [
+        {
+            "async": true,
+            "name": "trigger",
+            "onFailure": [],
+            "onSuccess": [
+                "filterEvent"
+            ],
+            "properties": {
+                "elementInstanceId": "${config.source}"
+            },
+            "type": "event"
+        }
+    ]
+}
