@@ -1,0 +1,56 @@
+{
+    "createdDate": "2020-07-17 15:51:01.403522",
+    "fields": [
+        {
+            "displayName": "Description",
+            "level": "account",
+            "path": "disposition",
+            "type": "string"
+        },
+        {
+            "displayName": "Duration",
+            "level": "account",
+            "path": "duration",
+            "type": "string"
+        },
+        {
+            "displayName": "End",
+            "level": "account",
+            "path": "end",
+            "type": "string"
+        },
+        {
+            "displayName": "Start",
+            "level": "account",
+            "path": "start",
+            "type": "string"
+        },
+        {
+            "displayName": "Call Status",
+            "level": "account",
+            "path": "status",
+            "type": "string"
+        },
+        {
+            "displayName": "Call subject",
+            "level": "account",
+            "path": "subject",
+            "type": "string"
+        },
+        {
+            "displayName": "Sugar Object ID",
+            "level": "account",
+            "path": "sugar_id",
+            "type": "string"
+        },
+        {
+            "displayName": "Sugar Object",
+            "level": "account",
+            "path": "sugar_object",
+            "type": "string"
+        }
+    ],
+    "objectName": "sugar-calls",
+    "vdrShared": false,
+    "vdrShareLevel": "account"
+}

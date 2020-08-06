@@ -8,6 +8,6 @@ if (steps.updateOrCreate.continue === false) {
 
 person['sugar_object'] = 'Leads';
 person['sugar_id'] = person.sugar_id;
-person['sugar_url'] = `https://sg-vlad-test.demo.sugarcrm.com/#Leads/${person.sugar_id}`;
+person['sugar_url'] = `https://si.stage.sugariapps.com/#Leads/${person.sugar_id}`;
 
 done({ payload: person });

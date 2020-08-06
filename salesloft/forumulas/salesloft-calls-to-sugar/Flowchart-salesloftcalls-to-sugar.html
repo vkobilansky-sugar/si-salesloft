@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>salesloft-calls-to-sugar</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mermaid/6.0.0/mermaid.css" rel="stylesheet" type="text/css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/6.0.0/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>
+        var callback = function(){}
+    </script>
+    <style>
+        div.mermaidTooltip {
+                    margin-left: 50px;
+                    text-align: left;
+                    max-width: none;
+                }
+        .node rect,
+        .node circle,
+        .node ellipse,
+        .node polygon {
+                    fill: #ffffff;
+                    stroke: rgb(200,200,200);
+                    stroke-width: 2px;
+                }
+        .mermaid .label {
+                  max-width: 50px;
+                }
+        table, th, td {
+                    border: 1px solid black;
+                }
+        table {
+                    border-spacing: 5px;
+                    border-radius: 5px;
+                    margin: auto;
+                }
+        th, td {
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    border-radius: 5px;
+                }
+        th {
+                    color: blue;
+                }
+        td {
+                    width: 180px;
+                    text-align: center;
+                    background-color: rgb(237, 241, 242);
+                }
+        h2 {
+                    text-align: center;
+                    border: 1px solid black;
+                    border-radius: 5px;
+                    padding: 1em;
+                }
+        .container {
+                    text-align: center;
+                    background-color: rgb(237, 241, 242);
+                    font-size: 11px;
+                    font-weight: 900;
+                }
+        body {
+                    font-family: 'Arial';
+                }
+        .edgeLabel {
+                    font-size: 9px;
+                }
+    </style>
+</head>
+<body>
+    <h2>
+        salesloft-calls-to-sugar
+    </h2>
+    <div class="container">
+        <div class="mermaid">
+            graph TD
+
+                step-000((Trigger))
+            step-001{checkEvent}
+            step-002(prepGetCallQuery)
+            step-003(wrongEventExit)
+            step-014((END))
+            step-005>getCallDetails]
+            step-006(getCalledPersonId)
+            step-007(callNotFound)
+            step-014((END))
+            step-009>getPersonForPhoneCall]
+            step-010(gracefulExit)
+            step-014((END))
+            step-012(prepCallPayload)
+            step-013>createCallRecordSugar]
+            step-014((END))
+
+                step-000== continue ==>step-001
+            step-001-- success -->step-002
+            step-001-- failure -->step-003
+            step-002-- success -->step-005
+            step-003-. done .->step-014
+            step-005-- success -->step-006
+            step-005-- failure -->step-007
+            step-006-- success -->step-009
+            step-006-- failure -->step-010
+            step-007-. done .->step-014
+            step-009-- success -->step-012
+            step-010-. done .->step-014
+            step-012-- success -->step-013
+            step-013-. done .->step-014
+
+                style step-014 stroke-width:3px,stroke-dasharray: 5, 5;
+            style step-005 stroke:#0f6ab4;
+            style step-014 stroke-width:3px,stroke-dasharray: 5, 5;
+            style step-009 stroke:#0f6ab4;
+            style step-014 stroke-width:3px,stroke-dasharray: 5, 5;
+            style step-013 stroke:#10a54a;
+            style step-014 stroke-width:3px,stroke-dasharray: 5, 5;
+
+                click step-000 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPnRyaWdnZXI8L3RpdGxlPjwvaGVhZD48Ym9keT48Yj5UcmlnZ2VyIEVsZW1lbnQ6PC9iPjxicj48YnI+PHByZT4gIGVsZW1lbnRJbnN0YW5jZUlkIDogJHtjb25maWcuc2FsZXNsb2Z0fTxicj4gICAgICAgICAgICAgICB0eXBlIDogZXZlbnQ8YnI+ICAgICAgICAgICAgICBhc3luYyA6IHRydWU8L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ29uU3VjY2Vzcyc6IFs8YnI+ICAgICdjaGVja0V2ZW50Jzxicj4gIF0sPGJyPiAgJ29uRmFpbHVyZSc6IFtdLDxicj4gICd0eXBlJzogJ2V2ZW50Jyw8YnI+ICAnYXN5bmMnOiB0cnVlLDxicj4gICduYW1lJzogJ3RyaWdnZXInLDxicj4gICdwcm9wZXJ0aWVzJzogezxicj4gICAgJ2VsZW1lbnRJbnN0YW5jZUlkJzogJyR7Y29uZmlnLnNhbGVzbG9mdH0nPGJyPiAgfTxicj59PC9wcmU+PC9ib2R5PjwvaHRtbD4='));document.close();" "Trigger Element:<br><pre>  elementInstanceId : ${config.salesloft}<br>               type : event<br>              async : true</pre>"
+            click step-001 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmNoZWNrRXZlbnQ8L3RpdGxlPjwvaGVhZD48Ym9keT48Yj5KYXZhU2NyaXB0OjwvYj48YnI+PGJyPjxwcmU+ICBpZiAodHJpZ2dlci5ldmVudC5vYmplY3RUeXBlID09PSAnY2FsbHMnKSB7PGJyPjxicj4gICAgZG9uZSh0cnVlKTs8YnI+ICAgIDxicj4gIH08YnI+ICA8YnI+ICBkb25lKGZhbHNlKTs8L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ29uU3VjY2Vzcyc6IFs8YnI+ICAgICdwcmVwR2V0Q2FsbFF1ZXJ5Jzxicj4gIF0sPGJyPiAgJ29uRmFpbHVyZSc6IFs8YnI+ICAgICd3cm9uZ0V2ZW50RXhpdCc8YnI+ICBdLDxicj4gICduYW1lJzogJ2NoZWNrRXZlbnQnLDxicj4gICd0eXBlJzogJ2ZpbHRlcicsPGJyPiAgJ3Byb3BlcnRpZXMnOiB7PGJyPiAgICAnYm9keSc6ICcgIGlmICh0cmlnZ2VyLmV2ZW50Lm9iamVjdFR5cGUgPT09IFwnY2FsbHNcJykge1xuXG4gICAgZG9uZSh0cnVlKTtcbiAgICBcbiAgfVxuICBcbiAgZG9uZShmYWxzZSk7Jzxicj4gIH08YnI+fTwvcHJlPjwvYm9keT48L2h0bWw+'));document.close();" "JavaScript:<br><pre>  if (trigger.event.objectType === 'calls') {<br><br>    done(true);<br>    <br>  }<br>  <br>  done(false);</pre>"
+            click step-002 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPnByZXBHZXRDYWxsUXVlcnk8L3RpdGxlPjwvaGVhZD48Ym9keT48Yj5KYXZhU2NyaXB0OjwvYj48YnI+PGJyPjxwcmU+ZG9uZSh7PGJyPiAgcXVlcnk6IHsgd2hlcmU6YGlkPScke3RyaWdnZXIuZXZlbnQub2JqZWN0SWR9J2A8YnI+ICB9IDxicj59KTs8L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ29uU3VjY2Vzcyc6IFs8YnI+ICAgICdnZXRDYWxsRGV0YWlscyc8YnI+ICBdLDxicj4gICdvbkZhaWx1cmUnOiBbXSw8YnI+ICAnbmFtZSc6ICdwcmVwR2V0Q2FsbFF1ZXJ5Jyw8YnI+ICAndHlwZSc6ICdzY3JpcHQnLDxicj4gICdwcm9wZXJ0aWVzJzogezxicj4gICAgJ2JvZHknOiAnZG9uZSh7XG4gIHF1ZXJ5OiB7IHdoZXJlOmBpZD0nJHt0cmlnZ2VyLmV2ZW50Lm9iamVjdElkfSdgXG4gIH0gXG59KTsnPGJyPiAgfTxicj59PC9wcmU+PC9ib2R5PjwvaHRtbD4='));document.close();" "JavaScript:<br><pre>done({<br>  query: { where:`id='${trigger.event.objectId}'`<br>  } <br>});</pre>"
+            click step-003 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPndyb25nRXZlbnRFeGl0PC90aXRsZT48L2hlYWQ+PGJvZHk+PGI+SmF2YVNjcmlwdDo8L2I+PGJyPjxicj48cHJlPmRvbmUoZmFsc2UpPC9wcmU+PGJyPjxiPlJBVyBKU09OOjwvYj48YnI+PGJyPjxwcmU+ezxicj4gICdvblN1Y2Nlc3MnOiBbXSw8YnI+ICAnb25GYWlsdXJlJzogW10sPGJyPiAgJ25hbWUnOiAnd3JvbmdFdmVudEV4aXQnLDxicj4gICd0eXBlJzogJ3NjcmlwdCcsPGJyPiAgJ3Byb3BlcnRpZXMnOiB7PGJyPiAgICAnYm9keSc6ICdkb25lKGZhbHNlKSc8YnI+ICB9PGJyPn08L3ByZT48L2JvZHk+PC9odG1sPg=='));document.close();" "JavaScript:<br><pre>done(false)</pre>"
+            click step-005 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmdldENhbGxEZXRhaWxzPC90aXRsZT48L2hlYWQ+PGJvZHk+PGI+UmVxdWVzdDo8L2I+PGJyPjxicj48cHJlPiAgZWxlbWVudEluc3RhbmNlSWQgOiAke2NvbmZpZy5zYWxlc2xvZnR9PGJyPiAgICAgICAgICAgICAgIGJvZHkgOiA8YnI+ICAgICAgICAgICAgICBxdWVyeSA6IDxicj4gICAgICAgICAgICAgICAgYXBpIDogL3NsLWNhbGxzPGJyPiAgICAgICAgICAgICBtZXRob2QgOiBHRVQ8L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ29uU3VjY2Vzcyc6IFs8YnI+ICAgICdnZXRDYWxsZWRQZXJzb25JZCc8YnI+ICBdLDxicj4gICdvbkZhaWx1cmUnOiBbPGJyPiAgICAnY2FsbE5vdEZvdW5kJzxicj4gIF0sPGJyPiAgJ25hbWUnOiAnZ2V0Q2FsbERldGFpbHMnLDxicj4gICd0eXBlJzogJ2VsZW1lbnRSZXF1ZXN0Jyw8YnI+ICAncHJvcGVydGllcyc6IHs8YnI+ICAgICdlbGVtZW50SW5zdGFuY2VJZCc6ICcke2NvbmZpZy5zYWxlc2xvZnR9Jyw8YnI+ICAgICdib2R5JzogJycsPGJyPiAgICAncXVlcnknOiAnJyw8YnI+ICAgICdhcGknOiAnL3NsLWNhbGxzJyw8YnI+ICAgICdtZXRob2QnOiAnR0VUJzxicj4gIH08YnI+fTwvcHJlPjwvYm9keT48L2h0bWw+'));document.close();" "Request:<br><pre>  elementInstanceId : ${config.salesloft}<br>               body : <br>              query : <br>                api : /sl-calls<br>             method : GET</pre>"
+            click step-006 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmdldENhbGxlZFBlcnNvbklkPC90aXRsZT48L2hlYWQ+PGJvZHk+PGI+SmF2YVNjcmlwdDo8L2I+PGJyPjxicj48cHJlPmNvbnN0IHBlcnNvbklkID0gc3RlcHMuZ2V0Q2FsbERldGFpbHMucmVzcG9uc2UuYm9keVswXS5jYWxsZWRfcGVyc29uX2lkOzxicj48YnI+PGJyPmRvbmUoe2lkOiBwZXJzb25JZH0pOzwvcHJlPjxicj48Yj5SQVcgSlNPTjo8L2I+PGJyPjxicj48cHJlPns8YnI+ICAnb25TdWNjZXNzJzogWzxicj4gICAgJ2dldFBlcnNvbkZvclBob25lQ2FsbCc8YnI+ICBdLDxicj4gICdvbkZhaWx1cmUnOiBbPGJyPiAgICAnZ3JhY2VmdWxFeGl0Jzxicj4gIF0sPGJyPiAgJ25hbWUnOiAnZ2V0Q2FsbGVkUGVyc29uSWQnLDxicj4gICd0eXBlJzogJ3NjcmlwdCcsPGJyPiAgJ3Byb3BlcnRpZXMnOiB7PGJyPiAgICAnYm9keSc6ICdjb25zdCBwZXJzb25JZCA9IHN0ZXBzLmdldENhbGxEZXRhaWxzLnJlc3BvbnNlLmJvZHlbMF0uY2FsbGVkX3BlcnNvbl9pZDtcblxuXG5kb25lKHtpZDogcGVyc29uSWR9KTsnPGJyPiAgfTxicj59PC9wcmU+PC9ib2R5PjwvaHRtbD4='));document.close();" "JavaScript:<br><pre>const personId = steps.getCallDetails.response.body[0].called_person_id;<br><br><br>done({id: personId});</pre>"
+            click step-007 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmNhbGxOb3RGb3VuZDwvdGl0bGU+PC9oZWFkPjxib2R5PjxiPkphdmFTY3JpcHQ6PC9iPjxicj48YnI+PHByZT5kb25lKGZhbHNlKTwvcHJlPjxicj48Yj5SQVcgSlNPTjo8L2I+PGJyPjxicj48cHJlPns8YnI+ICAnb25TdWNjZXNzJzogW10sPGJyPiAgJ29uRmFpbHVyZSc6IFtdLDxicj4gICduYW1lJzogJ2NhbGxOb3RGb3VuZCcsPGJyPiAgJ3R5cGUnOiAnc2NyaXB0Jyw8YnI+ICAncHJvcGVydGllcyc6IHs8YnI+ICAgICdib2R5JzogJ2RvbmUoZmFsc2UpJzxicj4gIH08YnI+fTwvcHJlPjwvYm9keT48L2h0bWw+'));document.close();" "JavaScript:<br><pre>done(false)</pre>"
+            click step-009 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmdldFBlcnNvbkZvclBob25lQ2FsbDwvdGl0bGU+PC9oZWFkPjxib2R5PjxiPlJlcXVlc3Q6PC9iPjxicj48YnI+PHByZT4gIGVsZW1lbnRJbnN0YW5jZUlkIDogJHtjb25maWcuc2FsZXNsb2Z0fTxicj4gICAgICAgICAgICAgIHF1ZXJ5IDogPGJyPiAgICAgICAgICAgICAgICBhcGkgOiAvc2wtcGVyc29uLyR7c3RlcHMuZ2V0Q2FsbGVkUGVyc29uSWQuaWR9PGJyPiAgICAgICAgICAgICBtZXRob2QgOiBHRVQ8L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ29uU3VjY2Vzcyc6IFs8YnI+ICAgICdwcmVwQ2FsbFBheWxvYWQnPGJyPiAgXSw8YnI+ICAnb25GYWlsdXJlJzogW10sPGJyPiAgJ25hbWUnOiAnZ2V0UGVyc29uRm9yUGhvbmVDYWxsJyw8YnI+ICAndHlwZSc6ICdlbGVtZW50UmVxdWVzdCcsPGJyPiAgJ3Byb3BlcnRpZXMnOiB7PGJyPiAgICAnZWxlbWVudEluc3RhbmNlSWQnOiAnJHtjb25maWcuc2FsZXNsb2Z0fScsPGJyPiAgICAncXVlcnknOiAnJyw8YnI+ICAgICdhcGknOiAnL3NsLXBlcnNvbi8ke3N0ZXBzLmdldENhbGxlZFBlcnNvbklkLmlkfScsPGJyPiAgICAnbWV0aG9kJzogJ0dFVCc8YnI+ICB9PGJyPn08L3ByZT48L2JvZHk+PC9odG1sPg=='));document.close();" "Request:<br><pre>  elementInstanceId : ${config.salesloft}<br>              query : <br>                api : /sl-person/${steps.getCalledPersonId.id}<br>             method : GET</pre>"
+            click step-010 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmdyYWNlZnVsRXhpdDwvdGl0bGU+PC9oZWFkPjxib2R5PjxiPkphdmFTY3JpcHQ6PC9iPjxicj48YnI+PHByZT5jb25zb2xlLmxvZygnbm90IGEgY2FsbCcpOzxicj5kb25lKGZhbHNlKTs8L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ29uU3VjY2Vzcyc6IFtdLDxicj4gICdvbkZhaWx1cmUnOiBbXSw8YnI+ICAnbmFtZSc6ICdncmFjZWZ1bEV4aXQnLDxicj4gICd0eXBlJzogJ3NjcmlwdCcsPGJyPiAgJ3Byb3BlcnRpZXMnOiB7PGJyPiAgICAnYm9keSc6ICdjb25zb2xlLmxvZygnbm90IGEgY2FsbCcpO1xuZG9uZShmYWxzZSk7Jzxicj4gIH08YnI+fTwvcHJlPjwvYm9keT48L2h0bWw+'));document.close();" "JavaScript:<br><pre>console.log('not a call');<br>done(false);</pre>"
+            click step-012 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPnByZXBDYWxsUGF5bG9hZDwvdGl0bGU+PC9oZWFkPjxib2R5PjxiPkphdmFTY3JpcHQ6PC9iPjxicj48YnI+PHByZT5jb25zdCBwZXJzb24gPSBzdGVwcy5nZXRQZXJzb25Gb3JQaG9uZUNhbGwucmVzcG9uc2UuYm9keTs8YnI+PGJyPnZhciBjYWxsUmVjb3JkID0gc3RlcHMuZ2V0Q2FsbERldGFpbHMucmVzcG9uc2UuYm9keVswXTs8YnI+PGJyPmNhbGxSZWNvcmQuc3VnYXJfaWQgPSBwZXJzb24uc3VnYXJfaWQ7PGJyPmNhbGxSZWNvcmQuc3VnYXJfb2JqZWN0ID0gcGVyc29uLnN1Z2FyX29iamVjdDs8YnI+PGJyPmlmIChjYWxsUmVjb3JkLmhhc093blByb3BlcnR5KCdkdXJhdGlvbicpKSB7PGJyPiAgY2FsbFJlY29yZC5kdXJhdGlvbiA9IGNhbGxSZWNvcmQuZHVyYXRpb24gLyA2MDs8YnI+fSBlbHNlIHs8YnI+ICB2YXIgc3RhcnREYXRlID0gbmV3IERhdGUoY2FsbFJlY29yZC5zdGFydCk7PGJyPiAgdmFyIGVuZERhdGUgPSBuZXcgRGF0ZShjYWxsUmVjb3JkLmVuZCk7PGJyPiAgPGJyPiAgdmFyIGRpZmZNaWxpID0gKGVuZERhdGUgLSBzdGFydERhdGUpOzxicj4gIDxicj4gIHZhciBkaWZmTWlucyA9IE1hdGgucm91bmQoKChkaWZmTWlsaSAlIDg2NDAwMDAwKSAlIDM2MDAwMDApIC8gNjAwMDApICsgMTs8YnI+ICBjYWxsUmVjb3JkLmR1cmF0aW9uID0gZGlmZk1pbnM7PGJyPjxicj59PGJyPjxicj5kb25lKHsgPGJyPiAgcGF5bG9hZDogY2FsbFJlY29yZDxicj59KTs8L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ29uU3VjY2Vzcyc6IFs8YnI+ICAgICdjcmVhdGVDYWxsUmVjb3JkU3VnYXInPGJyPiAgXSw8YnI+ICAnb25GYWlsdXJlJzogW10sPGJyPiAgJ25hbWUnOiAncHJlcENhbGxQYXlsb2FkJyw8YnI+ICAndHlwZSc6ICdzY3JpcHQnLDxicj4gICdwcm9wZXJ0aWVzJzogezxicj4gICAgJ2JvZHknOiAnY29uc3QgcGVyc29uID0gc3RlcHMuZ2V0UGVyc29uRm9yUGhvbmVDYWxsLnJlc3BvbnNlLmJvZHk7XG5cbnZhciBjYWxsUmVjb3JkID0gc3RlcHMuZ2V0Q2FsbERldGFpbHMucmVzcG9uc2UuYm9keVswXTtcblxuY2FsbFJlY29yZC5zdWdhcl9pZCA9IHBlcnNvbi5zdWdhcl9pZDtcbmNhbGxSZWNvcmQuc3VnYXJfb2JqZWN0ID0gcGVyc29uLnN1Z2FyX29iamVjdDtcblxuaWYgKGNhbGxSZWNvcmQuaGFzT3duUHJvcGVydHkoJ2R1cmF0aW9uJykpIHtcbiAgY2FsbFJlY29yZC5kdXJhdGlvbiA9IGNhbGxSZWNvcmQuZHVyYXRpb24gLyA2MDtcbn0gZWxzZSB7XG4gIHZhciBzdGFydERhdGUgPSBuZXcgRGF0ZShjYWxsUmVjb3JkLnN0YXJ0KTtcbiAgdmFyIGVuZERhdGUgPSBuZXcgRGF0ZShjYWxsUmVjb3JkLmVuZCk7XG4gIFxuICB2YXIgZGlmZk1pbGkgPSAoZW5kRGF0ZSAtIHN0YXJ0RGF0ZSk7XG4gIFxuICB2YXIgZGlmZk1pbnMgPSBNYXRoLnJvdW5kKCgoZGlmZk1pbGkgJSA4NjQwMDAwMCkgJSAzNjAwMDAwKSAvIDYwMDAwKSArIDE7XG4gIGNhbGxSZWNvcmQuZHVyYXRpb24gPSBkaWZmTWlucztcblxufVxuXG5kb25lKHsgXG4gIHBheWxvYWQ6IGNhbGxSZWNvcmRcbn0pOyc8YnI+ICB9PGJyPn08L3ByZT48L2JvZHk+PC9odG1sPg=='));document.close();" "JavaScript:<br><pre>const person = steps.getPersonForPhoneCall.response.body;<br><br>var callRecord = steps.getCallDetails.response.body[0];<br><br>callRecord.sugar_id = person.sugar_id;<br>callRecord.sugar_object = person.sugar_object;<br><br>if (callRecord.hasOwnProperty('duration')) {<br>  callRecord.duration = callRecord.duration / 60;<br>} else {<br>  var startDate = new Date(callRecord.start);<br>  var endDate = new Date(callRecord.end);<br>  <br>  var diffMili = (endDate - startDate);<br>  <br>  var diffMins = Math.round(((diffMili % 86400000) % 3600000) / 60000) + 1;<br>  callRecord.duration = diffMins;<br><br>}<br><br>done({ <br>  payload: callRecord<br>});</pre>"
+            click step-013 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmNyZWF0ZUNhbGxSZWNvcmRTdWdhcjwvdGl0bGU+PC9oZWFkPjxib2R5PjxiPlJlcXVlc3Q6PC9iPjxicj48YnI+PHByZT4gIGVsZW1lbnRJbnN0YW5jZUlkIDogJHtjb25maWcuZGVzdGluYXRpb259PGJyPiAgICAgICAgICAgICAgIGJvZHkgOiAke3N0ZXBzLnByZXBDYWxsUGF5bG9hZC5wYXlsb2FkfTxicj4gICAgICAgICAgICAgICAgYXBpIDogL3N1Z2FyLWNhbGxzPGJyPiAgICAgICAgICAgICBtZXRob2QgOiBQT1NUPC9wcmU+PGJyPjxiPlJBVyBKU09OOjwvYj48YnI+PGJyPjxwcmU+ezxicj4gICdvblN1Y2Nlc3MnOiBbXSw8YnI+ICAnb25GYWlsdXJlJzogW10sPGJyPiAgJ25hbWUnOiAnY3JlYXRlQ2FsbFJlY29yZFN1Z2FyJyw8YnI+ICAndHlwZSc6ICdlbGVtZW50UmVxdWVzdCcsPGJyPiAgJ3Byb3BlcnRpZXMnOiB7PGJyPiAgICAnZWxlbWVudEluc3RhbmNlSWQnOiAnJHtjb25maWcuZGVzdGluYXRpb259Jyw8YnI+ICAgICdib2R5JzogJyR7c3RlcHMucHJlcENhbGxQYXlsb2FkLnBheWxvYWR9Jyw8YnI+ICAgICdhcGknOiAnL3N1Z2FyLWNhbGxzJyw8YnI+ICAgICdtZXRob2QnOiAnUE9TVCc8YnI+ICB9PGJyPn08L3ByZT48L2JvZHk+PC9odG1sPg=='));document.close();" "Request:<br><pre>  elementInstanceId : ${config.destination}<br>               body : ${steps.prepCallPayload.payload}<br>                api : /sugar-calls<br>             method : POST</pre>"
+
+        </div>
+    </div>
+    <h2>
+        Formula Configuration
+    </h2>
+    <div class="container">
+        <h3>Basic</h3><table><tr><th>key</th><th>value</th></tr><tr><td>Name</td><td>salesloft-calls-to-sugar</td></tr><tr><td>Single Threaded?</td><td>false</td></tr><tr><td>Active?</td><td>true</td></tr><tr><td>Number of Steps</td><td>14</td></tr><tr><td>Number of Triggers</td><td>1</td></tr></table>
+    <br/><h3>Elements</h3><table><tr><th>key</th><th>name</th><th>required</th></tr><tr><td>destination</td><td>destination</td><td>false</td></tr><tr><td>salesloft</td><td>salesloft</td><td>false</td></tr></table>
+    <br/><h3>Values</h3><table><tr><th>key</th><th>name</th><th>required</th></tr></table><br/>
+    </div>
+    <div class="key">
+        <h2>
+            Key
+        </h2>
+        <table>
+            <tr>
+                <th>Description</th>
+                <th>Symbol</th>
+                <th>Description</th>
+                <th>Symbol</th>
+                <th>Description</th>
+                <th>Symbol</th>
+            </tr>
+
+            <tr>
+                <td>Filter Steps</td>
+                <td>
+                    <div class="mermaid">
+                        graph TD
+                        A{Step Name}
+                    </div>
+                </td>
+                <td>Trigger/End</td>
+                <td>
+                    <div class="mermaid">
+                        graph TD
+                        B((Actual))
+                        C((Generated))
+                        style C stroke-width:2px,stroke-dasharray: 5, 5;
+                    </div>
+                </td>
+                <td>Request Step</td>
+                <td>
+                    <div class="mermaid">
+                        graph TD
+                        A>GET]
+                        style A stroke:#0f6ab4;
+                    </div>
+                    <div class="mermaid">
+                        graph TD
+                        B>POST]
+                        style B stroke:#10a54a;
+                    </div>
+                    <div class="mermaid">
+                        graph TD
+                        C>PATCH]
+                        style C stroke:#D38042;
+                    </div>
+                    <div class="mermaid">
+                        graph TD
+                        C>PUT]
+                        style C stroke:#C5862B;
+                    </div>
+                    <div class="mermaid">
+                        graph TD
+                        D>DELETE]
+                        style D stroke:#a41e22;
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Script</td>
+                <td>
+                    <div class="mermaid">
+                        graph TD
+                        D(Step Name)
+                    </div>
+                </td>
+                <td>Loop</td>
+                <td>
+                    <div class="mermaid">
+                        graph TD
+                        D(-Step Name-)
+                    </div>
+                </td>
+                <td>Other(TYPE)</td>
+                <td>
+                    <div class="mermaid">
+                        graph TD
+                        D[Step Name]
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Pass/Fail Connection</td>
+                <td>
+                    <div class="mermaid">
+                        graph LR
+                        AL(A)
+                        BL(B)
+                        AL-->BL
+                    </div>
+                </td>
+                <td>Generated Connection</td>
+                <td>
+                    <div class="mermaid">
+                        graph LR
+                        AL(A)
+                        BL((B))
+                        AL-.->BL
+                        style BL stroke-width:2px,stroke-dasharray: 5, 5;
+                    </div>
+                </td>
+                <td>Continue Connection</td>
+                <td>
+                    <div class="mermaid">
+                        graph LR
+                        AL(A)
+                        BL(B)
+                        AL==>BL
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+</body>
+</html>

@@ -1,0 +1,158 @@
+{
+    "createdDate": "2020-06-03 14:59:10.299769",
+    "fields": [
+        {
+            "displayName": "Company Name",
+            "level": "account",
+            "path": "company_name",
+            "type": "string"
+        },
+        {
+            "displayName": "Home Phon",
+            "level": "account",
+            "path": "home_phone",
+            "type": "string"
+        },
+        {
+            "displayName": "Personal LinkedIn Account",
+            "level": "account",
+            "path": "linkedin_url",
+            "type": "string"
+        },
+        {
+            "displayName": "Office Phone",
+            "level": "account",
+            "path": "office_phone",
+            "type": "string"
+        },
+        {
+            "displayName": "Account Name",
+            "level": "account",
+            "path": "sugar_account_name",
+            "type": "string"
+        },
+        {
+            "displayName": "Assigned To",
+            "level": "account",
+            "path": "sugar_assigned_to",
+            "type": "string"
+        },
+        {
+            "displayName": "Primary Address City",
+            "level": "account",
+            "path": "sugar_city",
+            "type": "string"
+        },
+        {
+            "displayName": "Company Industry",
+            "level": "account",
+            "path": "sugar_company_industry",
+            "type": "string"
+        },
+        {
+            "displayName": "Primary Address Country",
+            "level": "account",
+            "path": "sugar_country",
+            "type": "string"
+        },
+        {
+            "displayName": "Do not call",
+            "level": "account",
+            "path": "sugar_do_not_call",
+            "type": "string"
+        },
+        {
+            "displayName": "First Name",
+            "level": "account",
+            "path": "sugar_first_name",
+            "type": "string"
+        },
+        {
+            "displayName": "Sugar Record ID",
+            "level": "account",
+            "path": "sugar_id",
+            "type": "string"
+        },
+        {
+            "displayName": "Industry",
+            "level": "account",
+            "path": "sugar_industry",
+            "type": "string"
+        },
+        {
+            "displayName": "Last Name",
+            "level": "account",
+            "path": "sugar_last_name",
+            "type": "string"
+        },
+        {
+            "displayName": "Marketing Suspended",
+            "level": "account",
+            "path": "sugar_marketing_suspended",
+            "type": "string"
+        },
+        {
+            "displayName": "Mobile",
+            "level": "account",
+            "path": "sugar_mobile",
+            "type": "string"
+        },
+        {
+            "displayName": "Sugar Record Type",
+            "level": "account",
+            "path": "sugar_object",
+            "type": "string"
+        },
+        {
+            "displayName": "Email (Primary)",
+            "level": "account",
+            "path": "sugar_primary_email",
+            "type": "string"
+        },
+        {
+            "displayName": "SalesLoft Record",
+            "level": "account",
+            "path": "sugar_sl_record",
+            "type": "string"
+        },
+        {
+            "displayName": "Primary Address State",
+            "level": "account",
+            "path": "sugar_state",
+            "type": "string"
+        },
+        {
+            "displayName": "Tags",
+            "level": "account",
+            "path": "sugar_tags[*].name",
+            "type": "array[string]"
+        },
+        {
+            "displayName": "Job Title",
+            "level": "account",
+            "path": "sugar_title",
+            "type": "string"
+        },
+        {
+            "displayName": "Sync to SalesLoft",
+            "level": "account",
+            "path": "sync_to_salesloft",
+            "type": "string"
+        },
+        {
+            "displayName": "Twitter",
+            "level": "account",
+            "path": "twitter",
+            "type": "string"
+        },
+        {
+            "displayName": "Website",
+            "level": "account",
+            "path": "website",
+            "type": "string"
+        }
+    ],
+    "objectName": "sugar-contacts",
+    "vdrShared": false,
+    "vdrShareLevel": "account"
+}

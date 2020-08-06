@@ -1,0 +1,14 @@
+{
+    "definition": {
+        "createdDate": "2020-08-04 16:59:27.212327",
+        "fields": [],
+        "objectName": "sl-emails",
+        "vdrShared": false,
+        "vdrShareLevel": "account"
+    },
+    "transformation": {
+        "salesloft": null
+    },
+    "vdrName": "sl-emails",
+    "vdrVersion": "v2"
+}

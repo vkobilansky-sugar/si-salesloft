@@ -1,0 +1,157 @@
+{
+    "definition": {
+        "createdDate": "2020-07-17 15:34:44.148081",
+        "fields": [
+            {
+                "displayName": "Called Person ID",
+                "level": "account",
+                "path": "called_person_id",
+                "type": "string"
+            },
+            {
+                "displayName": "Disposition",
+                "level": "account",
+                "path": "disposition",
+                "type": "string"
+            },
+            {
+                "displayName": "Duration",
+                "level": "account",
+                "path": "duration",
+                "type": "string"
+            },
+            {
+                "displayName": "End ",
+                "level": "account",
+                "path": "end",
+                "type": "string"
+            },
+            {
+                "displayName": "Call ID",
+                "level": "account",
+                "path": "id",
+                "type": "string"
+            },
+            {
+                "displayName": "Notes",
+                "level": "account",
+                "path": "notes",
+                "type": "string"
+            },
+            {
+                "displayName": "Recording Status",
+                "level": "account",
+                "path": "recording_status",
+                "type": "string"
+            },
+            {
+                "displayName": "Start",
+                "level": "account",
+                "path": "start",
+                "type": "string"
+            },
+            {
+                "displayName": "Subject",
+                "level": "account",
+                "path": "subject",
+                "type": "string"
+            }
+        ],
+        "objectName": "sl-calls",
+        "vdrShared": false,
+        "vdrShareLevel": "account"
+    },
+    "transformation": {
+        "salesloft": {
+            "configuration": [
+                {
+                    "level": "account",
+                    "type": "addToDocumentation"
+                },
+                {
+                    "level": "account",
+                    "type": "inherit"
+                },
+                {
+                    "level": "account",
+                    "properties": {
+                        "fromVendor": false,
+                        "toVendor": false
+                    },
+                    "type": "passThrough"
+                }
+            ],
+            "elementKey": "salesloft",
+            "fields": [
+                {
+                    "level": "account",
+                    "path": "called_person_id",
+                    "type": "string",
+                    "vendorPath": "called_person.id",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "disposition",
+                    "type": "string",
+                    "vendorPath": "disposition",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "duration",
+                    "type": "string",
+                    "vendorPath": "duration",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "end",
+                    "type": "string",
+                    "vendorPath": "updated_at",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "id",
+                    "type": "string",
+                    "vendorPath": "id",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "notes",
+                    "type": "string",
+                    "vendorPath": "note._href",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "recording_status",
+                    "type": "string",
+                    "vendorPath": "recordings[0].status",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "start",
+                    "type": "string",
+                    "vendorPath": "created_at",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "subject",
+                    "type": "string",
+                    "vendorPath": "sentiment",
+                    "vendorType": "string"
+                }
+            ],
+            "isLegacy": false,
+            "objectName": "sl-calls",
+            "vendorName": "calls"
+        }
+    },
+    "vdrName": "sl-calls",
+    "vdrVersion": "v2"
+}

@@ -1,0 +1,144 @@
+{
+    "active": true,
+    "configuration": [
+        {
+            "description": "sugar",
+            "key": "destination",
+            "name": "destination",
+            "required": false,
+            "type": "elementInstance"
+        },
+        {
+            "key": "salesloft",
+            "name": "salesloft",
+            "required": false,
+            "type": "elementInstance"
+        }
+    ],
+    "debugLoggingEnabled": false,
+    "debugLoggingExpires": "2020-08-01T03:22:35Z",
+    "engine": "v3",
+    "id": 38893,
+    "name": "salesloft-emails-to-sugar",
+    "singleThreaded": false,
+    "steps": [
+        {
+            "name": "checkEvent",
+            "onFailure": [
+                "wrongEventExit"
+            ],
+            "onSuccess": [
+                "prepGetEmailQuery"
+            ],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "prepGetEmailQuery",
+            "onFailure": [],
+            "onSuccess": [
+                "getEmailDetails"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "getEmailDetails",
+            "onFailure": [
+                "callNotFound"
+            ],
+            "onSuccess": [
+                "getEmailedPersonId"
+            ],
+            "properties": {
+                "api": "/sl-emails",
+                "body": "",
+                "elementInstanceId": "${config.salesloft}",
+                "method": "GET",
+                "query": ""
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "getEmailedPersonId",
+            "onFailure": [
+                "gracefulExit"
+            ],
+            "onSuccess": [
+                "getPersonForMailing"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "getPersonForMailing",
+            "onFailure": [],
+            "onSuccess": [
+                "prepEmailPayload"
+            ],
+            "properties": {
+                "api": "/sl-person/${steps.getEmailedPerson.id}",
+                "elementInstanceId": "${config.salesloft}",
+                "method": "GET",
+                "query": ""
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "prepEmailPayload",
+            "onFailure": [],
+            "onSuccess": [
+                "createCallRecordSugar"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "createCallRecordSugar",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {
+                "api": "/sugar-calls",
+                "body": "${steps.prepEmailPayload.payload}",
+                "elementInstanceId": "${config.destination}",
+                "method": "POST"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "gracefulExit",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "callNotFound",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "wrongEventExit",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "script"
+        }
+    ],
+    "triggers": [
+        {
+            "async": true,
+            "name": "trigger",
+            "onFailure": [],
+            "onSuccess": [
+                "checkEvent"
+            ],
+            "properties": {
+                "elementInstanceId": "${config.salesloft}"
+            },
+            "type": "event"
+        }
+    ]
+}

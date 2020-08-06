@@ -1,0 +1,52 @@
+{
+    "definition": {
+        "createdDate": "2020-07-20 18:50:40.048677",
+        "fields": [
+            {
+                "displayName": "",
+                "level": "account",
+                "path": "industry",
+                "type": "string"
+            }
+        ],
+        "objectName": "sugar-accounts",
+        "vdrShared": false,
+        "vdrShareLevel": "account"
+    },
+    "transformation": {
+        "sugarenterprise": {
+            "configuration": [
+                {
+                    "level": "account",
+                    "type": "addToDocumentation"
+                },
+                {
+                    "level": "account",
+                    "type": "inherit"
+                },
+                {
+                    "level": "account",
+                    "properties": {
+                        "fromVendor": false,
+                        "toVendor": false
+                    },
+                    "type": "passThrough"
+                }
+            ],
+            "elementKey": "sugarenterprise",
+            "fields": [
+                {
+                    "level": "account",
+                    "path": "industry",
+                    "type": "string",
+                    "vendorPath": "industry"
+                }
+            ],
+            "isLegacy": false,
+            "objectName": "sugar-accounts",
+            "vendorName": "accounts"
+        }
+    },
+    "vdrName": "sugar-accounts",
+    "vdrVersion": "v2"
+}

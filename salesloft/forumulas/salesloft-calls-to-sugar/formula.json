@@ -1,0 +1,144 @@
+{
+    "active": true,
+    "configuration": [
+        {
+            "description": "sugar",
+            "key": "destination",
+            "name": "destination",
+            "required": false,
+            "type": "elementInstance"
+        },
+        {
+            "key": "salesloft",
+            "name": "salesloft",
+            "required": false,
+            "type": "elementInstance"
+        }
+    ],
+    "debugLoggingEnabled": false,
+    "debugLoggingExpires": "2020-08-01T03:22:35Z",
+    "engine": "v3",
+    "id": 37624,
+    "name": "salesloft-calls-to-sugar",
+    "singleThreaded": false,
+    "steps": [
+        {
+            "name": "checkEvent",
+            "onFailure": [
+                "wrongEventExit"
+            ],
+            "onSuccess": [
+                "prepGetCallQuery"
+            ],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "prepGetCallQuery",
+            "onFailure": [],
+            "onSuccess": [
+                "getCallDetails"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "getCallDetails",
+            "onFailure": [
+                "callNotFound"
+            ],
+            "onSuccess": [
+                "getCalledPersonId"
+            ],
+            "properties": {
+                "api": "/sl-calls",
+                "body": "",
+                "elementInstanceId": "${config.salesloft}",
+                "method": "GET",
+                "query": ""
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "getCalledPersonId",
+            "onFailure": [
+                "gracefulExit"
+            ],
+            "onSuccess": [
+                "getPersonForPhoneCall"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "getPersonForPhoneCall",
+            "onFailure": [],
+            "onSuccess": [
+                "prepCallPayload"
+            ],
+            "properties": {
+                "api": "/sl-person/${steps.getCalledPersonId.id}",
+                "elementInstanceId": "${config.salesloft}",
+                "method": "GET",
+                "query": ""
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "prepCallPayload",
+            "onFailure": [],
+            "onSuccess": [
+                "createCallRecordSugar"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "createCallRecordSugar",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {
+                "api": "/sugar-calls",
+                "body": "${steps.prepCallPayload.payload}",
+                "elementInstanceId": "${config.destination}",
+                "method": "POST"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "gracefulExit",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "callNotFound",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "wrongEventExit",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "script"
+        }
+    ],
+    "triggers": [
+        {
+            "async": true,
+            "name": "trigger",
+            "onFailure": [],
+            "onSuccess": [
+                "checkEvent"
+            ],
+            "properties": {
+                "elementInstanceId": "${config.salesloft}"
+            },
+            "type": "event"
+        }
+    ]
+}

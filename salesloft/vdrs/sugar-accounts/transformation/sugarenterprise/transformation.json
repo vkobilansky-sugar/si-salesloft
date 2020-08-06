@@ -1,0 +1,32 @@
+{
+    "configuration": [
+        {
+            "level": "account",
+            "type": "addToDocumentation"
+        },
+        {
+            "level": "account",
+            "type": "inherit"
+        },
+        {
+            "level": "account",
+            "properties": {
+                "fromVendor": false,
+                "toVendor": false
+            },
+            "type": "passThrough"
+        }
+    ],
+    "elementKey": "sugarenterprise",
+    "fields": [
+        {
+            "level": "account",
+            "path": "industry",
+            "type": "string",
+            "vendorPath": "industry"
+        }
+    ],
+    "isLegacy": false,
+    "objectName": "sugar-accounts",
+    "vendorName": "accounts"
+}
