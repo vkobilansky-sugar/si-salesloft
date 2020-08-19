@@ -1,0 +1,220 @@
+{
+    "active": true,
+    "configuration": [
+        {
+            "description": "sugar",
+            "key": "destination",
+            "name": "destination",
+            "required": false,
+            "type": "elementInstance"
+        },
+        {
+            "key": "salesloft",
+            "name": "salesloft",
+            "required": false,
+            "type": "elementInstance"
+        }
+    ],
+    "debugLoggingEnabled": false,
+    "debugLoggingExpires": "2020-08-13T21:06:07Z",
+    "engine": "v3",
+    "id": 9891,
+    "name": "salesloft-notes-to-sugar",
+    "singleThreaded": false,
+    "steps": [
+        {
+            "name": "checkEvent",
+            "onFailure": [
+                "exitWrongEvent"
+            ],
+            "onSuccess": [
+                "getNoteDetails"
+            ],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "getNoteDetails",
+            "onFailure": [
+                "exitCallNotFound"
+            ],
+            "onSuccess": [
+                "getPersonForNote"
+            ],
+            "properties": {
+                "api": "/sl-notes/${trigger.event.objectId}",
+                "body": "",
+                "elementInstanceId": "${config.salesloft}",
+                "method": "GET",
+                "query": ""
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "getPersonForNote",
+            "onFailure": [
+                "exitPersonNotFound"
+            ],
+            "onSuccess": [
+                "isNoteForLead"
+            ],
+            "properties": {
+                "api": "/sl-person/${steps.getNoteDetails.response.body.note_associated_id}",
+                "elementInstanceId": "${config.salesloft}",
+                "method": "GET",
+                "query": ""
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "isNoteForLead",
+            "onFailure": [
+                "getContactNoteContent"
+            ],
+            "onSuccess": [
+                "getLeadNoteContent"
+            ],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "getLeadNoteContent",
+            "onFailure": [
+                "exitCouldNotGetNoteForLead"
+            ],
+            "onSuccess": [
+                "prepLeadNoteContent"
+            ],
+            "properties": {
+                "api": "/sugar-leads/${steps.getPersonForNote.response.body.sugar_id}",
+                "elementInstanceId": "${config.destination}",
+                "method": "GET"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "prepLeadNoteContent",
+            "onFailure": [],
+            "onSuccess": [
+                "updateLeadWithNewNote"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "updateLeadWithNewNote",
+            "onFailure": [
+                "exitCouldNotUpdateLeadNote"
+            ],
+            "onSuccess": [],
+            "properties": {
+                "api": "/sugar-leads/${steps.getLeadNoteContent.response.body.sugar_id}",
+                "body": "${steps.prepLeadNoteContent.payload}",
+                "elementInstanceId": "${config.destination}",
+                "method": "PATCH"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "exitCouldNotUpdateLeadNote",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "exitCouldNotGetNoteForLead",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "getContactNoteContent",
+            "onFailure": [
+                "exitCouldNotGetNoteForContact"
+            ],
+            "onSuccess": [
+                "prepContactNoteContent"
+            ],
+            "properties": {
+                "api": "/sugar-contacts/${steps.getPersonForNote.response.body.sugar_id}",
+                "elementInstanceId": "${config.destination}",
+                "method": "GET"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "prepContactNoteContent",
+            "onFailure": [],
+            "onSuccess": [
+                "updateContactWithNewNote"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "updateContactWithNewNote",
+            "onFailure": [
+                "exitCouldNotUpdateContactNote"
+            ],
+            "onSuccess": [],
+            "properties": {
+                "api": "/sugar-contacts/${steps.getContactNoteContent.response.body.sugar_id}",
+                "body": "${steps.prepContactNoteContent.payload}",
+                "elementInstanceId": "${config.destination}",
+                "method": "PATCH"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "exitCouldNotUpdateContactNote",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "exitCouldNotGetNoteForContact",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "exitPersonNotFound",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "exitCallNotFound",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "exitWrongEvent",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "script"
+        }
+    ],
+    "triggers": [
+        {
+            "async": true,
+            "name": "trigger",
+            "onFailure": [],
+            "onSuccess": [
+                "checkEvent"
+            ],
+            "properties": {
+                "elementInstanceId": "${config.salesloft}"
+            },
+            "type": "event"
+        }
+    ]
+}

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>salesloft-notes-to-sugar</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mermaid/6.0.0/mermaid.css" rel="stylesheet" type="text/css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/6.0.0/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>
+        var callback = function(){}
+    </script>
+    <style>
+        div.mermaidTooltip {
+                    margin-left: 50px;
+                    text-align: left;
+                    max-width: none;
+                }
+        .node rect,
+        .node circle,
+        .node ellipse,
+        .node polygon {
+                    fill: #ffffff;
+                    stroke: rgb(200,200,200);
+                    stroke-width: 2px;
+                }
+        .mermaid .label {
+                  max-width: 50px;
+                }
+        table, th, td {
+                    border: 1px solid black;
+                }
+        table {
+                    border-spacing: 5px;
+                    border-radius: 5px;
+                    margin: auto;
+                }
+        th, td {
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    border-radius: 5px;
+                }
+        th {
+                    color: blue;
+                }
+        td {
+                    width: 180px;
+                    text-align: center;
+                    background-color: rgb(237, 241, 242);
+                }
+        h2 {
+                    text-align: center;
+                    border: 1px solid black;
+                    border-radius: 5px;
+                    padding: 1em;
+                }
+        .container {
+                    text-align: center;
+                    background-color: rgb(237, 241, 242);
+                    font-size: 11px;
+                    font-weight: 900;
+                }
+        body {
+                    font-family: 'Arial';
+                }
+        .edgeLabel {
+                    font-size: 9px;
+                }
+    </style>
+</head>
+<body>
+    <h2>
+        salesloft-notes-to-sugar
+    </h2>
+    <div class="container">
+        <div class="mermaid">
+            graph TD
+
+                step-000((Trigger))
+            step-001{checkEvent}
+            step-002>getNoteDetails]
+            step-003(exitWrongEvent)
+            step-024((END))
+            step-005>getPersonForNote]
+            step-006(exitCallNotFound)
+            step-024((END))
+            step-008{isNoteForLead}
+            step-009(exitPersonNotFound)
+            step-024((END))
+            step-011>getLeadNoteContent]
+            step-012>getContactNoteContent]
+            step-013(prepLeadNoteContent)
+            step-014{exitCouldNotGetNoteForLead}
+            step-024((END))
+            step-016(prepContactNoteContent)
+            step-017{exitCouldNotGetNoteForContact}
+            step-024((END))
+            step-019>updateLeadWithNewNote]
+            step-020>updateContactWithNewNote]
+            step-021{exitCouldNotUpdateLeadNote}
+            step-024((END))
+            step-023{exitCouldNotUpdateContactNote}
+            step-024((END))
+            step-025(END)
+            step-026(END)
+            step-027(END)
+            step-028(END)
+            step-029(END)
+            step-030(END)
+            step-031(END)
+
+                step-000== continue ==>step-001
+            step-001-- success -->step-002
+            step-001-- failure -->step-003
+            step-002-- success -->step-005
+            step-002-- failure -->step-006
+            step-003-. done .->step-025
+            step-005-- success -->step-008
+            step-005-- failure -->step-009
+            step-006-. done .->step-026
+            step-008-- success -->step-011
+            step-008-- failure -->step-012
+            step-009-. done .->step-027
+            step-011-- success -->step-013
+            step-011-- failure -->step-014
+            step-012-- success -->step-016
+            step-012-- failure -->step-017
+            step-013-- success -->step-019
+            step-014-. done .->step-028
+            step-016-- success -->step-020
+            step-017-. done .->step-029
+            step-019-- failure -->step-021
+            step-020-- failure -->step-023
+            step-021-. done .->step-030
+            step-023-. done .->step-031
+
+                style step-002 stroke:#0f6ab4;
+            style step-024 fill:#dda7f9;
+            style step-005 stroke:#0f6ab4;
+            style step-024 fill:#dda7f9;
+            style step-024 fill:#dda7f9;
+            style step-011 stroke:#0f6ab4;
+            style step-012 stroke:#0f6ab4;
+            style step-024 fill:#dda7f9;
+            style step-024 fill:#dda7f9;
+            style step-019 stroke:#D38042;
+            style step-020 stroke:#D38042;
+            style step-024 fill:#dda7f9;
+            style step-024 fill:#dda7f9;
+            style step-025 fill:#dda7f9,stroke-width:3px,stroke-dasharray: 5, 5;
+            style step-026 fill:#dda7f9,stroke-width:3px,stroke-dasharray: 5, 5;
+            style step-027 fill:#dda7f9,stroke-width:3px,stroke-dasharray: 5, 5;
+            style step-028 fill:#dda7f9,stroke-width:3px,stroke-dasharray: 5, 5;
+            style step-029 fill:#dda7f9,stroke-width:3px,stroke-dasharray: 5, 5;
+            style step-030 fill:#dda7f9,stroke-width:3px,stroke-dasharray: 5, 5;
+            style step-031 fill:#dda7f9,stroke-width:3px,stroke-dasharray: 5, 5;
+
+                click step-000 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPnRyaWdnZXI8L3RpdGxlPjwvaGVhZD48Ym9keT48Yj5UcmlnZ2VyIEVsZW1lbnQ6PC9iPjxicj48YnI+PHByZT4gIGVsZW1lbnRJbnN0YW5jZUlkIDogJHtjb25maWcuc2FsZXNsb2Z0fTxicj4gICAgICAgICAgICAgICB0eXBlIDogZXZlbnQ8YnI+ICAgICAgICAgICAgICBhc3luYyA6IHRydWU8L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ29uU3VjY2Vzcyc6IFs8YnI+ICAgICdjaGVja0V2ZW50Jzxicj4gIF0sPGJyPiAgJ29uRmFpbHVyZSc6IFtdLDxicj4gICd0eXBlJzogJ2V2ZW50Jyw8YnI+ICAnYXN5bmMnOiB0cnVlLDxicj4gICduYW1lJzogJ3RyaWdnZXInLDxicj4gICdwcm9wZXJ0aWVzJzogezxicj4gICAgJ2VsZW1lbnRJbnN0YW5jZUlkJzogJyR7Y29uZmlnLnNhbGVzbG9mdH0nPGJyPiAgfTxicj59PC9wcmU+PC9ib2R5PjwvaHRtbD4='));document.close();" "Trigger Element:<br><pre>  elementInstanceId : ${config.salesloft}<br>               type : event<br>              async : true</pre>"
+            click step-001 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmNoZWNrRXZlbnQ8L3RpdGxlPjwvaGVhZD48Ym9keT48Yj5KYXZhU2NyaXB0OjwvYj48YnI+PGJyPjxwcmU+ICBpZiAodHJpZ2dlci5ldmVudC5vYmplY3RUeXBlID09PSAnbm90ZXMnKSB7PGJyPjxicj4gICAgZG9uZSh0cnVlKTs8YnI+ICAgIDxicj4gIH08YnI+ICA8YnI+ICBkb25lKGZhbHNlKTs8L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ29uU3VjY2Vzcyc6IFs8YnI+ICAgICdnZXROb3RlRGV0YWlscyc8YnI+ICBdLDxicj4gICdvbkZhaWx1cmUnOiBbPGJyPiAgICAnZXhpdFdyb25nRXZlbnQnPGJyPiAgXSw8YnI+ICAnbmFtZSc6ICdjaGVja0V2ZW50Jyw8YnI+ICAndHlwZSc6ICdmaWx0ZXInLDxicj4gICdwcm9wZXJ0aWVzJzogezxicj4gICAgJ2JvZHknOiAnICBpZiAodHJpZ2dlci5ldmVudC5vYmplY3RUeXBlID09PSBcJ25vdGVzXCcpIHtcblxuICAgIGRvbmUodHJ1ZSk7XG4gICAgXG4gIH1cbiAgXG4gIGRvbmUoZmFsc2UpOyc8YnI+ICB9PGJyPn08L3ByZT48L2JvZHk+PC9odG1sPg=='));document.close();" "JavaScript:<br><pre>  if (trigger.event.objectType === 'notes') {<br><br>    done(true);<br>    <br>  }<br>  <br>  done(false);</pre>"
+            click step-002 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmdldE5vdGVEZXRhaWxzPC90aXRsZT48L2hlYWQ+PGJvZHk+PGI+UmVxdWVzdDo8L2I+PGJyPjxicj48cHJlPiAgICAgICAgICAgICAgIGJvZHkgOiA8YnI+ICAgICAgICAgICAgIG1ldGhvZCA6IEdFVDxicj4gIGVsZW1lbnRJbnN0YW5jZUlkIDogJHtjb25maWcuc2FsZXNsb2Z0fTxicj4gICAgICAgICAgICAgIHF1ZXJ5IDogPGJyPiAgICAgICAgICAgICAgICBhcGkgOiAvc2wtbm90ZXMvJHt0cmlnZ2VyLmV2ZW50Lm9iamVjdElkfTwvcHJlPjxicj48Yj5SQVcgSlNPTjo8L2I+PGJyPjxicj48cHJlPns8YnI+ICAnb25TdWNjZXNzJzogWzxicj4gICAgJ2dldFBlcnNvbkZvck5vdGUnPGJyPiAgXSw8YnI+ICAnb25GYWlsdXJlJzogWzxicj4gICAgJ2V4aXRDYWxsTm90Rm91bmQnPGJyPiAgXSw8YnI+ICAnbmFtZSc6ICdnZXROb3RlRGV0YWlscycsPGJyPiAgJ3R5cGUnOiAnZWxlbWVudFJlcXVlc3QnLDxicj4gICdwcm9wZXJ0aWVzJzogezxicj4gICAgJ2JvZHknOiAnJyw8YnI+ICAgICdtZXRob2QnOiAnR0VUJyw8YnI+ICAgICdlbGVtZW50SW5zdGFuY2VJZCc6ICcke2NvbmZpZy5zYWxlc2xvZnR9Jyw8YnI+ICAgICdxdWVyeSc6ICcnLDxicj4gICAgJ2FwaSc6ICcvc2wtbm90ZXMvJHt0cmlnZ2VyLmV2ZW50Lm9iamVjdElkfSc8YnI+ICB9PGJyPn08L3ByZT48L2JvZHk+PC9odG1sPg=='));document.close();" "Request:<br><pre>               body : <br>             method : GET<br>  elementInstanceId : ${config.salesloft}<br>              query : <br>                api : /sl-notes/${trigger.event.objectId}</pre>"
+            click step-003 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmV4aXRXcm9uZ0V2ZW50PC90aXRsZT48L2hlYWQ+PGJvZHk+PGI+SmF2YVNjcmlwdDo8L2I+PGJyPjxicj48cHJlPmRvbmUoZmFsc2UpPC9wcmU+PGJyPjxiPlJBVyBKU09OOjwvYj48YnI+PGJyPjxwcmU+ezxicj4gICdvblN1Y2Nlc3MnOiBbXSw8YnI+ICAnb25GYWlsdXJlJzogW10sPGJyPiAgJ25hbWUnOiAnZXhpdFdyb25nRXZlbnQnLDxicj4gICd0eXBlJzogJ3NjcmlwdCcsPGJyPiAgJ3Byb3BlcnRpZXMnOiB7PGJyPiAgICAnYm9keSc6ICdkb25lKGZhbHNlKSc8YnI+ICB9PGJyPn08L3ByZT48L2JvZHk+PC9odG1sPg=='));document.close();" "JavaScript:<br><pre>done(false)</pre>"
+            click step-005 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmdldFBlcnNvbkZvck5vdGU8L3RpdGxlPjwvaGVhZD48Ym9keT48Yj5SZXF1ZXN0OjwvYj48YnI+PGJyPjxwcmU+ICAgICAgICAgICAgIG1ldGhvZCA6IEdFVDxicj4gIGVsZW1lbnRJbnN0YW5jZUlkIDogJHtjb25maWcuc2FsZXNsb2Z0fTxicj4gICAgICAgICAgICAgIHF1ZXJ5IDogPGJyPiAgICAgICAgICAgICAgICBhcGkgOiAvc2wtcGVyc29uLyR7c3RlcHMuZ2V0Tm90ZURldGFpbHMucmVzcG9uc2UuYm9keS5ub3RlX2Fzc29jaWF0ZWRfaWR9PC9wcmU+PGJyPjxiPlJBVyBKU09OOjwvYj48YnI+PGJyPjxwcmU+ezxicj4gICdvblN1Y2Nlc3MnOiBbPGJyPiAgICAnaXNOb3RlRm9yTGVhZCc8YnI+ICBdLDxicj4gICdvbkZhaWx1cmUnOiBbPGJyPiAgICAnZXhpdFBlcnNvbk5vdEZvdW5kJzxicj4gIF0sPGJyPiAgJ25hbWUnOiAnZ2V0UGVyc29uRm9yTm90ZScsPGJyPiAgJ3R5cGUnOiAnZWxlbWVudFJlcXVlc3QnLDxicj4gICdwcm9wZXJ0aWVzJzogezxicj4gICAgJ21ldGhvZCc6ICdHRVQnLDxicj4gICAgJ2VsZW1lbnRJbnN0YW5jZUlkJzogJyR7Y29uZmlnLnNhbGVzbG9mdH0nLDxicj4gICAgJ3F1ZXJ5JzogJycsPGJyPiAgICAnYXBpJzogJy9zbC1wZXJzb24vJHtzdGVwcy5nZXROb3RlRGV0YWlscy5yZXNwb25zZS5ib2R5Lm5vdGVfYXNzb2NpYXRlZF9pZH0nPGJyPiAgfTxicj59PC9wcmU+PC9ib2R5PjwvaHRtbD4='));document.close();" "Request:<br><pre>             method : GET<br>  elementInstanceId : ${config.salesloft}<br>              query : <br>                api : /sl-person/${steps.getNoteDetails.response.body.note_associated_id}</pre>"
+            click step-006 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmV4aXRDYWxsTm90Rm91bmQ8L3RpdGxlPjwvaGVhZD48Ym9keT48Yj5KYXZhU2NyaXB0OjwvYj48YnI+PGJyPjxwcmU+ZG9uZShmYWxzZSk8L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ29uU3VjY2Vzcyc6IFtdLDxicj4gICdvbkZhaWx1cmUnOiBbXSw8YnI+ICAnbmFtZSc6ICdleGl0Q2FsbE5vdEZvdW5kJyw8YnI+ICAndHlwZSc6ICdzY3JpcHQnLDxicj4gICdwcm9wZXJ0aWVzJzogezxicj4gICAgJ2JvZHknOiAnZG9uZShmYWxzZSknPGJyPiAgfTxicj59PC9wcmU+PC9ib2R5PjwvaHRtbD4='));document.close();" "JavaScript:<br><pre>done(false)</pre>"
+            click step-008 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmlzTm90ZUZvckxlYWQ8L3RpdGxlPjwvaGVhZD48Ym9keT48Yj5KYXZhU2NyaXB0OjwvYj48YnI+PGJyPjxwcmU+aWYgKHN0ZXBzLmdldFBlcnNvbkZvck5vdGUucmVzcG9uc2UuYm9keS5zdWdhcl9vYmplY3QgPT09ICdMZWFkcycpIHs8YnI+ICBkb25lKHRydWUpPGJyPn08YnI+PGJyPmRvbmUoZmFsc2UpPC9wcmU+PGJyPjxiPlJBVyBKU09OOjwvYj48YnI+PGJyPjxwcmU+ezxicj4gICdvblN1Y2Nlc3MnOiBbPGJyPiAgICAnZ2V0TGVhZE5vdGVDb250ZW50Jzxicj4gIF0sPGJyPiAgJ29uRmFpbHVyZSc6IFs8YnI+ICAgICdnZXRDb250YWN0Tm90ZUNvbnRlbnQnPGJyPiAgXSw8YnI+ICAnbmFtZSc6ICdpc05vdGVGb3JMZWFkJyw8YnI+ICAndHlwZSc6ICdmaWx0ZXInLDxicj4gICdwcm9wZXJ0aWVzJzogezxicj4gICAgJ2JvZHknOiAnaWYgKHN0ZXBzLmdldFBlcnNvbkZvck5vdGUucmVzcG9uc2UuYm9keS5zdWdhcl9vYmplY3QgPT09ICdMZWFkcycpIHtcbiAgZG9uZSh0cnVlKVxufVxuXG5kb25lKGZhbHNlKSc8YnI+ICB9PGJyPn08L3ByZT48L2JvZHk+PC9odG1sPg=='));document.close();" "JavaScript:<br><pre>if (steps.getPersonForNote.response.body.sugar_object === 'Leads') {<br>  done(true)<br>}<br><br>done(false)</pre>"
+            click step-009 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmV4aXRQZXJzb25Ob3RGb3VuZDwvdGl0bGU+PC9oZWFkPjxib2R5PjxiPkphdmFTY3JpcHQ6PC9iPjxicj48YnI+PHByZT48YnI+ZG9uZShmYWxzZSk7PC9wcmU+PGJyPjxiPlJBVyBKU09OOjwvYj48YnI+PGJyPjxwcmU+ezxicj4gICdvblN1Y2Nlc3MnOiBbXSw8YnI+ICAnb25GYWlsdXJlJzogW10sPGJyPiAgJ25hbWUnOiAnZXhpdFBlcnNvbk5vdEZvdW5kJyw8YnI+ICAndHlwZSc6ICdzY3JpcHQnLDxicj4gICdwcm9wZXJ0aWVzJzogezxicj4gICAgJ2JvZHknOiAnXG5kb25lKGZhbHNlKTsnPGJyPiAgfTxicj59PC9wcmU+PC9ib2R5PjwvaHRtbD4='));document.close();" "JavaScript:<br><pre><br>done(false);</pre>"
+            click step-011 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmdldExlYWROb3RlQ29udGVudDwvdGl0bGU+PC9oZWFkPjxib2R5PjxiPlJlcXVlc3Q6PC9iPjxicj48YnI+PHByZT4gICAgICAgICAgICAgbWV0aG9kIDogR0VUPGJyPiAgZWxlbWVudEluc3RhbmNlSWQgOiAke2NvbmZpZy5kZXN0aW5hdGlvbn08YnI+ICAgICAgICAgICAgICAgIGFwaSA6IC9zdWdhci1sZWFkcy8ke3N0ZXBzLmdldFBlcnNvbkZvck5vdGUucmVzcG9uc2UuYm9keS5zdWdhcl9pZH08L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ29uU3VjY2Vzcyc6IFs8YnI+ICAgICdwcmVwTGVhZE5vdGVDb250ZW50Jzxicj4gIF0sPGJyPiAgJ29uRmFpbHVyZSc6IFs8YnI+ICAgICdleGl0Q291bGROb3RHZXROb3RlRm9yTGVhZCc8YnI+ICBdLDxicj4gICduYW1lJzogJ2dldExlYWROb3RlQ29udGVudCcsPGJyPiAgJ3R5cGUnOiAnZWxlbWVudFJlcXVlc3QnLDxicj4gICdwcm9wZXJ0aWVzJzogezxicj4gICAgJ21ldGhvZCc6ICdHRVQnLDxicj4gICAgJ2VsZW1lbnRJbnN0YW5jZUlkJzogJyR7Y29uZmlnLmRlc3RpbmF0aW9ufScsPGJyPiAgICAnYXBpJzogJy9zdWdhci1sZWFkcy8ke3N0ZXBzLmdldFBlcnNvbkZvck5vdGUucmVzcG9uc2UuYm9keS5zdWdhcl9pZH0nPGJyPiAgfTxicj59PC9wcmU+PC9ib2R5PjwvaHRtbD4='));document.close();" "Request:<br><pre>             method : GET<br>  elementInstanceId : ${config.destination}<br>                api : /sugar-leads/${steps.getPersonForNote.response.body.sugar_id}</pre>"
+            click step-012 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmdldENvbnRhY3ROb3RlQ29udGVudDwvdGl0bGU+PC9oZWFkPjxib2R5PjxiPlJlcXVlc3Q6PC9iPjxicj48YnI+PHByZT4gICAgICAgICAgICAgbWV0aG9kIDogR0VUPGJyPiAgZWxlbWVudEluc3RhbmNlSWQgOiAke2NvbmZpZy5kZXN0aW5hdGlvbn08YnI+ICAgICAgICAgICAgICAgIGFwaSA6IC9zdWdhci1jb250YWN0cy8ke3N0ZXBzLmdldFBlcnNvbkZvck5vdGUucmVzcG9uc2UuYm9keS5zdWdhcl9pZH08L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ29uU3VjY2Vzcyc6IFs8YnI+ICAgICdwcmVwQ29udGFjdE5vdGVDb250ZW50Jzxicj4gIF0sPGJyPiAgJ29uRmFpbHVyZSc6IFs8YnI+ICAgICdleGl0Q291bGROb3RHZXROb3RlRm9yQ29udGFjdCc8YnI+ICBdLDxicj4gICduYW1lJzogJ2dldENvbnRhY3ROb3RlQ29udGVudCcsPGJyPiAgJ3R5cGUnOiAnZWxlbWVudFJlcXVlc3QnLDxicj4gICdwcm9wZXJ0aWVzJzogezxicj4gICAgJ21ldGhvZCc6ICdHRVQnLDxicj4gICAgJ2VsZW1lbnRJbnN0YW5jZUlkJzogJyR7Y29uZmlnLmRlc3RpbmF0aW9ufScsPGJyPiAgICAnYXBpJzogJy9zdWdhci1jb250YWN0cy8ke3N0ZXBzLmdldFBlcnNvbkZvck5vdGUucmVzcG9uc2UuYm9keS5zdWdhcl9pZH0nPGJyPiAgfTxicj59PC9wcmU+PC9ib2R5PjwvaHRtbD4='));document.close();" "Request:<br><pre>             method : GET<br>  elementInstanceId : ${config.destination}<br>                api : /sugar-contacts/${steps.getPersonForNote.response.body.sugar_id}</pre>"
+            click step-013 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPnByZXBMZWFkTm90ZUNvbnRlbnQ8L3RpdGxlPjwvaGVhZD48Ym9keT48Yj5KYXZhU2NyaXB0OjwvYj48YnI+PGJyPjxwcmU+Y29uc3QgbW9tZW50ID0gcmVxdWlyZSgnbW9tZW50Jyk7PGJyPjxicj5sZXQgc3VnYXJSZWNvcmQgPSBzdGVwcy5nZXRMZWFkTm90ZUNvbnRlbnQucmVzcG9uc2UuYm9keTs8YnI+PGJyPmNvbnN0IG5vdGUgPSBzdGVwcy5nZXROb3RlRGV0YWlscy5yZXNwb25zZS5ib2R5Ozxicj5jb25zdCB0aW1lc3RhbXAgPSBtb21lbnQobm90ZS50aW1lc3RhbXApOzxicj48YnI+bm90ZVRpbWUgPSB0aW1lc3RhbXAuZm9ybWF0KCdNTU1NIEQsIFlZWVkgaGg6bW06c3MgQScpOzxicj48YnI+bGV0IG9sZE5vdGUgPSAnJzs8YnI+aWYgKHN1Z2FyUmVjb3JkLm5leHRfc3RlcHMgIT09ICcnICAmJiBzdWdhclJlY29yZC5uZXh0X3N0ZXBzICE9PSB1bmRlZmluZWQpIHs8YnI+ICBvbGROb3RlID0gc3VnYXJSZWNvcmQubmV4dF9zdGVwcyArICdcblxuJzs8YnI+fTxicj48YnI+c3VnYXJSZWNvcmQubmV4dF9zdGVwcyA9IGAke29sZE5vdGV9XG4ke25vdGVUaW1lfVxuJHtub3RlLm5vdGVfY29udGVudH1gOzxicj48YnI+ZG9uZSh7cGF5bG9hZDogc3VnYXJSZWNvcmR9KTs8L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ29uU3VjY2Vzcyc6IFs8YnI+ICAgICd1cGRhdGVMZWFkV2l0aE5ld05vdGUnPGJyPiAgXSw8YnI+ICAnb25GYWlsdXJlJzogW10sPGJyPiAgJ25hbWUnOiAncHJlcExlYWROb3RlQ29udGVudCcsPGJyPiAgJ3R5cGUnOiAnc2NyaXB0Jyw8YnI+ICAncHJvcGVydGllcyc6IHs8YnI+ICAgICdib2R5JzogJ2NvbnN0IG1vbWVudCA9IHJlcXVpcmUoJ21vbWVudCcpO1xuXG5sZXQgc3VnYXJSZWNvcmQgPSBzdGVwcy5nZXRMZWFkTm90ZUNvbnRlbnQucmVzcG9uc2UuYm9keTtcblxuY29uc3Qgbm90ZSA9IHN0ZXBzLmdldE5vdGVEZXRhaWxzLnJlc3BvbnNlLmJvZHk7XG5jb25zdCB0aW1lc3RhbXAgPSBtb21lbnQobm90ZS50aW1lc3RhbXApO1xuXG5ub3RlVGltZSA9IHRpbWVzdGFtcC5mb3JtYXQoJ01NTU0gRCwgWVlZWSBoaDptbTpzcyBBJyk7XG5cbmxldCBvbGROb3RlID0gJyc7XG5pZiAoc3VnYXJSZWNvcmQubmV4dF9zdGVwcyAhPT0gJycgICYmIHN1Z2FyUmVjb3JkLm5leHRfc3RlcHMgIT09IHVuZGVmaW5lZCkge1xuICBvbGROb3RlID0gc3VnYXJSZWNvcmQubmV4dF9zdGVwcyArICdcXG5cXG4nO1xufVxuXG5zdWdhclJlY29yZC5uZXh0X3N0ZXBzID0gYCR7b2xkTm90ZX1cXG4ke25vdGVUaW1lfVxcbiR7bm90ZS5ub3RlX2NvbnRlbnR9YDtcblxuZG9uZSh7cGF5bG9hZDogc3VnYXJSZWNvcmR9KTsnPGJyPiAgfTxicj59PC9wcmU+PC9ib2R5PjwvaHRtbD4='));document.close();" "JavaScript:<br><pre>const moment = require('moment');<br><br>let sugarRecord = steps.getLeadNoteContent.response.body;<br><br>const note = steps.getNoteDetails.response.body;<br>const timestamp = moment(note.timestamp);<br><br>noteTime = timestamp.format('MMMM D, YYYY hh:mm:ss A');<br><br>let oldNote = '';<br>if (sugarRecord.next_steps !== ''  && sugarRecord.next_steps !== undefined) {<br>  oldNote = sugarRecord.next_steps + '\n\n';<br>}<br><br>sugarRecord.next_steps = `${oldNote}\n${noteTime}\n${note.note_content}`;<br><br>done({payload: sugarRecord});</pre>"
+            click step-014 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmV4aXRDb3VsZE5vdEdldE5vdGVGb3JMZWFkPC90aXRsZT48L2hlYWQ+PGJvZHk+PGI+SmF2YVNjcmlwdDo8L2I+PGJyPjxicj48cHJlPmRvbmUoZmFsc2UpPC9wcmU+PGJyPjxiPlJBVyBKU09OOjwvYj48YnI+PGJyPjxwcmU+ezxicj4gICdvblN1Y2Nlc3MnOiBbXSw8YnI+ICAnb25GYWlsdXJlJzogW10sPGJyPiAgJ25hbWUnOiAnZXhpdENvdWxkTm90R2V0Tm90ZUZvckxlYWQnLDxicj4gICd0eXBlJzogJ2ZpbHRlcicsPGJyPiAgJ3Byb3BlcnRpZXMnOiB7PGJyPiAgICAnYm9keSc6ICdkb25lKGZhbHNlKSc8YnI+ICB9PGJyPn08L3ByZT48L2JvZHk+PC9odG1sPg=='));document.close();" "JavaScript:<br><pre>done(false)</pre>"
+            click step-016 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPnByZXBDb250YWN0Tm90ZUNvbnRlbnQ8L3RpdGxlPjwvaGVhZD48Ym9keT48Yj5KYXZhU2NyaXB0OjwvYj48YnI+PGJyPjxwcmU+Y29uc3QgbW9tZW50ID0gcmVxdWlyZSgnbW9tZW50Jyk7PGJyPjxicj5sZXQgc3VnYXJSZWNvcmQgPSBzdGVwcy5nZXRDb250YWN0Tm90ZUNvbnRlbnQucmVzcG9uc2UuYm9keTs8YnI+PGJyPmNvbnN0IG5vdGUgPSBzdGVwcy5nZXROb3RlRGV0YWlscy5yZXNwb25zZS5ib2R5Ozxicj5jb25zdCB0aW1lc3RhbXAgPSBtb21lbnQobm90ZS50aW1lc3RhbXApOzxicj48YnI+bm90ZVRpbWUgPSB0aW1lc3RhbXAuZm9ybWF0KCdNTU1NIEQsIFlZWVkgaGg6bW06c3MgQScpOzxicj48YnI+bGV0IG9sZE5vdGUgPSAnJzs8YnI+aWYgKHN1Z2FyUmVjb3JkLm5leHRfc3RlcHMgIT09ICcnICAmJiBzdWdhclJlY29yZC5uZXh0X3N0ZXBzICE9PSB1bmRlZmluZWQpIHs8YnI+ICBvbGROb3RlID0gc3VnYXJSZWNvcmQubmV4dF9zdGVwcyArICdcblxuJzs8YnI+fTxicj48YnI+c3VnYXJSZWNvcmQubmV4dF9zdGVwcyA9IGAke29sZE5vdGV9XG4ke25vdGVUaW1lfVxuJHtub3RlLm5vdGVfY29udGVudH1gOzxicj48YnI+ZG9uZSh7cGF5bG9hZDogc3VnYXJSZWNvcmR9KTs8L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ29uU3VjY2Vzcyc6IFs8YnI+ICAgICd1cGRhdGVDb250YWN0V2l0aE5ld05vdGUnPGJyPiAgXSw8YnI+ICAnb25GYWlsdXJlJzogW10sPGJyPiAgJ25hbWUnOiAncHJlcENvbnRhY3ROb3RlQ29udGVudCcsPGJyPiAgJ3R5cGUnOiAnc2NyaXB0Jyw8YnI+ICAncHJvcGVydGllcyc6IHs8YnI+ICAgICdib2R5JzogJ2NvbnN0IG1vbWVudCA9IHJlcXVpcmUoJ21vbWVudCcpO1xuXG5sZXQgc3VnYXJSZWNvcmQgPSBzdGVwcy5nZXRDb250YWN0Tm90ZUNvbnRlbnQucmVzcG9uc2UuYm9keTtcblxuY29uc3Qgbm90ZSA9IHN0ZXBzLmdldE5vdGVEZXRhaWxzLnJlc3BvbnNlLmJvZHk7XG5jb25zdCB0aW1lc3RhbXAgPSBtb21lbnQobm90ZS50aW1lc3RhbXApO1xuXG5ub3RlVGltZSA9IHRpbWVzdGFtcC5mb3JtYXQoJ01NTU0gRCwgWVlZWSBoaDptbTpzcyBBJyk7XG5cbmxldCBvbGROb3RlID0gJyc7XG5pZiAoc3VnYXJSZWNvcmQubmV4dF9zdGVwcyAhPT0gJycgICYmIHN1Z2FyUmVjb3JkLm5leHRfc3RlcHMgIT09IHVuZGVmaW5lZCkge1xuICBvbGROb3RlID0gc3VnYXJSZWNvcmQubmV4dF9zdGVwcyArICdcXG5cXG4nO1xufVxuXG5zdWdhclJlY29yZC5uZXh0X3N0ZXBzID0gYCR7b2xkTm90ZX1cXG4ke25vdGVUaW1lfVxcbiR7bm90ZS5ub3RlX2NvbnRlbnR9YDtcblxuZG9uZSh7cGF5bG9hZDogc3VnYXJSZWNvcmR9KTsnPGJyPiAgfTxicj59PC9wcmU+PC9ib2R5PjwvaHRtbD4='));document.close();" "JavaScript:<br><pre>const moment = require('moment');<br><br>let sugarRecord = steps.getContactNoteContent.response.body;<br><br>const note = steps.getNoteDetails.response.body;<br>const timestamp = moment(note.timestamp);<br><br>noteTime = timestamp.format('MMMM D, YYYY hh:mm:ss A');<br><br>let oldNote = '';<br>if (sugarRecord.next_steps !== ''  && sugarRecord.next_steps !== undefined) {<br>  oldNote = sugarRecord.next_steps + '\n\n';<br>}<br><br>sugarRecord.next_steps = `${oldNote}\n${noteTime}\n${note.note_content}`;<br><br>done({payload: sugarRecord});</pre>"
+            click step-017 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmV4aXRDb3VsZE5vdEdldE5vdGVGb3JDb250YWN0PC90aXRsZT48L2hlYWQ+PGJvZHk+PGI+SmF2YVNjcmlwdDo8L2I+PGJyPjxicj48cHJlPmRvbmUoZmFsc2UpPC9wcmU+PGJyPjxiPlJBVyBKU09OOjwvYj48YnI+PGJyPjxwcmU+ezxicj4gICdvblN1Y2Nlc3MnOiBbXSw8YnI+ICAnb25GYWlsdXJlJzogW10sPGJyPiAgJ25hbWUnOiAnZXhpdENvdWxkTm90R2V0Tm90ZUZvckNvbnRhY3QnLDxicj4gICd0eXBlJzogJ2ZpbHRlcicsPGJyPiAgJ3Byb3BlcnRpZXMnOiB7PGJyPiAgICAnYm9keSc6ICdkb25lKGZhbHNlKSc8YnI+ICB9PGJyPn08L3ByZT48L2JvZHk+PC9odG1sPg=='));document.close();" "JavaScript:<br><pre>done(false)</pre>"
+            click step-019 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPnVwZGF0ZUxlYWRXaXRoTmV3Tm90ZTwvdGl0bGU+PC9oZWFkPjxib2R5PjxiPlJlcXVlc3Q6PC9iPjxicj48YnI+PHByZT4gICAgICAgICAgICAgICBib2R5IDogJHtzdGVwcy5wcmVwTGVhZE5vdGVDb250ZW50LnBheWxvYWR9PGJyPiAgICAgICAgICAgICBtZXRob2QgOiBQQVRDSDxicj4gIGVsZW1lbnRJbnN0YW5jZUlkIDogJHtjb25maWcuZGVzdGluYXRpb259PGJyPiAgICAgICAgICAgICAgICBhcGkgOiAvc3VnYXItbGVhZHMvJHtzdGVwcy5nZXRMZWFkTm90ZUNvbnRlbnQucmVzcG9uc2UuYm9keS5zdWdhcl9pZH08L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ29uU3VjY2Vzcyc6IFtdLDxicj4gICdvbkZhaWx1cmUnOiBbPGJyPiAgICAnZXhpdENvdWxkTm90VXBkYXRlTGVhZE5vdGUnPGJyPiAgXSw8YnI+ICAnbmFtZSc6ICd1cGRhdGVMZWFkV2l0aE5ld05vdGUnLDxicj4gICd0eXBlJzogJ2VsZW1lbnRSZXF1ZXN0Jyw8YnI+ICAncHJvcGVydGllcyc6IHs8YnI+ICAgICdib2R5JzogJyR7c3RlcHMucHJlcExlYWROb3RlQ29udGVudC5wYXlsb2FkfScsPGJyPiAgICAnbWV0aG9kJzogJ1BBVENIJyw8YnI+ICAgICdlbGVtZW50SW5zdGFuY2VJZCc6ICcke2NvbmZpZy5kZXN0aW5hdGlvbn0nLDxicj4gICAgJ2FwaSc6ICcvc3VnYXItbGVhZHMvJHtzdGVwcy5nZXRMZWFkTm90ZUNvbnRlbnQucmVzcG9uc2UuYm9keS5zdWdhcl9pZH0nPGJyPiAgfTxicj59PC9wcmU+PC9ib2R5PjwvaHRtbD4='));document.close();" "Request:<br><pre>               body : ${steps.prepLeadNoteContent.payload}<br>             method : PATCH<br>  elementInstanceId : ${config.destination}<br>                api : /sugar-leads/${steps.getLeadNoteContent.response.body.sugar_id}</pre>"
+            click step-020 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPnVwZGF0ZUNvbnRhY3RXaXRoTmV3Tm90ZTwvdGl0bGU+PC9oZWFkPjxib2R5PjxiPlJlcXVlc3Q6PC9iPjxicj48YnI+PHByZT4gICAgICAgICAgICAgICBib2R5IDogJHtzdGVwcy5wcmVwQ29udGFjdE5vdGVDb250ZW50LnBheWxvYWR9PGJyPiAgICAgICAgICAgICBtZXRob2QgOiBQQVRDSDxicj4gIGVsZW1lbnRJbnN0YW5jZUlkIDogJHtjb25maWcuZGVzdGluYXRpb259PGJyPiAgICAgICAgICAgICAgICBhcGkgOiAvc3VnYXItY29udGFjdHMvJHtzdGVwcy5nZXRDb250YWN0Tm90ZUNvbnRlbnQucmVzcG9uc2UuYm9keS5zdWdhcl9pZH08L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ29uU3VjY2Vzcyc6IFtdLDxicj4gICdvbkZhaWx1cmUnOiBbPGJyPiAgICAnZXhpdENvdWxkTm90VXBkYXRlQ29udGFjdE5vdGUnPGJyPiAgXSw8YnI+ICAnbmFtZSc6ICd1cGRhdGVDb250YWN0V2l0aE5ld05vdGUnLDxicj4gICd0eXBlJzogJ2VsZW1lbnRSZXF1ZXN0Jyw8YnI+ICAncHJvcGVydGllcyc6IHs8YnI+ICAgICdib2R5JzogJyR7c3RlcHMucHJlcENvbnRhY3ROb3RlQ29udGVudC5wYXlsb2FkfScsPGJyPiAgICAnbWV0aG9kJzogJ1BBVENIJyw8YnI+ICAgICdlbGVtZW50SW5zdGFuY2VJZCc6ICcke2NvbmZpZy5kZXN0aW5hdGlvbn0nLDxicj4gICAgJ2FwaSc6ICcvc3VnYXItY29udGFjdHMvJHtzdGVwcy5nZXRDb250YWN0Tm90ZUNvbnRlbnQucmVzcG9uc2UuYm9keS5zdWdhcl9pZH0nPGJyPiAgfTxicj59PC9wcmU+PC9ib2R5PjwvaHRtbD4='));document.close();" "Request:<br><pre>               body : ${steps.prepContactNoteContent.payload}<br>             method : PATCH<br>  elementInstanceId : ${config.destination}<br>                api : /sugar-contacts/${steps.getContactNoteContent.response.body.sugar_id}</pre>"
+            click step-021 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmV4aXRDb3VsZE5vdFVwZGF0ZUxlYWROb3RlPC90aXRsZT48L2hlYWQ+PGJvZHk+PGI+SmF2YVNjcmlwdDo8L2I+PGJyPjxicj48cHJlPmRvbmUoZmFsc2UpOzwvcHJlPjxicj48Yj5SQVcgSlNPTjo8L2I+PGJyPjxicj48cHJlPns8YnI+ICAnb25TdWNjZXNzJzogW10sPGJyPiAgJ29uRmFpbHVyZSc6IFtdLDxicj4gICduYW1lJzogJ2V4aXRDb3VsZE5vdFVwZGF0ZUxlYWROb3RlJyw8YnI+ICAndHlwZSc6ICdmaWx0ZXInLDxicj4gICdwcm9wZXJ0aWVzJzogezxicj4gICAgJ2JvZHknOiAnZG9uZShmYWxzZSk7Jzxicj4gIH08YnI+fTwvcHJlPjwvYm9keT48L2h0bWw+'));document.close();" "JavaScript:<br><pre>done(false);</pre>"
+            click step-023 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmV4aXRDb3VsZE5vdFVwZGF0ZUNvbnRhY3ROb3RlPC90aXRsZT48L2hlYWQ+PGJvZHk+PGI+SmF2YVNjcmlwdDo8L2I+PGJyPjxicj48cHJlPmRvbmUoZmFsc2UpPC9wcmU+PGJyPjxiPlJBVyBKU09OOjwvYj48YnI+PGJyPjxwcmU+ezxicj4gICdvblN1Y2Nlc3MnOiBbXSw8YnI+ICAnb25GYWlsdXJlJzogW10sPGJyPiAgJ25hbWUnOiAnZXhpdENvdWxkTm90VXBkYXRlQ29udGFjdE5vdGUnLDxicj4gICd0eXBlJzogJ2ZpbHRlcicsPGJyPiAgJ3Byb3BlcnRpZXMnOiB7PGJyPiAgICAnYm9keSc6ICdkb25lKGZhbHNlKSc8YnI+ICB9PGJyPn08L3ByZT48L2JvZHk+PC9odG1sPg=='));document.close();" "JavaScript:<br><pre>done(false)</pre>"
+
+        </div>
+    </div>
+    <h2>
+        Formula Configuration
+    </h2>
+    <div class="container">
+        <h3>Basic</h3><table><tr><th>key</th><th>value</th></tr><tr><td>Name</td><td>salesloft-notes-to-sugar</td></tr><tr><td>Single Threaded?</td><td>false</td></tr><tr><td>Active?</td><td>true</td></tr><tr><td>Number of Steps</td><td>17</td></tr><tr><td>Number of Triggers</td><td>1</td></tr></table>
+    <br/><h3>Elements</h3><table><tr><th>key</th><th>name</th><th>required</th></tr><tr><td>destination</td><td>destination</td><td>false</td></tr><tr><td>salesloft</td><td>salesloft</td><td>false</td></tr></table>
+    <br/><h3>Values</h3><table><tr><th>key</th><th>name</th><th>required</th></tr></table><br/>
+    </div>
+    <div class="key">
+        <h2>
+            Key
+        </h2>
+        <table>
+            <tr>
+                <th>Description</th>
+                <th>Symbol</th>
+                <th>Description</th>
+                <th>Symbol</th>
+                <th>Description</th>
+                <th>Symbol</th>
+            </tr>
+
+            <tr>
+                <td>Filter Steps</td>
+                <td>
+                    <div class="mermaid">
+                        graph TD
+                        A{Step Name}
+                    </div>
+                </td>
+                <td>Trigger/End</td>
+                <td>
+                    <div class="mermaid">
+                        graph TD
+                        B((Actual))
+                        C((Generated))
+                        style C stroke-width:2px,stroke-dasharray: 5, 5;
+                    </div>
+                </td>
+                <td>Request Step</td>
+                <td>
+                    <div class="mermaid">
+                        graph TD
+                        A>GET]
+                        style A stroke:#0f6ab4;
+                    </div>
+                    <div class="mermaid">
+                        graph TD
+                        B>POST]
+                        style B stroke:#10a54a;
+                    </div>
+                    <div class="mermaid">
+                        graph TD
+                        C>PATCH]
+                        style C stroke:#D38042;
+                    </div>
+                    <div class="mermaid">
+                        graph TD
+                        C>PUT]
+                        style C stroke:#C5862B;
+                    </div>
+                    <div class="mermaid">
+                        graph TD
+                        D>DELETE]
+                        style D stroke:#a41e22;
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Script</td>
+                <td>
+                    <div class="mermaid">
+                        graph TD
+                        D(Step Name)
+                    </div>
+                </td>
+                <td>Loop</td>
+                <td>
+                    <div class="mermaid">
+                        graph TD
+                        D(-Step Name-)
+                    </div>
+                </td>
+                <td>Other(TYPE)</td>
+                <td>
+                    <div class="mermaid">
+                        graph TD
+                        D[Step Name]
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Pass/Fail Connection</td>
+                <td>
+                    <div class="mermaid">
+                        graph LR
+                        AL(A)
+                        BL(B)
+                        AL-->BL
+                    </div>
+                </td>
+                <td>Generated Connection</td>
+                <td>
+                    <div class="mermaid">
+                        graph LR
+                        AL(A)
+                        BL((B))
+                        AL-.->BL
+                        style BL stroke-width:2px,stroke-dasharray: 5, 5;
+                    </div>
+                </td>
+                <td>Continue Connection</td>
+                <td>
+                    <div class="mermaid">
+                        graph LR
+                        AL(A)
+                        BL(B)
+                        AL==>BL
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+</body>
+</html>

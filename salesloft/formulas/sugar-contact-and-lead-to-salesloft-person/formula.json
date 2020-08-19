@@ -1,0 +1,387 @@
+{
+    "active": true,
+    "configuration": [
+        {
+            "key": "destination",
+            "name": "destination",
+            "required": false,
+            "type": "elementInstance"
+        },
+        {
+            "key": "origin",
+            "name": "origin",
+            "required": false,
+            "type": "elementInstance"
+        }
+    ],
+    "debugLoggingEnabled": false,
+    "debugLoggingExpires": "2020-08-12T20:49:34Z",
+    "engine": "v3",
+    "id": 9895,
+    "name": "sugar-contact-and-lead-to-salesloft-person",
+    "singleThreaded": false,
+    "steps": [
+        {
+            "name": "processEvent",
+            "onFailure": [
+                "getSugarLead"
+            ],
+            "onSuccess": [
+                "getSugarContact"
+            ],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "getSugarContact",
+            "onFailure": [
+                "exitSugarContactNotFound"
+            ],
+            "onSuccess": [
+                "validateContactRecord"
+            ],
+            "properties": {
+                "api": "/sugar-contacts/${trigger.event.objectId}",
+                "elementInstanceId": "${config.origin}",
+                "method": "GET"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "validateContactRecord",
+            "onFailure": [
+                "exitInvalidSugarContact"
+            ],
+            "onSuccess": [
+                "prepCheckPersonFromContactQuery"
+            ],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "prepCheckPersonFromContactQuery",
+            "onFailure": [],
+            "onSuccess": [
+                "checkIfPersonExistsByContactEmail"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "checkIfPersonExistsByContactEmail",
+            "onFailure": [
+                "exitCannotCheckPersonByContactEmail"
+            ],
+            "onSuccess": [
+                "createPayloadForPersonFromContact"
+            ],
+            "properties": {
+                "api": "/sl-person",
+                "elementInstanceId": "${config.destination}",
+                "method": "GET",
+                "query": "${steps.prepCheckPersonFromContactQuery.query}"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "createPayloadForPersonFromContact",
+            "onFailure": [],
+            "onSuccess": [
+                "filterCheckPersonByContactEmail"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "filterCheckPersonByContactEmail",
+            "onFailure": [
+                "createPersonFromContact"
+            ],
+            "onSuccess": [
+                "updatePersonFromContact"
+            ],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "updatePersonFromContact",
+            "onFailure": [
+                "exitCouldNotUpdatePersonFromContact"
+            ],
+            "onSuccess": [
+                "prepareSugarContactPayload"
+            ],
+            "properties": {
+                "api": "/sl-person/${steps.checkIfPersonExistsByContactEmail.response.body[0]. sl_id}",
+                "body": "${steps.createPayloadForPersonFromContact.payload}",
+                "elementInstanceId": "${config.destination}",
+                "method": "PUT",
+                "query": ""
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "prepareSugarContactPayload",
+            "onFailure": [],
+            "onSuccess": [
+                "patchSugarContact"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "patchSugarContact",
+            "onFailure": [
+                "exitCouldNotPatchSugarContact"
+            ],
+            "onSuccess": [],
+            "properties": {
+                "api": "/sugar-contacts/${steps.getSugarContact.response.body.sugar_id}",
+                "body": "${steps.prepareSugarContactPayload.payload}",
+                "elementInstanceId": "${config.origin}",
+                "method": "PATCH"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "exitCouldNotPatchSugarContact",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "exitCouldNotUpdatePersonFromContact",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "createPersonFromContact",
+            "onFailure": [
+                "exitCannotCreatePersonFromContact"
+            ],
+            "onSuccess": [
+                "prepareSugarContactPayload"
+            ],
+            "properties": {
+                "api": "/sl-person",
+                "body": "${steps.createPayloadForPersonFromContact.payload}",
+                "elementInstanceId": "${config.destination}",
+                "method": "POST"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "exitCannotCreatePersonFromContact",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "exitCannotCheckPersonByContactEmail",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "exitInvalidSugarContact",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "exitSugarContactNotFound",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "getSugarLead",
+            "onFailure": [
+                "exitSugarLeadNotFound"
+            ],
+            "onSuccess": [
+                "validateLeadRecord"
+            ],
+            "properties": {
+                "api": "/sugar-leads/${trigger.event.objectId}",
+                "elementInstanceId": "${config.origin}",
+                "method": "GET"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "validateLeadRecord",
+            "onFailure": [
+                "exitInvalidSugarLead"
+            ],
+            "onSuccess": [
+                "prepCheckPersonFromLeadQuery"
+            ],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "prepCheckPersonFromLeadQuery",
+            "onFailure": [],
+            "onSuccess": [
+                "checkIfPersonExistsByLeadEmail"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "checkIfPersonExistsByLeadEmail",
+            "onFailure": [
+                "exitCannotCheckPersonByLeadEmail"
+            ],
+            "onSuccess": [
+                "createPayloadForPersonFromLead"
+            ],
+            "properties": {
+                "api": "/sl-person",
+                "elementInstanceId": "${config.destination}",
+                "method": "GET",
+                "query": "${steps.prepCheckPersonFromLeadQuery.query}"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "createPayloadForPersonFromLead",
+            "onFailure": [],
+            "onSuccess": [
+                "filterCheckPersonByLeadEmail"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "filterCheckPersonByLeadEmail",
+            "onFailure": [
+                "createPersonFromLead"
+            ],
+            "onSuccess": [
+                "updatePersonFromLead"
+            ],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "updatePersonFromLead",
+            "onFailure": [
+                "exitCouldNotUpdatePersonFromLead"
+            ],
+            "onSuccess": [
+                "prepareSugarLeadPayload"
+            ],
+            "properties": {
+                "api": "/sl-person/${steps.checkIfPersonExistsByLeadEmail.response.body[0].sl_id}",
+                "body": "${steps.createPayloadForPersonFromLead.payload}",
+                "elementInstanceId": "${config.destination}",
+                "method": "PUT"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "prepareSugarLeadPayload",
+            "onFailure": [],
+            "onSuccess": [
+                "patchSugarLead"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "patchSugarLead",
+            "onFailure": [
+                "exitCouldNotPatchSugarLead"
+            ],
+            "onSuccess": [],
+            "properties": {
+                "api": "/sugar-leads/${steps.getSugarLead.response.body.sugar_id}",
+                "body": "${steps.prepareSugarLeadPayload.payload}",
+                "elementInstanceId": "${config.origin}",
+                "method": "PATCH"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "exitCouldNotPatchSugarLead",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "exitCouldNotUpdatePersonFromLead",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "createPersonFromLead",
+            "onFailure": [
+                "exitCannotCreatePersonFromLead"
+            ],
+            "onSuccess": [
+                "prepareSugarLeadPayload"
+            ],
+            "properties": {
+                "api": "/sl-person",
+                "body": "${steps.createPayloadForPersonFromLead.payload}",
+                "elementInstanceId": "${config.destination}",
+                "method": "POST"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "exitCannotCreatePersonFromLead",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "exitCannotCheckPersonByLeadEmail",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "exitInvalidSugarLead",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "exitSugarLeadNotFound",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "script"
+        }
+    ],
+    "triggers": [
+        {
+            "async": true,
+            "name": "trigger",
+            "onFailure": [],
+            "onSuccess": [
+                "processEvent"
+            ],
+            "properties": {
+                "elementInstanceId": "${config.origin}"
+            },
+            "type": "event"
+        }
+    ]
+}

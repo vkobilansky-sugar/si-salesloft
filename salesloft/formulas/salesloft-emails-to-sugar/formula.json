@@ -1,0 +1,165 @@
+{
+    "active": true,
+    "configuration": [
+        {
+            "description": "sugar",
+            "key": "destination",
+            "name": "destination",
+            "required": false,
+            "type": "elementInstance"
+        },
+        {
+            "key": "salesloft",
+            "name": "salesloft",
+            "required": false,
+            "type": "elementInstance"
+        }
+    ],
+    "debugLoggingEnabled": false,
+    "debugLoggingExpires": "2020-08-18T00:17:10Z",
+    "engine": "v3",
+    "id": 9888,
+    "name": "salesloft-emails-to-sugar",
+    "singleThreaded": false,
+    "steps": [
+        {
+            "name": "checkEvent",
+            "onFailure": [
+                "exitWrongEvent"
+            ],
+            "onSuccess": [
+                "prepGetEmailQuery"
+            ],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "prepGetEmailQuery",
+            "onFailure": [],
+            "onSuccess": [
+                "getEmailDetails"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "getEmailDetails",
+            "onFailure": [
+                "exitEmailNotFound"
+            ],
+            "onSuccess": [
+                "getEmailRecepient"
+            ],
+            "properties": {
+                "api": "/sl-emails/${trigger.event.objectId}",
+                "body": "",
+                "elementInstanceId": "${config.salesloft}",
+                "method": "GET",
+                "query": ""
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "getEmailRecepient",
+            "onFailure": [
+                "exitRecipientNotFound"
+            ],
+            "onSuccess": [
+                "getSenderDetails"
+            ],
+            "properties": {
+                "api": "/sl-person/${steps.getEmailDetails.response.body.recipient_id}",
+                "elementInstanceId": "${config.salesloft}",
+                "method": "GET"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "getSenderDetails",
+            "onFailure": [
+                "exitCannotGetSenderDetails"
+            ],
+            "onSuccess": [
+                "prepEmailPayload"
+            ],
+            "properties": {
+                "api": "/sl-users/${steps.getEmailDetails.response.body.sender_id}",
+                "elementInstanceId": "${config.salesloft}",
+                "method": "GET"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "prepEmailPayload",
+            "onFailure": [],
+            "onSuccess": [
+                "createEmailRecordSugar"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "createEmailRecordSugar",
+            "onFailure": [
+                "exitCannotCreateEmailRecord"
+            ],
+            "onSuccess": [],
+            "properties": {
+                "api": "/crmEmails",
+                "body": "${steps.prepEmailPayload.payload}",
+                "elementInstanceId": "${config.destination}",
+                "method": "POST"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "exitCannotCreateEmailRecord",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "exitCannotGetSenderDetails",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "exitRecipientNotFound",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "exitEmailNotFound",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "exitWrongEvent",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "script"
+        }
+    ],
+    "triggers": [
+        {
+            "async": true,
+            "name": "trigger",
+            "onFailure": [],
+            "onSuccess": [
+                "checkEvent"
+            ],
+            "properties": {
+                "elementInstanceId": "${config.salesloft}"
+            },
+            "type": "event"
+        }
+    ]
+}

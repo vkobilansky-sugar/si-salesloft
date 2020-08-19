@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>create-sugar-lead-from-salesloft-person</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mermaid/6.0.0/mermaid.css" rel="stylesheet" type="text/css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/6.0.0/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>
+        var callback = function(){}
+    </script>
+    <style>
+        div.mermaidTooltip {
+                    margin-left: 50px;
+                    text-align: left;
+                    max-width: none;
+                }
+        .node rect,
+        .node circle,
+        .node ellipse,
+        .node polygon {
+                    fill: #ffffff;
+                    stroke: rgb(200,200,200);
+                    stroke-width: 2px;
+                }
+        .mermaid .label {
+                  max-width: 50px;
+                }
+        table, th, td {
+                    border: 1px solid black;
+                }
+        table {
+                    border-spacing: 5px;
+                    border-radius: 5px;
+                    margin: auto;
+                }
+        th, td {
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    border-radius: 5px;
+                }
+        th {
+                    color: blue;
+                }
+        td {
+                    width: 180px;
+                    text-align: center;
+                    background-color: rgb(237, 241, 242);
+                }
+        h2 {
+                    text-align: center;
+                    border: 1px solid black;
+                    border-radius: 5px;
+                    padding: 1em;
+                }
+        .container {
+                    text-align: center;
+                    background-color: rgb(237, 241, 242);
+                    font-size: 11px;
+                    font-weight: 900;
+                }
+        body {
+                    font-family: 'Arial';
+                }
+        .edgeLabel {
+                    font-size: 9px;
+                }
+    </style>
+</head>
+<body>
+    <h2>
+        create-sugar-lead-from-salesloft-person
+    </h2>
+    <div class="container">
+        <div class="mermaid">
+            graph TD
+
+                step-000((Trigger))
+            step-001{filterEvent}
+            step-002>getPersonDetails]
+            step-003(exitWrongEvent)
+            step-016((END))
+            step-005(prepSugarLeadQuery)
+            step-006>checkSugarLead]
+            step-007(processLeadRecord)
+            step-008(prepCreateLeadPayload)
+            step-009(exitCantCreateLead)
+            step-016((END))
+            step-011{updateOrCreate}
+            step-012>createSugarLead]
+            step-013>updateSugarLead]
+            step-014(prepUpdatePersonPayload)
+            step-015>updatePerson]
+            step-016((END))
+
+                step-000== continue ==>step-001
+            step-001-- success -->step-002
+            step-001-- failure -->step-003
+            step-002-- success -->step-005
+            step-003-. done .->step-016
+            step-005-- success -->step-006
+            step-006-- success -->step-007
+            step-007-- success -->step-008
+            step-007-- failure -->step-009
+            step-008-- success -->step-011
+            step-009-. done .->step-016
+            step-011-- success -->step-012
+            step-011-- failure -->step-013
+            step-012-- success -->step-014
+            step-013-- success -->step-014
+            step-014-- success -->step-015
+            step-015-. done .->step-016
+
+                style step-002 stroke:#0f6ab4;
+            style step-016 stroke-width:3px,stroke-dasharray: 5, 5;
+            style step-006 stroke:#0f6ab4;
+            style step-016 stroke-width:3px,stroke-dasharray: 5, 5;
+            style step-012 stroke:#10a54a;
+            style step-013 stroke:#D38042;
+            style step-015 stroke:#C5862B;
+            style step-016 stroke-width:3px,stroke-dasharray: 5, 5;
+
+                click step-000 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPnRyaWdnZXI8L3RpdGxlPjwvaGVhZD48Ym9keT48Yj5UcmlnZ2VyIEVsZW1lbnQ6PC9iPjxicj48YnI+PHByZT4gIGVsZW1lbnRJbnN0YW5jZUlkIDogJHtjb25maWcuc291cmNlfTxicj4gICAgICAgICAgICAgICB0eXBlIDogZXZlbnQ8YnI+ICAgICAgICAgICAgICBhc3luYyA6IHRydWU8L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ29uU3VjY2Vzcyc6IFs8YnI+ICAgICdmaWx0ZXJFdmVudCc8YnI+ICBdLDxicj4gICdvbkZhaWx1cmUnOiBbXSw8YnI+ICAndHlwZSc6ICdldmVudCcsPGJyPiAgJ2FzeW5jJzogdHJ1ZSw8YnI+ICAnbmFtZSc6ICd0cmlnZ2VyJyw8YnI+ICAncHJvcGVydGllcyc6IHs8YnI+ICAgICdlbGVtZW50SW5zdGFuY2VJZCc6ICcke2NvbmZpZy5zb3VyY2V9Jzxicj4gIH08YnI+fTwvcHJlPjwvYm9keT48L2h0bWw+'));document.close();" "Trigger Element:<br><pre>  elementInstanceId : ${config.source}<br>               type : event<br>              async : true</pre>"
+            click step-001 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmZpbHRlckV2ZW50PC90aXRsZT48L2hlYWQ+PGJvZHk+PGI+SmF2YVNjcmlwdDo8L2I+PGJyPjxicj48cHJlPmlmICh0cmlnZ2VyLmV2ZW50LmV2ZW50VHlwZSA9PT0gJ0NSRUFURUQnKSB7PGJyPiAgZG9uZSh0cnVlKTs8YnI+fTxicj48YnI+ZG9uZShmYWxzZSk7PC9wcmU+PGJyPjxiPlJBVyBKU09OOjwvYj48YnI+PGJyPjxwcmU+ezxicj4gICdvblN1Y2Nlc3MnOiBbPGJyPiAgICAnZ2V0UGVyc29uRGV0YWlscyc8YnI+ICBdLDxicj4gICdvbkZhaWx1cmUnOiBbPGJyPiAgICAnZXhpdFdyb25nRXZlbnQnPGJyPiAgXSw8YnI+ICAnbmFtZSc6ICdmaWx0ZXJFdmVudCcsPGJyPiAgJ3R5cGUnOiAnZmlsdGVyJyw8YnI+ICAncHJvcGVydGllcyc6IHs8YnI+ICAgICdib2R5JzogJ2lmICh0cmlnZ2VyLmV2ZW50LmV2ZW50VHlwZSA9PT0gXCdDUkVBVEVEXCcpIHtcbiAgZG9uZSh0cnVlKTtcbn1cblxuZG9uZShmYWxzZSk7Jzxicj4gIH08YnI+fTwvcHJlPjwvYm9keT48L2h0bWw+'));document.close();" "JavaScript:<br><pre>if (trigger.event.eventType === 'CREATED') {<br>  done(true);<br>}<br><br>done(false);</pre>"
+            click step-002 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmdldFBlcnNvbkRldGFpbHM8L3RpdGxlPjwvaGVhZD48Ym9keT48Yj5SZXF1ZXN0OjwvYj48YnI+PGJyPjxwcmU+ICBlbGVtZW50SW5zdGFuY2VJZCA6ICR7Y29uZmlnLnNvdXJjZX08YnI+ICAgICAgICAgICAgICAgIGFwaSA6IC9zbC1wZXJzb24vJHt0cmlnZ2VyLmV2ZW50Lm9iamVjdElkfTxicj4gICAgICAgICAgICAgbWV0aG9kIDogR0VUPC9wcmU+PGJyPjxiPlJBVyBKU09OOjwvYj48YnI+PGJyPjxwcmU+ezxicj4gICdvblN1Y2Nlc3MnOiBbPGJyPiAgICAncHJlcFN1Z2FyTGVhZFF1ZXJ5Jzxicj4gIF0sPGJyPiAgJ29uRmFpbHVyZSc6IFtdLDxicj4gICduYW1lJzogJ2dldFBlcnNvbkRldGFpbHMnLDxicj4gICd0eXBlJzogJ2VsZW1lbnRSZXF1ZXN0Jyw8YnI+ICAncHJvcGVydGllcyc6IHs8YnI+ICAgICdlbGVtZW50SW5zdGFuY2VJZCc6ICcke2NvbmZpZy5zb3VyY2V9Jyw8YnI+ICAgICdhcGknOiAnL3NsLXBlcnNvbi8ke3RyaWdnZXIuZXZlbnQub2JqZWN0SWR9Jyw8YnI+ICAgICdtZXRob2QnOiAnR0VUJzxicj4gIH08YnI+fTwvcHJlPjwvYm9keT48L2h0bWw+'));document.close();" "Request:<br><pre>  elementInstanceId : ${config.source}<br>                api : /sl-person/${trigger.event.objectId}<br>             method : GET</pre>"
+            click step-003 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmV4aXRXcm9uZ0V2ZW50PC90aXRsZT48L2hlYWQ+PGJvZHk+PGI+SmF2YVNjcmlwdDo8L2I+PGJyPjxicj48cHJlPmRvbmUoZmFsc2UpOzwvcHJlPjxicj48Yj5SQVcgSlNPTjo8L2I+PGJyPjxicj48cHJlPns8YnI+ICAnb25TdWNjZXNzJzogW10sPGJyPiAgJ29uRmFpbHVyZSc6IFtdLDxicj4gICduYW1lJzogJ2V4aXRXcm9uZ0V2ZW50Jyw8YnI+ICAndHlwZSc6ICdzY3JpcHQnLDxicj4gICdwcm9wZXJ0aWVzJzogezxicj4gICAgJ2JvZHknOiAnZG9uZShmYWxzZSk7Jzxicj4gIH08YnI+fTwvcHJlPjwvYm9keT48L2h0bWw+'));document.close();" "JavaScript:<br><pre>done(false);</pre>"
+            click step-005 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPnByZXBTdWdhckxlYWRRdWVyeTwvdGl0bGU+PC9oZWFkPjxib2R5PjxiPkphdmFTY3JpcHQ6PC9iPjxicj48YnI+PHByZT5kb25lKCA8YnI+ICB7IHF1ZXJ5OiA8YnI+ICAgIHsgd2hlcmU6IGBzdWdhcl9wcmltYXJ5X2VtYWlsPScke3N0ZXBzLmdldFBlcnNvbkRldGFpbHMucmVzcG9uc2UuYm9keS5zdWdhcl9wcmltYXJ5X2VtYWlsfSdgPGJyPiAgICB9PGJyPiAgfTxicj4pOzwvcHJlPjxicj48Yj5SQVcgSlNPTjo8L2I+PGJyPjxicj48cHJlPns8YnI+ICAnb25TdWNjZXNzJzogWzxicj4gICAgJ2NoZWNrU3VnYXJMZWFkJzxicj4gIF0sPGJyPiAgJ29uRmFpbHVyZSc6IFtdLDxicj4gICduYW1lJzogJ3ByZXBTdWdhckxlYWRRdWVyeScsPGJyPiAgJ3R5cGUnOiAnc2NyaXB0Jyw8YnI+ICAncHJvcGVydGllcyc6IHs8YnI+ICAgICdib2R5JzogJ2RvbmUoIFxuICB7IHF1ZXJ5OiBcbiAgICB7IHdoZXJlOiBgc3VnYXJfcHJpbWFyeV9lbWFpbD0nJHtzdGVwcy5nZXRQZXJzb25EZXRhaWxzLnJlc3BvbnNlLmJvZHkuc3VnYXJfcHJpbWFyeV9lbWFpbH0nYFxuICAgIH1cbiAgfVxuKTsnPGJyPiAgfTxicj59PC9wcmU+PC9ib2R5PjwvaHRtbD4='));document.close();" "JavaScript:<br><pre>done( <br>  { query: <br>    { where: `sugar_primary_email='${steps.getPersonDetails.response.body.sugar_primary_email}'`<br>    }<br>  }<br>);</pre>"
+            click step-006 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmNoZWNrU3VnYXJMZWFkPC90aXRsZT48L2hlYWQ+PGJvZHk+PGI+UmVxdWVzdDo8L2I+PGJyPjxicj48cHJlPiAgZWxlbWVudEluc3RhbmNlSWQgOiAke2NvbmZpZy5kZXN0aW5hdGlvbn08YnI+ICAgICAgICAgICAgICAgIGFwaSA6IC9zdWdhci1sZWFkczxicj4gICAgICAgICAgICAgIHF1ZXJ5IDogJHtzdGVwcy5wcmVwU3VnYXJMZWFkUXVlcnkucXVlcnl9PGJyPiAgICAgICAgICAgICBtZXRob2QgOiBHRVQ8L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ29uU3VjY2Vzcyc6IFs8YnI+ICAgICdwcm9jZXNzTGVhZFJlY29yZCc8YnI+ICBdLDxicj4gICdvbkZhaWx1cmUnOiBbXSw8YnI+ICAnbmFtZSc6ICdjaGVja1N1Z2FyTGVhZCcsPGJyPiAgJ3R5cGUnOiAnZWxlbWVudFJlcXVlc3QnLDxicj4gICdwcm9wZXJ0aWVzJzogezxicj4gICAgJ2VsZW1lbnRJbnN0YW5jZUlkJzogJyR7Y29uZmlnLmRlc3RpbmF0aW9ufScsPGJyPiAgICAnYXBpJzogJy9zdWdhci1sZWFkcycsPGJyPiAgICAncXVlcnknOiAnJHtzdGVwcy5wcmVwU3VnYXJMZWFkUXVlcnkucXVlcnl9Jyw8YnI+ICAgICdtZXRob2QnOiAnR0VUJzxicj4gIH08YnI+fTwvcHJlPjwvYm9keT48L2h0bWw+'));document.close();" "Request:<br><pre>  elementInstanceId : ${config.destination}<br>                api : /sugar-leads<br>              query : ${steps.prepSugarLeadQuery.query}<br>             method : GET</pre>"
+            click step-007 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPnByb2Nlc3NMZWFkUmVjb3JkPC90aXRsZT48L2hlYWQ+PGJvZHk+PGI+SmF2YVNjcmlwdDo8L2I+PGJyPjxicj48cHJlPmNvbnN0IHN1Z2FyTGVhZCA9IHN0ZXBzLmNoZWNrU3VnYXJMZWFkLnJlc3BvbnNlLmJvZHlbMF07PGJyPjxicj5pZiAoc3VnYXJMZWFkID09PSB1bmRlZmluZWQpIHs8YnI+ICBkb25lICh0cnVlKTs8YnI+fTxicj48YnI+aWYgKHN1Z2FyTGVhZC5zdWdhcl9vYmplY3QgPT09ICdMZWFkJyB8fCAhKCdzdWdhcl9vYmplY3QnIGluIHN1Z2FyTGVhZCkpIHs8YnI+ICBkb25lKHRydWUpOzxicj59PGJyPjxicj5kb25lKGZhbHNlKTs8L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ29uU3VjY2Vzcyc6IFs8YnI+ICAgICdwcmVwQ3JlYXRlTGVhZFBheWxvYWQnPGJyPiAgXSw8YnI+ICAnb25GYWlsdXJlJzogWzxicj4gICAgJ2V4aXRDYW50Q3JlYXRlTGVhZCc8YnI+ICBdLDxicj4gICduYW1lJzogJ3Byb2Nlc3NMZWFkUmVjb3JkJyw8YnI+ICAndHlwZSc6ICdzY3JpcHQnLDxicj4gICdwcm9wZXJ0aWVzJzogezxicj4gICAgJ2JvZHknOiAnY29uc3Qgc3VnYXJMZWFkID0gc3RlcHMuY2hlY2tTdWdhckxlYWQucmVzcG9uc2UuYm9keVswXTtcblxuaWYgKHN1Z2FyTGVhZCA9PT0gdW5kZWZpbmVkKSB7XG4gIGRvbmUgKHRydWUpO1xufVxuXG5pZiAoc3VnYXJMZWFkLnN1Z2FyX29iamVjdCA9PT0gXCdMZWFkXCcgfHwgIShcJ3N1Z2FyX29iamVjdFwnIGluIHN1Z2FyTGVhZCkpIHtcbiAgZG9uZSh0cnVlKTtcbn1cblxuZG9uZShmYWxzZSk7Jzxicj4gIH08YnI+fTwvcHJlPjwvYm9keT48L2h0bWw+'));document.close();" "JavaScript:<br><pre>const sugarLead = steps.checkSugarLead.response.body[0];<br><br>if (sugarLead === undefined) {<br>  done (true);<br>}<br><br>if (sugarLead.sugar_object === 'Lead' || !('sugar_object' in sugarLead)) {<br>  done(true);<br>}<br><br>done(false);</pre>"
+            click step-008 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPnByZXBDcmVhdGVMZWFkUGF5bG9hZDwvdGl0bGU+PC9oZWFkPjxib2R5PjxiPkphdmFTY3JpcHQ6PC9iPjxicj48YnI+PHByZT5sZXQgcGVyc29uUmVjb3JkID0gc3RlcHMuZ2V0UGVyc29uRGV0YWlscy5yZXNwb25zZS5ib2R5Ozxicj5wZXJzb25SZWNvcmRbJ3N1Z2FyX3NsX3JlY29yZCddID0gPGJyPmBodHRwczovL2FwcC5zYWxlc2xvZnQuY29tL2FwcC9wZW9wbGUvJHt0cmlnZ2VyLmV2ZW50Lm9iamVjdElkfWA7PGJyPiAgICAgICAgICAgICAgICAgIDxicj48YnI+ZG9uZSh7cGF5bG9hZDogcGVyc29uUmVjb3JkfSk8L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ29uU3VjY2Vzcyc6IFs8YnI+ICAgICd1cGRhdGVPckNyZWF0ZSc8YnI+ICBdLDxicj4gICdvbkZhaWx1cmUnOiBbXSw8YnI+ICAnbmFtZSc6ICdwcmVwQ3JlYXRlTGVhZFBheWxvYWQnLDxicj4gICd0eXBlJzogJ3NjcmlwdCcsPGJyPiAgJ3Byb3BlcnRpZXMnOiB7PGJyPiAgICAnYm9keSc6ICdsZXQgcGVyc29uUmVjb3JkID0gc3RlcHMuZ2V0UGVyc29uRGV0YWlscy5yZXNwb25zZS5ib2R5O1xucGVyc29uUmVjb3JkWydzdWdhcl9zbF9yZWNvcmQnXSA9IFxuYGh0dHBzOi8vYXBwLnNhbGVzbG9mdC5jb20vYXBwL3Blb3BsZS8ke3RyaWdnZXIuZXZlbnQub2JqZWN0SWR9YDtcbiAgICAgICAgICAgICAgICAgIFxuXG5kb25lKHtwYXlsb2FkOiBwZXJzb25SZWNvcmR9KSc8YnI+ICB9PGJyPn08L3ByZT48L2JvZHk+PC9odG1sPg=='));document.close();" "JavaScript:<br><pre>let personRecord = steps.getPersonDetails.response.body;<br>personRecord['sugar_sl_record'] = <br>`https://app.salesloft.com/app/people/${trigger.event.objectId}`;<br>                  <br><br>done({payload: personRecord})</pre>"
+            click step-009 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmV4aXRDYW50Q3JlYXRlTGVhZDwvdGl0bGU+PC9oZWFkPjxib2R5PjxiPkphdmFTY3JpcHQ6PC9iPjxicj48YnI+PHByZT5kb25lKGZhbHNlKTs8L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ29uU3VjY2Vzcyc6IFtdLDxicj4gICdvbkZhaWx1cmUnOiBbXSw8YnI+ICAnbmFtZSc6ICdleGl0Q2FudENyZWF0ZUxlYWQnLDxicj4gICd0eXBlJzogJ3NjcmlwdCcsPGJyPiAgJ3Byb3BlcnRpZXMnOiB7PGJyPiAgICAnYm9keSc6ICdkb25lKGZhbHNlKTsnPGJyPiAgfTxicj59PC9wcmU+PC9ib2R5PjwvaHRtbD4='));document.close();" "JavaScript:<br><pre>done(false);</pre>"
+            click step-011 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPnVwZGF0ZU9yQ3JlYXRlPC90aXRsZT48L2hlYWQ+PGJvZHk+PGI+SmF2YVNjcmlwdDo8L2I+PGJyPjxicj48cHJlPmlmIChzdGVwcy5jaGVja1N1Z2FyTGVhZC5yZXNwb25zZS5ib2R5Lmxlbmd0aCA9PT0gMCkgezxicj4gIGRvbmUodHJ1ZSk7PGJyPn0gZWxzZSB7PGJyPiAgZG9uZShmYWxzZSk7PGJyPn08L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ29uU3VjY2Vzcyc6IFs8YnI+ICAgICdjcmVhdGVTdWdhckxlYWQnPGJyPiAgXSw8YnI+ICAnb25GYWlsdXJlJzogWzxicj4gICAgJ3VwZGF0ZVN1Z2FyTGVhZCc8YnI+ICBdLDxicj4gICduYW1lJzogJ3VwZGF0ZU9yQ3JlYXRlJyw8YnI+ICAndHlwZSc6ICdmaWx0ZXInLDxicj4gICdwcm9wZXJ0aWVzJzogezxicj4gICAgJ2JvZHknOiAnaWYgKHN0ZXBzLmNoZWNrU3VnYXJMZWFkLnJlc3BvbnNlLmJvZHkubGVuZ3RoID09PSAwKSB7XG4gIGRvbmUodHJ1ZSk7XG59IGVsc2Uge1xuICBkb25lKGZhbHNlKTtcbn0nPGJyPiAgfTxicj59PC9wcmU+PC9ib2R5PjwvaHRtbD4='));document.close();" "JavaScript:<br><pre>if (steps.checkSugarLead.response.body.length === 0) {<br>  done(true);<br>} else {<br>  done(false);<br>}</pre>"
+            click step-012 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPmNyZWF0ZVN1Z2FyTGVhZDwvdGl0bGU+PC9oZWFkPjxib2R5PjxiPlJlcXVlc3Q6PC9iPjxicj48YnI+PHByZT4gIGVsZW1lbnRJbnN0YW5jZUlkIDogJHtjb25maWcuZGVzdGluYXRpb259PGJyPiAgICAgICAgICAgICAgIGJvZHkgOiAke3N0ZXBzLnByZXBDcmVhdGVMZWFkUGF5bG9hZC5wYXlsb2FkfTxicj4gICAgICAgICAgICAgICAgYXBpIDogL3N1Z2FyLWxlYWRzPGJyPiAgICAgICAgICAgICBtZXRob2QgOiBQT1NUPC9wcmU+PGJyPjxiPlJBVyBKU09OOjwvYj48YnI+PGJyPjxwcmU+ezxicj4gICdvblN1Y2Nlc3MnOiBbPGJyPiAgICAncHJlcFVwZGF0ZVBlcnNvblBheWxvYWQnPGJyPiAgXSw8YnI+ICAnb25GYWlsdXJlJzogW10sPGJyPiAgJ25hbWUnOiAnY3JlYXRlU3VnYXJMZWFkJyw8YnI+ICAndHlwZSc6ICdlbGVtZW50UmVxdWVzdCcsPGJyPiAgJ3Byb3BlcnRpZXMnOiB7PGJyPiAgICAnZWxlbWVudEluc3RhbmNlSWQnOiAnJHtjb25maWcuZGVzdGluYXRpb259Jyw8YnI+ICAgICdib2R5JzogJyR7c3RlcHMucHJlcENyZWF0ZUxlYWRQYXlsb2FkLnBheWxvYWR9Jyw8YnI+ICAgICdhcGknOiAnL3N1Z2FyLWxlYWRzJyw8YnI+ICAgICdtZXRob2QnOiAnUE9TVCc8YnI+ICB9PGJyPn08L3ByZT48L2JvZHk+PC9odG1sPg=='));document.close();" "Request:<br><pre>  elementInstanceId : ${config.destination}<br>               body : ${steps.prepCreateLeadPayload.payload}<br>                api : /sugar-leads<br>             method : POST</pre>"
+            click step-013 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPnVwZGF0ZVN1Z2FyTGVhZDwvdGl0bGU+PC9oZWFkPjxib2R5PjxiPlJlcXVlc3Q6PC9iPjxicj48YnI+PHByZT4gIGVsZW1lbnRJbnN0YW5jZUlkIDogJHtjb25maWcuZGVzdGluYXRpb259PGJyPiAgICAgICAgICAgICAgIGJvZHkgOiAke3N0ZXBzLnByZXBDcmVhdGVMZWFkUGF5bG9hZC5wYXlsb2FkfTxicj4gICAgICAgICAgICAgICAgYXBpIDogL3N1Z2FyLWxlYWRzLyR7c3RlcHMuY2hlY2tTdWdhckxlYWQucmVzcG9uc2UuYm9keVswXS5zdWdhcl9pZH08YnI+ICAgICAgICAgICAgIG1ldGhvZCA6IFBBVENIPC9wcmU+PGJyPjxiPlJBVyBKU09OOjwvYj48YnI+PGJyPjxwcmU+ezxicj4gICdvblN1Y2Nlc3MnOiBbPGJyPiAgICAncHJlcFVwZGF0ZVBlcnNvblBheWxvYWQnPGJyPiAgXSw8YnI+ICAnb25GYWlsdXJlJzogW10sPGJyPiAgJ25hbWUnOiAndXBkYXRlU3VnYXJMZWFkJyw8YnI+ICAndHlwZSc6ICdlbGVtZW50UmVxdWVzdCcsPGJyPiAgJ3Byb3BlcnRpZXMnOiB7PGJyPiAgICAnZWxlbWVudEluc3RhbmNlSWQnOiAnJHtjb25maWcuZGVzdGluYXRpb259Jyw8YnI+ICAgICdib2R5JzogJyR7c3RlcHMucHJlcENyZWF0ZUxlYWRQYXlsb2FkLnBheWxvYWR9Jyw8YnI+ICAgICdhcGknOiAnL3N1Z2FyLWxlYWRzLyR7c3RlcHMuY2hlY2tTdWdhckxlYWQucmVzcG9uc2UuYm9keVswXS5zdWdhcl9pZH0nLDxicj4gICAgJ21ldGhvZCc6ICdQQVRDSCc8YnI+ICB9PGJyPn08L3ByZT48L2JvZHk+PC9odG1sPg=='));document.close();" "Request:<br><pre>  elementInstanceId : ${config.destination}<br>               body : ${steps.prepCreateLeadPayload.payload}<br>                api : /sugar-leads/${steps.checkSugarLead.response.body[0].sugar_id}<br>             method : PATCH</pre>"
+            click step-014 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPnByZXBVcGRhdGVQZXJzb25QYXlsb2FkPC90aXRsZT48L2hlYWQ+PGJvZHk+PGI+SmF2YVNjcmlwdDo8L2I+PGJyPjxicj48cHJlPmNvbnNvbGUubG9nKHN0ZXBzLnVwZGF0ZU9yQ3JlYXRlLmNvbnRpbnVlKTs8YnI+PGJyPmlmIChzdGVwcy51cGRhdGVPckNyZWF0ZS5jb250aW51ZSA9PT0gZmFsc2UpIHs8YnI+ICB2YXIgcGVyc29uID0gc3RlcHMudXBkYXRlU3VnYXJMZWFkLnJlc3BvbnNlLmJvZHk7PGJyPn0gZWxzZSB7PGJyPiAgdmFyIHBlcnNvbiA9IHN0ZXBzLmNyZWF0ZVN1Z2FyTGVhZC5yZXNwb25zZS5ib2R5Ozxicj59PGJyPjxicj5wZXJzb25bJ3N1Z2FyX29iamVjdCddID0gJ0xlYWRzJzs8YnI+cGVyc29uWydzdWdhcl9pZCddID0gcGVyc29uLnN1Z2FyX2lkOzxicj5wZXJzb25bJ3N1Z2FyX3VybCddID0gYGh0dHBzOi8vc2kuc3RhZ2Uuc3VnYXJpYXBwcy5jb20vI0xlYWRzLyR7cGVyc29uLnN1Z2FyX2lkfWA7PGJyPjxicj5kb25lKHsgcGF5bG9hZDogcGVyc29uIH0pOzwvcHJlPjxicj48Yj5SQVcgSlNPTjo8L2I+PGJyPjxicj48cHJlPns8YnI+ICAnb25TdWNjZXNzJzogWzxicj4gICAgJ3VwZGF0ZVBlcnNvbic8YnI+ICBdLDxicj4gICdvbkZhaWx1cmUnOiBbXSw8YnI+ICAnbmFtZSc6ICdwcmVwVXBkYXRlUGVyc29uUGF5bG9hZCcsPGJyPiAgJ3R5cGUnOiAnc2NyaXB0Jyw8YnI+ICAncHJvcGVydGllcyc6IHs8YnI+ICAgICdib2R5JzogJ2NvbnNvbGUubG9nKHN0ZXBzLnVwZGF0ZU9yQ3JlYXRlLmNvbnRpbnVlKTtcblxuaWYgKHN0ZXBzLnVwZGF0ZU9yQ3JlYXRlLmNvbnRpbnVlID09PSBmYWxzZSkge1xuICB2YXIgcGVyc29uID0gc3RlcHMudXBkYXRlU3VnYXJMZWFkLnJlc3BvbnNlLmJvZHk7XG59IGVsc2Uge1xuICB2YXIgcGVyc29uID0gc3RlcHMuY3JlYXRlU3VnYXJMZWFkLnJlc3BvbnNlLmJvZHk7XG59XG5cbnBlcnNvblsnc3VnYXJfb2JqZWN0J10gPSAnTGVhZHMnO1xucGVyc29uWydzdWdhcl9pZCddID0gcGVyc29uLnN1Z2FyX2lkO1xucGVyc29uWydzdWdhcl91cmwnXSA9IGBodHRwczovL3NpLnN0YWdlLnN1Z2FyaWFwcHMuY29tLyNMZWFkcy8ke3BlcnNvbi5zdWdhcl9pZH1gO1xuXG5kb25lKHsgcGF5bG9hZDogcGVyc29uIH0pOyc8YnI+ICB9PGJyPn08L3ByZT48L2JvZHk+PC9odG1sPg=='));document.close();" "JavaScript:<br><pre>console.log(steps.updateOrCreate.continue);<br><br>if (steps.updateOrCreate.continue === false) {<br>  var person = steps.updateSugarLead.response.body;<br>} else {<br>  var person = steps.createSugarLead.response.body;<br>}<br><br>person['sugar_object'] = 'Leads';<br>person['sugar_id'] = person.sugar_id;<br>person['sugar_url'] = `https://si.stage.sugariapps.com/#Leads/${person.sugar_id}`;<br><br>done({ payload: person });</pre>"
+            click step-015 "javascript:document.open();document.write(window.atob('PGh0bWw+PGhlYWQ+PHRpdGxlPnVwZGF0ZVBlcnNvbjwvdGl0bGU+PC9oZWFkPjxib2R5PjxiPlJlcXVlc3Q6PC9iPjxicj48YnI+PHByZT4gIGVsZW1lbnRJbnN0YW5jZUlkIDogJHtjb25maWcuc291cmNlfTxicj4gICAgICAgICAgICAgICBib2R5IDogJHtzdGVwcy5wcmVwVXBkYXRlUGVyc29uUGF5bG9hZC5wYXlsb2FkfTxicj4gICAgICAgICAgICAgICAgYXBpIDogL3NsLXBlcnNvbi8ke3RyaWdnZXIuZXZlbnQub2JqZWN0SWR9PGJyPiAgICAgICAgICAgICBtZXRob2QgOiBQVVQ8L3ByZT48YnI+PGI+UkFXIEpTT046PC9iPjxicj48YnI+PHByZT57PGJyPiAgJ29uU3VjY2Vzcyc6IFtdLDxicj4gICdvbkZhaWx1cmUnOiBbXSw8YnI+ICAnbmFtZSc6ICd1cGRhdGVQZXJzb24nLDxicj4gICd0eXBlJzogJ2VsZW1lbnRSZXF1ZXN0Jyw8YnI+ICAncHJvcGVydGllcyc6IHs8YnI+ICAgICdlbGVtZW50SW5zdGFuY2VJZCc6ICcke2NvbmZpZy5zb3VyY2V9Jyw8YnI+ICAgICdib2R5JzogJyR7c3RlcHMucHJlcFVwZGF0ZVBlcnNvblBheWxvYWQucGF5bG9hZH0nLDxicj4gICAgJ2FwaSc6ICcvc2wtcGVyc29uLyR7dHJpZ2dlci5ldmVudC5vYmplY3RJZH0nLDxicj4gICAgJ21ldGhvZCc6ICdQVVQnPGJyPiAgfTxicj59PC9wcmU+PC9ib2R5PjwvaHRtbD4='));document.close();" "Request:<br><pre>  elementInstanceId : ${config.source}<br>               body : ${steps.prepUpdatePersonPayload.payload}<br>                api : /sl-person/${trigger.event.objectId}<br>             method : PUT</pre>"
+
+        </div>
+    </div>
+    <h2>
+        Formula Configuration
+    </h2>
+    <div class="container">
+        <h3>Basic</h3><table><tr><th>key</th><th>value</th></tr><tr><td>Name</td><td>create-sugar-lead-from-salesloft-person</td></tr><tr><td>Single Threaded?</td><td>false</td></tr><tr><td>Active?</td><td>true</td></tr><tr><td>Number of Steps</td><td>18</td></tr><tr><td>Number of Triggers</td><td>1</td></tr></table>
+    <br/><h3>Elements</h3><table><tr><th>key</th><th>name</th><th>required</th></tr><tr><td>destination</td><td>destination</td><td>false</td></tr><tr><td>source</td><td>source</td><td>false</td></tr></table>
+    <br/><h3>Values</h3><table><tr><th>key</th><th>name</th><th>required</th></tr></table><br/>
+    </div>
+    <div class="key">
+        <h2>
+            Key
+        </h2>
+        <table>
+            <tr>
+                <th>Description</th>
+                <th>Symbol</th>
+                <th>Description</th>
+                <th>Symbol</th>
+                <th>Description</th>
+                <th>Symbol</th>
+            </tr>
+
+            <tr>
+                <td>Filter Steps</td>
+                <td>
+                    <div class="mermaid">
+                        graph TD
+                        A{Step Name}
+                    </div>
+                </td>
+                <td>Trigger/End</td>
+                <td>
+                    <div class="mermaid">
+                        graph TD
+                        B((Actual))
+                        C((Generated))
+                        style C stroke-width:2px,stroke-dasharray: 5, 5;
+                    </div>
+                </td>
+                <td>Request Step</td>
+                <td>
+                    <div class="mermaid">
+                        graph TD
+                        A>GET]
+                        style A stroke:#0f6ab4;
+                    </div>
+                    <div class="mermaid">
+                        graph TD
+                        B>POST]
+                        style B stroke:#10a54a;
+                    </div>
+                    <div class="mermaid">
+                        graph TD
+                        C>PATCH]
+                        style C stroke:#D38042;
+                    </div>
+                    <div class="mermaid">
+                        graph TD
+                        C>PUT]
+                        style C stroke:#C5862B;
+                    </div>
+                    <div class="mermaid">
+                        graph TD
+                        D>DELETE]
+                        style D stroke:#a41e22;
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Script</td>
+                <td>
+                    <div class="mermaid">
+                        graph TD
+                        D(Step Name)
+                    </div>
+                </td>
+                <td>Loop</td>
+                <td>
+                    <div class="mermaid">
+                        graph TD
+                        D(-Step Name-)
+                    </div>
+                </td>
+                <td>Other(TYPE)</td>
+                <td>
+                    <div class="mermaid">
+                        graph TD
+                        D[Step Name]
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Pass/Fail Connection</td>
+                <td>
+                    <div class="mermaid">
+                        graph LR
+                        AL(A)
+                        BL(B)
+                        AL-->BL
+                    </div>
+                </td>
+                <td>Generated Connection</td>
+                <td>
+                    <div class="mermaid">
+                        graph LR
+                        AL(A)
+                        BL((B))
+                        AL-.->BL
+                        style BL stroke-width:2px,stroke-dasharray: 5, 5;
+                    </div>
+                </td>
+                <td>Continue Connection</td>
+                <td>
+                    <div class="mermaid">
+                        graph LR
+                        AL(A)
+                        BL(B)
+                        AL==>BL
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+</body>
+</html>
