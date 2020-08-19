@@ -7,19 +7,26 @@
         {
             "level": "account",
             "type": "inherit"
+        },
+        {
+            "level": "account",
+            "properties": {
+                "fromVendor": false,
+                "toVendor": false
+            },
+            "type": "passThrough"
         }
     ],
     "elementKey": "salesloft",
     "fields": [
         {
             "level": "account",
-            "path": "sugar_id",
+            "path": "fromEmailAddress",
             "type": "string",
-            "vendorPath": "id",
-            "vendorType": "string"
+            "vendorPath": "sending_email_address"
         }
     ],
     "isLegacy": false,
-    "objectName": "sugar-contacts",
-    "vendorName": "contacts"
+    "objectName": "sl-users",
+    "vendorName": "users"
 }

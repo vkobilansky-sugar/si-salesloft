@@ -1,0 +1,32 @@
+{
+    "createdDate": "2020-08-12 17:44:35.933899",
+    "fields": [
+        {
+            "displayName": "Description",
+            "level": "account",
+            "path": "description",
+            "type": "string"
+        },
+        {
+            "displayName": "Name",
+            "level": "account",
+            "path": "name",
+            "type": "string"
+        },
+        {
+            "displayName": "Sugar ID",
+            "level": "account",
+            "path": "sugar_id",
+            "type": "string"
+        },
+        {
+            "displayName": "Sugar Object",
+            "level": "account",
+            "path": "sugar_object",
+            "type": "string"
+        }
+    ],
+    "objectName": "sugar-notes",
+    "vdrShared": false,
+    "vdrShareLevel": "account"
+}

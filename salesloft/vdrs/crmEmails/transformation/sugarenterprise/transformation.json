@@ -1,0 +1,173 @@
+{
+    "configuration": [
+        {
+            "level": "account",
+            "type": "addToDocumentation"
+        },
+        {
+            "level": "account",
+            "type": "inherit"
+        },
+        {
+            "level": "account",
+            "properties": {
+                "fromVendor": false,
+                "toVendor": false
+            },
+            "type": "passThrough"
+        },
+        {
+            "level": "organization",
+            "type": "addToDocumentation"
+        },
+        {
+            "level": "organization",
+            "type": "inherit"
+        },
+        {
+            "level": "organization",
+            "properties": {
+                "fromVendor": false,
+                "toVendor": false
+            },
+            "type": "passThrough"
+        }
+    ],
+    "elementKey": "sugarenterprise",
+    "fields": [
+        {
+            "level": "organization",
+            "path": "accountId",
+            "type": "string",
+            "vendorPath": "account_id",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "associationId",
+            "type": "string",
+            "vendorPath": "association_id",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "associationType",
+            "type": "string",
+            "vendorPath": "association_type",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "bccEmailAdress",
+            "type": "string",
+            "vendorPath": "bcc_addrs_names",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "ccEmailAdress",
+            "type": "string",
+            "vendorPath": "cc_addrs_names",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "created",
+            "type": "string",
+            "vendorPath": "date_entered",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "descriptionHtml",
+            "type": "string",
+            "vendorPath": "description_html",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "fromEmailAdress",
+            "type": "string",
+            "vendorPath": "from_addr_name",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "id",
+            "type": "string",
+            "vendorPath": "id",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "isDeleted",
+            "type": "boolean",
+            "vendorPath": "deleted",
+            "vendorType": "boolean"
+        },
+        {
+            "level": "organization",
+            "path": "lastModified",
+            "type": "string",
+            "vendorPath": "date_modified",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "name",
+            "type": "string",
+            "vendorPath": "name",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "ownerAssigned",
+            "type": "string",
+            "vendorPath": "assigned_user_id",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "parentId",
+            "type": "string",
+            "vendorPath": "parent_id",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "parentType",
+            "type": "string",
+            "vendorPath": "parent_type",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "status",
+            "type": "string",
+            "vendorPath": "type",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "syncKey",
+            "type": "string",
+            "vendorPath": "sync_key",
+            "vendorType": "string"
+        },
+        {
+            "level": "organization",
+            "path": "toEmailAdress",
+            "type": "string",
+            "vendorPath": "to_addrs_names",
+            "vendorType": "string"
+        }
+    ],
+    "isLegacy": false,
+    "objectName": "crmEmails",
+    "script": {
+        "filterEmptyResponse": false,
+        "level": "organization",
+        "mimeType": "application/javascript"
+    },
+    "vendorName": "emails"
+}

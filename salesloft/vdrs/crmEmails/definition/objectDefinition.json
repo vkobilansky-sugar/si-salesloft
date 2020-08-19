@@ -1,0 +1,116 @@
+{
+    "createdDate": "2020-08-13 15:05:41.042547",
+    "fields": [
+        {
+            "displayName": "",
+            "level": "organization",
+            "path": "accountId",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "organization",
+            "path": "associationId",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "organization",
+            "path": "associationType",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "organization",
+            "path": "bccEmailAdress",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "organization",
+            "path": "ccEmailAdress",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "organization",
+            "path": "created",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "organization",
+            "path": "descriptionHtml",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "organization",
+            "path": "fromEmailAdress",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "organization",
+            "path": "id",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "organization",
+            "path": "isDeleted",
+            "type": "boolean"
+        },
+        {
+            "displayName": "",
+            "level": "organization",
+            "path": "lastModified",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "organization",
+            "path": "name",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "organization",
+            "path": "ownerAssigned",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "organization",
+            "path": "parentId",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "organization",
+            "path": "parentType",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "organization",
+            "path": "status",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "organization",
+            "path": "syncKey",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "organization",
+            "path": "toEmailAdress",
+            "type": "string"
+        }
+    ],
+    "objectName": "crmEmails",
+    "vdrShared": false,
+    "vdrShareLevel": "account"
+}

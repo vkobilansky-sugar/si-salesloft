@@ -1,0 +1,14 @@
+{
+    "createdDate": "2020-08-17 16:22:32.594928",
+    "fields": [
+        {
+            "displayName": "Sending Email",
+            "level": "account",
+            "path": "fromEmailAddress",
+            "type": "string"
+        }
+    ],
+    "objectName": "sl-users",
+    "vdrShared": false,
+    "vdrShareLevel": "account"
+}

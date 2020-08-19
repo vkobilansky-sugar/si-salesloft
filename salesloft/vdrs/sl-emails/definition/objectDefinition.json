@@ -1,6 +1,49 @@
 {
-    "createdDate": "2020-08-04 16:59:27.212327",
-    "fields": [],
+    "createdDate": "2020-08-13 15:19:00.474139",
+    "fields": [
+        {
+            "displayName": "Created",
+            "level": "account",
+            "path": "created",
+            "type": "string"
+        },
+        {
+            "displayName": "Id",
+            "level": "account",
+            "path": "id",
+            "type": "string"
+        },
+        {
+            "displayName": "Mailing ID",
+            "level": "account",
+            "path": "mailing_id",
+            "type": "string"
+        },
+        {
+            "displayName": "Recipient ID",
+            "level": "account",
+            "path": "recipient_id",
+            "type": "string"
+        },
+        {
+            "displayName": "Sender ID",
+            "level": "account",
+            "path": "sender_id",
+            "type": "string"
+        },
+        {
+            "displayName": "Status",
+            "level": "account",
+            "path": "status",
+            "type": "string"
+        },
+        {
+            "displayName": "to",
+            "level": "account",
+            "path": "toEmailAdress",
+            "type": "string"
+        }
+    ],
     "objectName": "sl-emails",
     "vdrShared": false,
     "vdrShareLevel": "account"

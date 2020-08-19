@@ -33,7 +33,8 @@
             "level": "account",
             "path": "home_phone",
             "type": "string",
-            "vendorPath": "home_phone"
+            "vendorPath": "home_phone",
+            "vendorType": "string"
         },
         {
             "level": "account",

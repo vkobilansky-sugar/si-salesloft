@@ -1,0 +1,26 @@
+{
+    "createdDate": "2020-08-12 17:44:26.017325",
+    "fields": [
+        {
+            "displayName": "ID",
+            "level": "account",
+            "path": "call_id",
+            "type": "string"
+        },
+        {
+            "displayName": "Note Associated ID",
+            "level": "account",
+            "path": "note_associated_id",
+            "type": "string"
+        },
+        {
+            "displayName": "Note Content",
+            "level": "account",
+            "path": "note_content",
+            "type": "string"
+        }
+    ],
+    "objectName": "sl-notes",
+    "vdrShared": false,
+    "vdrShareLevel": "account"
+}

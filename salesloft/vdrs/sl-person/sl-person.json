@@ -1,6 +1,6 @@
 {
     "definition": {
-        "createdDate": "2020-06-25 15:06:53.125257",
+        "createdDate": "2020-08-12 21:45:35.137",
         "fields": [
             {
                 "displayName": "Company Name",
@@ -181,7 +181,8 @@
                     "level": "account",
                     "path": "home_phone",
                     "type": "string",
-                    "vendorPath": "home_phone"
+                    "vendorPath": "home_phone",
+                    "vendorType": "string"
                 },
                 {
                     "level": "account",

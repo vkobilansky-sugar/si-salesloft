@@ -1,0 +1,78 @@
+{
+    "definition": {
+        "createdDate": "2020-08-12 17:44:26.017325",
+        "fields": [
+            {
+                "displayName": "ID",
+                "level": "account",
+                "path": "call_id",
+                "type": "string"
+            },
+            {
+                "displayName": "Note Associated ID",
+                "level": "account",
+                "path": "note_associated_id",
+                "type": "string"
+            },
+            {
+                "displayName": "Note Content",
+                "level": "account",
+                "path": "note_content",
+                "type": "string"
+            }
+        ],
+        "objectName": "sl-notes",
+        "vdrShared": false,
+        "vdrShareLevel": "account"
+    },
+    "transformation": {
+        "salesloft": {
+            "configuration": [
+                {
+                    "level": "account",
+                    "type": "addToDocumentation"
+                },
+                {
+                    "level": "account",
+                    "type": "inherit"
+                },
+                {
+                    "level": "account",
+                    "properties": {
+                        "fromVendor": false,
+                        "toVendor": false
+                    },
+                    "type": "passThrough"
+                }
+            ],
+            "elementKey": "salesloft",
+            "fields": [
+                {
+                    "level": "account",
+                    "path": "call_id",
+                    "type": "string",
+                    "vendorPath": "call.id",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "note_associated_id",
+                    "type": "string",
+                    "vendorPath": "associated_with.id"
+                },
+                {
+                    "level": "account",
+                    "path": "note_content",
+                    "type": "string",
+                    "vendorPath": "content",
+                    "vendorType": "string"
+                }
+            ],
+            "isLegacy": false,
+            "objectName": "sl-notes",
+            "vendorName": "notes"
+        }
+    },
+    "vdrName": "sl-notes",
+    "vdrVersion": "v2"
+}

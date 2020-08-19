@@ -1,0 +1,585 @@
+{
+    "definition": {
+        "createdDate": "2020-08-13 15:05:41.042547",
+        "fields": [
+            {
+                "displayName": "",
+                "level": "organization",
+                "path": "accountId",
+                "type": "string"
+            },
+            {
+                "displayName": "",
+                "level": "organization",
+                "path": "associationId",
+                "type": "string"
+            },
+            {
+                "displayName": "",
+                "level": "organization",
+                "path": "associationType",
+                "type": "string"
+            },
+            {
+                "displayName": "",
+                "level": "organization",
+                "path": "bccEmailAdress",
+                "type": "string"
+            },
+            {
+                "displayName": "",
+                "level": "organization",
+                "path": "ccEmailAdress",
+                "type": "string"
+            },
+            {
+                "displayName": "",
+                "level": "organization",
+                "path": "created",
+                "type": "string"
+            },
+            {
+                "displayName": "",
+                "level": "organization",
+                "path": "descriptionHtml",
+                "type": "string"
+            },
+            {
+                "displayName": "",
+                "level": "organization",
+                "path": "fromEmailAdress",
+                "type": "string"
+            },
+            {
+                "displayName": "",
+                "level": "organization",
+                "path": "id",
+                "type": "string"
+            },
+            {
+                "displayName": "",
+                "level": "organization",
+                "path": "isDeleted",
+                "type": "boolean"
+            },
+            {
+                "displayName": "",
+                "level": "organization",
+                "path": "lastModified",
+                "type": "string"
+            },
+            {
+                "displayName": "",
+                "level": "organization",
+                "path": "name",
+                "type": "string"
+            },
+            {
+                "displayName": "",
+                "level": "organization",
+                "path": "ownerAssigned",
+                "type": "string"
+            },
+            {
+                "displayName": "",
+                "level": "organization",
+                "path": "parentId",
+                "type": "string"
+            },
+            {
+                "displayName": "",
+                "level": "organization",
+                "path": "parentType",
+                "type": "string"
+            },
+            {
+                "displayName": "",
+                "level": "organization",
+                "path": "status",
+                "type": "string"
+            },
+            {
+                "displayName": "",
+                "level": "organization",
+                "path": "syncKey",
+                "type": "string"
+            },
+            {
+                "displayName": "",
+                "level": "organization",
+                "path": "toEmailAdress",
+                "type": "string"
+            }
+        ],
+        "objectName": "crmEmails",
+        "vdrShared": false,
+        "vdrShareLevel": "account"
+    },
+    "transformation": {
+        "sfdc": {
+            "configuration": [
+                {
+                    "level": "organization",
+                    "type": "addToDocumentation"
+                },
+                {
+                    "level": "organization",
+                    "type": "inherit"
+                },
+                {
+                    "level": "organization",
+                    "properties": {
+                        "fromVendor": false,
+                        "toVendor": false
+                    },
+                    "type": "passThrough"
+                }
+            ],
+            "elementKey": "sfdc",
+            "fields": [
+                {
+                    "level": "organization",
+                    "path": "accountId",
+                    "type": "string",
+                    "vendorPath": "CreatedById"
+                },
+                {
+                    "level": "organization",
+                    "path": "associationId",
+                    "type": "string",
+                    "vendorPath": "CreatedById"
+                },
+                {
+                    "level": "organization",
+                    "path": "associationType",
+                    "type": "string",
+                    "vendorPath": "CreatedById"
+                },
+                {
+                    "level": "organization",
+                    "path": "bccEmailAdress",
+                    "type": "string",
+                    "vendorPath": "BccAddress"
+                },
+                {
+                    "level": "organization",
+                    "path": "ccEmailAdress",
+                    "type": "string",
+                    "vendorPath": "CcAddress"
+                },
+                {
+                    "level": "organization",
+                    "path": "created",
+                    "type": "string",
+                    "vendorPath": "CreatedDate"
+                },
+                {
+                    "level": "organization",
+                    "path": "descriptionHtml",
+                    "type": "string",
+                    "vendorPath": "HtmlBody"
+                },
+                {
+                    "level": "organization",
+                    "path": "fromEmailAdress",
+                    "type": "string",
+                    "vendorPath": "FromAddress"
+                },
+                {
+                    "level": "organization",
+                    "path": "id",
+                    "type": "string",
+                    "vendorPath": "Id"
+                },
+                {
+                    "level": "organization",
+                    "path": "isDeleted",
+                    "type": "boolean",
+                    "vendorPath": "IsDeleted"
+                },
+                {
+                    "level": "organization",
+                    "path": "lastModified",
+                    "type": "string",
+                    "vendorPath": "LastModifiedDate"
+                },
+                {
+                    "level": "organization",
+                    "path": "name",
+                    "type": "string",
+                    "vendorPath": "Subject"
+                },
+                {
+                    "level": "organization",
+                    "path": "ownerAssigned",
+                    "type": "string",
+                    "vendorPath": "Subject"
+                },
+                {
+                    "level": "organization",
+                    "path": "parentId",
+                    "type": "string",
+                    "vendorPath": "RelatedToId"
+                },
+                {
+                    "level": "organization",
+                    "path": "parentType",
+                    "type": "string",
+                    "vendorPath": "CreatedById"
+                },
+                {
+                    "level": "organization",
+                    "path": "status",
+                    "type": "string",
+                    "vendorPath": "Status"
+                },
+                {
+                    "level": "organization",
+                    "path": "syncKey",
+                    "type": "string",
+                    "vendorPath": "Id"
+                },
+                {
+                    "level": "organization",
+                    "path": "toEmailAdress",
+                    "type": "string",
+                    "vendorPath": "ToAddress"
+                }
+            ],
+            "isLegacy": false,
+            "objectName": "crmEmails",
+            "script": {
+                "body": "if (fromVendor) {\n  delete transformedObject.ownerAssigned\n  delete transformedObject.parentType\n  delete transformedObject.parentId\n  delete transformedObject.accountId\n  delete transformedObject.associationId\n  delete transformedObject.associationType\n  delete transformedObject.ownerAssigned\n\n  const rp = require('request-promise')\n  const buildErrorObject = (rpError) => {\n    const errorObj = {}\n    if (rpError.response) {\n      errorObj.response_error_message = JSON.stringify(rpError.response.body)\n      errorObj.response_status_code = rpError.response.statusCode\n    } else {\n      errorObj.response_error_message = rpError.message\n      errorObj.statusCode = 501\n    }\n    throw errorObj\n  }\n\n  const elementRequest = (queryObj) => {\n    const port = configuration.port ? `:${configuration.port}` : ''\n    const options = {\n      uri: `${configuration.protocol}://${configuration.host}${port}${configuration.pathPrefix}/query`,\n      method: 'GET',\n      json: true,\n      headers: {\n        accept: 'application/json',\n        Authorization: `User ${configuration.userSecret}, Organization ${configuration.organizationSecret}, Element ${configuration.elementInstanceToken}`\n      },\n      qs: queryObj\n    }\n    return rp(options)\n  }\n  async function Response () {\n    let taskResponse\n    if (originalObject.ActivityId) {\n      taskResponse = await elementRequest({ q: `select Id,What.Type,What.Id,Who.Type,Who.Id,OwnerId,AccountId from Task where Id='${originalObject.ActivityId}'` })\n      if (taskResponse && taskResponse.length > 0) {\n        if (taskResponse[0].What) {\n          if (taskResponse[0].What.Type && taskResponse[0].What.Id) {\n            transformedObject.parentType = taskResponse[0].What.Type\n            transformedObject.parentId = taskResponse[0].What.Id\n          }\n        }\n          if (taskResponse[0].Who) {\n            if (taskResponse[0].Who.Id && taskResponse[0].Who.Type) {\n              transformedObject.associationId = taskResponse[0].Who.Id\n              transformedObject.associationType = taskResponse[0].Who.Type\n            }\n          }\n        if (taskResponse[0].AccountId) {\n          transformedObject.accountId = taskResponse[0].AccountId\n        }\n        if (taskResponse[0].OwnerId) {\n          transformedObject.ownerAssigned = taskResponse[0].OwnerId\n        }\n      }\n    }\n    done(transformedObject)\n  }\n  Response()\n    .catch((err) => done(buildErrorObject(err)))\n    .catch((err) => done(err))\n} else {\n  done(transformedObject)\n}\n",
+                "filterEmptyResponse": false,
+                "level": "organization",
+                "mimeType": "application/javascript"
+            },
+            "vendorName": "EmailMessage"
+        },
+        "sugarenterprise": {
+            "configuration": [
+                {
+                    "level": "account",
+                    "type": "addToDocumentation"
+                },
+                {
+                    "level": "account",
+                    "type": "inherit"
+                },
+                {
+                    "level": "account",
+                    "properties": {
+                        "fromVendor": false,
+                        "toVendor": false
+                    },
+                    "type": "passThrough"
+                },
+                {
+                    "level": "organization",
+                    "type": "addToDocumentation"
+                },
+                {
+                    "level": "organization",
+                    "type": "inherit"
+                },
+                {
+                    "level": "organization",
+                    "properties": {
+                        "fromVendor": false,
+                        "toVendor": false
+                    },
+                    "type": "passThrough"
+                }
+            ],
+            "elementKey": "sugarenterprise",
+            "fields": [
+                {
+                    "level": "organization",
+                    "path": "accountId",
+                    "type": "string",
+                    "vendorPath": "account_id",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "organization",
+                    "path": "associationId",
+                    "type": "string",
+                    "vendorPath": "association_id",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "organization",
+                    "path": "associationType",
+                    "type": "string",
+                    "vendorPath": "association_type",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "organization",
+                    "path": "bccEmailAdress",
+                    "type": "string",
+                    "vendorPath": "bcc_addrs_names",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "organization",
+                    "path": "ccEmailAdress",
+                    "type": "string",
+                    "vendorPath": "cc_addrs_names",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "organization",
+                    "path": "created",
+                    "type": "string",
+                    "vendorPath": "date_entered",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "organization",
+                    "path": "descriptionHtml",
+                    "type": "string",
+                    "vendorPath": "description_html",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "organization",
+                    "path": "fromEmailAdress",
+                    "type": "string",
+                    "vendorPath": "from_addr_name",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "organization",
+                    "path": "id",
+                    "type": "string",
+                    "vendorPath": "id",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "organization",
+                    "path": "isDeleted",
+                    "type": "boolean",
+                    "vendorPath": "deleted",
+                    "vendorType": "boolean"
+                },
+                {
+                    "level": "organization",
+                    "path": "lastModified",
+                    "type": "string",
+                    "vendorPath": "date_modified",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "organization",
+                    "path": "name",
+                    "type": "string",
+                    "vendorPath": "name",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "organization",
+                    "path": "ownerAssigned",
+                    "type": "string",
+                    "vendorPath": "assigned_user_id",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "organization",
+                    "path": "parentId",
+                    "type": "string",
+                    "vendorPath": "parent_id",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "organization",
+                    "path": "parentType",
+                    "type": "string",
+                    "vendorPath": "parent_type",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "organization",
+                    "path": "status",
+                    "type": "string",
+                    "vendorPath": "type",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "organization",
+                    "path": "syncKey",
+                    "type": "string",
+                    "vendorPath": "sync_key",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "organization",
+                    "path": "toEmailAdress",
+                    "type": "string",
+                    "vendorPath": "to_addrs_names",
+                    "vendorType": "string"
+                }
+            ],
+            "isLegacy": false,
+            "objectName": "crmEmails",
+            "script": {
+                "body": "if (!fromVendor) {\n  //set status = Archived\n  transformedObject.type = 'Archived';\n\n  // generate links array\n\n  const linksArray = [];\n  if (originalObject.ownerAssigned) {\n    const linksArrayObj = {};\n    linksArrayObj.key = 'assigned_user_id';\n    linksArrayObj.path = 'assigned_user_link';\n    linksArray.push(linksArrayObj);\n  }\n\n  if (originalObject.parentType !== 'Account') {\n    if (originalObject.accountId) {\n      const linksArrayObj = {};\n      linksArrayObj.key = 'account_id';\n      linksArrayObj.path = 'accounts';\n      linksArray.push(linksArrayObj);\n    }\n  }\n\n  if (originalObject.parentType === 'Opportunity') {\n    if (originalObject.parentId) {\n      const linksArrayObj = {};\n      linksArrayObj.key = 'parent_id';\n      linksArrayObj.path = 'opportunities';\n      linksArray.push(linksArrayObj);\n    }\n  } else if (originalObject.parentType === 'Account'){\n    if (originalObject.parentId) {\n      const linksArrayObj = {};\n      linksArrayObj.key = 'parent_id';\n      linksArrayObj.path = 'accounts';\n      linksArray.push(linksArrayObj);\n    }\n  } else if (originalObject.parentType === 'Quote'){\n    if (originalObject.parentId) {\n      const linksArrayObj = {};\n      linksArrayObj.key = 'parent_id';\n      linksArrayObj.path = 'quotes';\n      linksArray.push(linksArrayObj);\n    }\n  } else if (originalObject.parentType === 'Case'){\n    if (originalObject.parentId) {\n      const linksArrayObj = {};\n      linksArrayObj.key = 'parent_id';\n      linksArrayObj.path = 'cases';\n      linksArray.push(linksArrayObj);\n    }\n  }\n\n  if (originalObject.associationType === 'Lead') {\n    if (originalObject.associationId) {\n      const linksArrayObj = {};\n      linksArrayObj.key = 'association_id';\n      linksArrayObj.path = 'leads';\n      linksArray.push(linksArrayObj);\n    }\n  } else if (originalObject.associationType === 'Contact') {\n    if (originalObject.associationId) {\n      const linksArrayObj = {};\n      linksArrayObj.key = 'association_id';\n      linksArrayObj.path = 'contacts';\n      linksArray.push(linksArrayObj);\n    }\n  }\n\n  if(linksArray.length>0){\n    transformedObject.links = linksArray;\n  }\n}\ndone(transformedObject)\n",
+                "filterEmptyResponse": false,
+                "level": "organization",
+                "mimeType": "application/javascript"
+            },
+            "vendorName": "emails"
+        },
+        "sugarsell": {
+            "configuration": [
+                {
+                    "level": "organization",
+                    "type": "addToDocumentation"
+                },
+                {
+                    "level": "organization",
+                    "type": "inherit"
+                },
+                {
+                    "level": "organization",
+                    "properties": {
+                        "fromVendor": false,
+                        "toVendor": false
+                    },
+                    "type": "passThrough"
+                }
+            ],
+            "elementKey": "sugarsell",
+            "fields": [
+                {
+                    "level": "organization",
+                    "path": "accountId",
+                    "type": "string",
+                    "vendorPath": "account_id"
+                },
+                {
+                    "level": "organization",
+                    "path": "associationId",
+                    "type": "string",
+                    "vendorPath": "association_id"
+                },
+                {
+                    "level": "organization",
+                    "path": "associationType",
+                    "type": "string",
+                    "vendorPath": "association_type"
+                },
+                {
+                    "level": "organization",
+                    "path": "bccEmailAdress",
+                    "type": "string",
+                    "vendorPath": "bcc_addrs_names"
+                },
+                {
+                    "level": "organization",
+                    "path": "ccEmailAdress",
+                    "type": "string",
+                    "vendorPath": "cc_addrs_names"
+                },
+                {
+                    "level": "organization",
+                    "path": "created",
+                    "type": "string",
+                    "vendorPath": "date_entered"
+                },
+                {
+                    "level": "organization",
+                    "path": "descriptionHtml",
+                    "type": "string",
+                    "vendorPath": "description_html"
+                },
+                {
+                    "level": "organization",
+                    "path": "fromEmailAdress",
+                    "type": "string",
+                    "vendorPath": "from_addr_name"
+                },
+                {
+                    "configuration": [
+                        {
+                            "properties": {
+                                "fromVendor": true,
+                                "toVendor": false
+                            },
+                            "type": "passThrough"
+                        }
+                    ],
+                    "level": "organization",
+                    "path": "id",
+                    "type": "string",
+                    "vendorPath": "id"
+                },
+                {
+                    "level": "organization",
+                    "path": "isDeleted",
+                    "type": "boolean",
+                    "vendorPath": "deleted"
+                },
+                {
+                    "level": "organization",
+                    "path": "lastModified",
+                    "type": "string",
+                    "vendorPath": "date_modified"
+                },
+                {
+                    "level": "organization",
+                    "path": "name",
+                    "type": "string",
+                    "vendorPath": "name"
+                },
+                {
+                    "level": "organization",
+                    "path": "ownerAssigned",
+                    "type": "string",
+                    "vendorPath": "assigned_user_id"
+                },
+                {
+                    "level": "organization",
+                    "path": "parentId",
+                    "type": "string",
+                    "vendorPath": "parent_id"
+                },
+                {
+                    "level": "organization",
+                    "path": "parentType",
+                    "type": "string",
+                    "vendorPath": "parent_type"
+                },
+                {
+                    "level": "organization",
+                    "path": "status",
+                    "type": "string",
+                    "vendorPath": "type"
+                },
+                {
+                    "level": "organization",
+                    "path": "syncKey",
+                    "type": "string",
+                    "vendorPath": "sync_key"
+                },
+                {
+                    "level": "organization",
+                    "path": "toEmailAdress",
+                    "type": "string",
+                    "vendorPath": "to_addrs_names"
+                }
+            ],
+            "isLegacy": false,
+            "objectName": "crmEmails",
+            "script": {
+                "body": "if (!fromVendor) {\n  //set status = Archived\n  transformedObject.type = 'Archived'\n\n  // generate links array\n\n  const linksArray = []\n  if (originalObject.ownerAssigned) {\n    const linksArrayObj = {}\n    linksArrayObj.key = 'assigned_user_id'\n    linksArrayObj.path = 'assigned_user_link'\n    linksArray.push(linksArrayObj)\n  }\n\n  if (originalObject.parentType !== 'Account') {\n    if (originalObject.accountId) {\n      const linksArrayObj = {}\n      linksArrayObj.key = 'account_id'\n      linksArrayObj.path = 'accounts'\n      linksArray.push(linksArrayObj)\n    }\n  }\n\n  if (originalObject.parentType === 'Opportunity') {\n    if (originalObject.parentId) {\n      const linksArrayObj = {}\n      linksArrayObj.key = 'parent_id',\n          linksArrayObj.path = 'opportunities'\n      linksArray.push(linksArrayObj)\n    }\n  } else if (originalObject.parentType === 'Account'){\n    if (originalObject.parentId) {\n      const linksArrayObj = {}\n      linksArrayObj.key = 'parent_id',\n          linksArrayObj.path = 'accounts'\n      linksArray.push(linksArrayObj)\n    }\n  } else if (originalObject.parentType === 'Quote'){\n    if (originalObject.parentId) {\n      const linksArrayObj = {}\n      linksArrayObj.key = 'parent_id',\n          linksArrayObj.path = 'quotes'\n      linksArray.push(linksArrayObj)\n    }\n  } else if (originalObject.parentType === 'Case'){\n    if (originalObject.parentId) {\n      const linksArrayObj = {}\n      linksArrayObj.key = 'parent_id',\n          linksArrayObj.path = 'cases'\n      linksArray.push(linksArrayObj)\n    }\n  }\n\n  if (originalObject.associationType === 'Lead') {\n    if (originalObject.associationId) {\n      const linksArrayObj = {}\n      linksArrayObj.key = 'association_id'\n      linksArrayObj.path = 'leads'\n      linksArray.push(linksArrayObj)\n    }\n  } else if (originalObject.associationType === 'Contact') {\n    if (originalObject.associationId) {\n      const linksArrayObj = {}\n      linksArrayObj.key = 'association_id'\n      linksArrayObj.path = 'contacts'\n      linksArray.push(linksArrayObj)\n    }\n  }\n\n  if(linksArray.length>0){\n    transformedObject.links = linksArray\n  }\n}\ndone(transformedObject)\n",
+                "filterEmptyResponse": false,
+                "level": "organization",
+                "mimeType": "application/javascript"
+            },
+            "vendorName": "emails"
+        }
+    },
+    "vdrName": "crmEmails",
+    "vdrVersion": "v2"
+}

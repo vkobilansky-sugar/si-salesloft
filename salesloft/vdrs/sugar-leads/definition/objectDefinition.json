@@ -1,10 +1,22 @@
 {
-    "createdDate": "2020-08-12 21:45:35.137",
+    "createdDate": "2020-08-12 17:44:33.403077",
     "fields": [
         {
             "displayName": "Company Name",
             "level": "account",
             "path": "company_name",
+            "type": "string"
+        },
+        {
+            "displayName": "Current MAP",
+            "level": "account",
+            "path": "current_map",
+            "type": "string"
+        },
+        {
+            "displayName": "Current MAP Contract",
+            "level": "account",
+            "path": "current_map_contract",
             "type": "string"
         },
         {
@@ -14,7 +26,7 @@
             "type": "string"
         },
         {
-            "displayName": "Home Phone",
+            "displayName": "Home Phon",
             "level": "account",
             "path": "home_phone",
             "type": "string"
@@ -32,19 +44,31 @@
             "type": "string"
         },
         {
+            "displayName": "Marketing Suspended",
+            "level": "account",
+            "path": "marketing_suspended_c ",
+            "type": "string"
+        },
+        {
+            "displayName": "Marketo Lead Score",
+            "level": "account",
+            "path": "marketo_lead_score",
+            "type": "string"
+        },
+        {
+            "displayName": "Next Steps",
+            "level": "account",
+            "path": "next_steps",
+            "type": "string"
+        },
+        {
             "displayName": "Office Phone",
             "level": "account",
             "path": "office_phone",
             "type": "string"
         },
         {
-            "displayName": "SalesLoft ID",
-            "level": "account",
-            "path": "sl_id",
-            "type": "string"
-        },
-        {
-            "displayName": "Stage",
+            "displayName": "Status",
             "level": "account",
             "path": "stage",
             "type": "string"
@@ -56,25 +80,13 @@
             "type": "string"
         },
         {
-            "displayName": "Company Industry",
-            "level": "account",
-            "path": "sugar_company_industry",
-            "type": "string"
-        },
-        {
             "displayName": "Country",
             "level": "account",
             "path": "sugar_country",
             "type": "string"
         },
         {
-            "displayName": "Description",
-            "level": "account",
-            "path": "sugar_description",
-            "type": "string"
-        },
-        {
-            "displayName": "Sugar First Name",
+            "displayName": "First Name",
             "level": "account",
             "path": "sugar_first_name",
             "type": "string"
@@ -86,27 +98,33 @@
             "type": "string"
         },
         {
-            "displayName": "Sugar Last Name",
+            "displayName": "Last Name",
             "level": "account",
             "path": "sugar_last_name",
             "type": "string"
         },
         {
-            "displayName": "Mobile Phone",
+            "displayName": "Mobile",
             "level": "account",
             "path": "sugar_mobile",
             "type": "string"
         },
         {
-            "displayName": "Sugar Record Type",
+            "displayName": "Sugar Object Type",
             "level": "account",
             "path": "sugar_object",
             "type": "string"
         },
         {
-            "displayName": "Sugar Email",
+            "displayName": "Email (Primary)",
             "level": "account",
             "path": "sugar_primary_email",
+            "type": "string"
+        },
+        {
+            "displayName": "Link to SalesLoft Record",
+            "level": "account",
+            "path": "sugar_sl_record",
             "type": "string"
         },
         {
@@ -116,15 +134,15 @@
             "type": "string"
         },
         {
-            "displayName": "Title",
+            "displayName": "Job Title",
             "level": "account",
             "path": "sugar_title",
             "type": "string"
         },
         {
-            "displayName": "Sugar URL",
+            "displayName": "Sync to SalesLoft",
             "level": "account",
-            "path": "sugar_url",
+            "path": "sync_to_salesloft",
             "type": "string"
         },
         {
@@ -140,7 +158,7 @@
             "type": "string"
         }
     ],
-    "objectName": "sl-person",
+    "objectName": "sugar-leads",
     "vdrShared": false,
     "vdrShareLevel": "account"
 }

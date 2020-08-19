@@ -1,20 +1,20 @@
 {
     "definition": {
-        "createdDate": "2020-08-12 17:44:28.421928",
+        "createdDate": "2020-08-17 16:22:32.594928",
         "fields": [
             {
-                "displayName": "",
+                "displayName": "Sending Email",
                 "level": "account",
-                "path": "industry",
+                "path": "fromEmailAddress",
                 "type": "string"
             }
         ],
-        "objectName": "sugar-accounts",
+        "objectName": "sl-users",
         "vdrShared": false,
         "vdrShareLevel": "account"
     },
     "transformation": {
-        "sugarenterprise": {
+        "salesloft": {
             "configuration": [
                 {
                     "level": "account",
@@ -33,20 +33,20 @@
                     "type": "passThrough"
                 }
             ],
-            "elementKey": "sugarenterprise",
+            "elementKey": "salesloft",
             "fields": [
                 {
                     "level": "account",
-                    "path": "industry",
+                    "path": "fromEmailAddress",
                     "type": "string",
-                    "vendorPath": "industry"
+                    "vendorPath": "sending_email_address"
                 }
             ],
             "isLegacy": false,
-            "objectName": "sugar-accounts",
-            "vendorName": "accounts"
+            "objectName": "sl-users",
+            "vendorName": "users"
         }
     },
-    "vdrName": "sugar-accounts",
+    "vdrName": "sl-users",
     "vdrVersion": "v2"
 }

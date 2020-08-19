@@ -56,9 +56,9 @@
         },
         {
             "level": "account",
-            "path": "notes",
+            "path": "note_id",
             "type": "string",
-            "vendorPath": "note._href",
+            "vendorPath": "note.id",
             "vendorType": "string"
         },
         {
@@ -70,16 +70,16 @@
         },
         {
             "level": "account",
-            "path": "start",
+            "path": "sentiment",
             "type": "string",
-            "vendorPath": "created_at",
+            "vendorPath": "sentiment",
             "vendorType": "string"
         },
         {
             "level": "account",
-            "path": "subject",
+            "path": "start",
             "type": "string",
-            "vendorPath": "sentiment",
+            "vendorPath": "created_at",
             "vendorType": "string"
         }
     ],

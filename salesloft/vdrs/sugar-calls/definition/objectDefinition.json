@@ -1,10 +1,10 @@
 {
-    "createdDate": "2020-07-17 15:51:01.403522",
+    "createdDate": "2020-08-12 17:44:29.654302",
     "fields": [
         {
             "displayName": "Description",
             "level": "account",
-            "path": "disposition",
+            "path": "description",
             "type": "string"
         },
         {
@@ -20,6 +20,12 @@
             "type": "string"
         },
         {
+            "displayName": "Call subject",
+            "level": "account",
+            "path": "name",
+            "type": "string"
+        },
+        {
             "displayName": "Start",
             "level": "account",
             "path": "start",
@@ -29,12 +35,6 @@
             "displayName": "Call Status",
             "level": "account",
             "path": "status",
-            "type": "string"
-        },
-        {
-            "displayName": "Call subject",
-            "level": "account",
-            "path": "subject",
             "type": "string"
         },
         {

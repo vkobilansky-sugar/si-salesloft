@@ -1,0 +1,46 @@
+{
+    "configuration": [
+        {
+            "level": "account",
+            "type": "addToDocumentation"
+        },
+        {
+            "level": "account",
+            "type": "inherit"
+        },
+        {
+            "level": "account",
+            "properties": {
+                "fromVendor": false,
+                "toVendor": false
+            },
+            "type": "passThrough"
+        }
+    ],
+    "elementKey": "salesloft",
+    "fields": [
+        {
+            "level": "account",
+            "path": "call_id",
+            "type": "string",
+            "vendorPath": "call.id",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "note_associated_id",
+            "type": "string",
+            "vendorPath": "associated_with.id"
+        },
+        {
+            "level": "account",
+            "path": "note_content",
+            "type": "string",
+            "vendorPath": "content",
+            "vendorType": "string"
+        }
+    ],
+    "isLegacy": false,
+    "objectName": "sl-notes",
+    "vendorName": "notes"
+}

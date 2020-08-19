@@ -1,5 +1,5 @@
 {
-    "createdDate": "2020-06-03 14:59:10.299769",
+    "createdDate": "2020-08-12 17:44:30.835943",
     "fields": [
         {
             "displayName": "Company Name",
@@ -8,7 +8,7 @@
             "type": "string"
         },
         {
-            "displayName": "Home Phon",
+            "displayName": "Home Phone",
             "level": "account",
             "path": "home_phone",
             "type": "string"

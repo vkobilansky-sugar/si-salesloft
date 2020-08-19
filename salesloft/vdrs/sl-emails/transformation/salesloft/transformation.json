@@ -17,66 +17,57 @@
             "type": "passThrough"
         }
     ],
-    "elementKey": "sugarenterprise",
+    "elementKey": "salesloft",
     "fields": [
         {
             "level": "account",
-            "path": "description",
+            "path": "created",
             "type": "string",
-            "vendorPath": "description",
+            "vendorPath": "created_at"
+        },
+        {
+            "level": "account",
+            "path": "id",
+            "type": "string",
+            "vendorPath": "id",
             "vendorType": "string"
         },
         {
             "level": "account",
-            "path": "duration",
+            "path": "mailing_id",
             "type": "string",
-            "vendorPath": "duration_minutes",
+            "vendorPath": "mailing.id",
             "vendorType": "string"
         },
         {
             "level": "account",
-            "path": "end",
+            "path": "recipient_id",
             "type": "string",
-            "vendorPath": "date_end",
+            "vendorPath": "recipient.id",
             "vendorType": "string"
         },
         {
             "level": "account",
-            "path": "name",
+            "path": "sender_id",
             "type": "string",
-            "vendorPath": "name",
-            "vendorType": "string"
-        },
-        {
-            "level": "account",
-            "path": "start",
-            "type": "string",
-            "vendorPath": "date_start",
+            "vendorPath": "user.id",
             "vendorType": "string"
         },
         {
             "level": "account",
             "path": "status",
             "type": "string",
-            "vendorPath": "status",
-            "vendorType": "string"
+            "vendorPath": "status"
         },
         {
             "level": "account",
-            "path": "sugar_id",
+            "path": "toEmailAdress",
             "type": "string",
-            "vendorPath": "parent_id",
-            "vendorType": "string"
-        },
-        {
-            "level": "account",
-            "path": "sugar_object",
-            "type": "string",
-            "vendorPath": "parent_type",
+            "vendorPath": "recipient_email_address",
             "vendorType": "string"
         }
     ],
     "isLegacy": false,
-    "objectName": "sugar-calls",
-    "vendorName": "calls"
+    "objectName": "sl-emails",
+    "vendorName": "emails"
 }

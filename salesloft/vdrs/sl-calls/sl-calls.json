@@ -1,6 +1,6 @@
 {
     "definition": {
-        "createdDate": "2020-07-17 15:34:44.148081",
+        "createdDate": "2020-08-12 17:44:23.59277",
         "fields": [
             {
                 "displayName": "Called Person ID",
@@ -33,9 +33,9 @@
                 "type": "string"
             },
             {
-                "displayName": "Notes",
+                "displayName": "Note ID",
                 "level": "account",
-                "path": "notes",
+                "path": "note_id",
                 "type": "string"
             },
             {
@@ -45,15 +45,15 @@
                 "type": "string"
             },
             {
-                "displayName": "Start",
+                "displayName": "Subject",
                 "level": "account",
-                "path": "start",
+                "path": "sentiment",
                 "type": "string"
             },
             {
-                "displayName": "Subject",
+                "displayName": "Start",
                 "level": "account",
-                "path": "subject",
+                "path": "start",
                 "type": "string"
             }
         ],
@@ -120,9 +120,9 @@
                 },
                 {
                     "level": "account",
-                    "path": "notes",
+                    "path": "note_id",
                     "type": "string",
-                    "vendorPath": "note._href",
+                    "vendorPath": "note.id",
                     "vendorType": "string"
                 },
                 {
@@ -134,16 +134,16 @@
                 },
                 {
                     "level": "account",
-                    "path": "start",
+                    "path": "sentiment",
                     "type": "string",
-                    "vendorPath": "created_at",
+                    "vendorPath": "sentiment",
                     "vendorType": "string"
                 },
                 {
                     "level": "account",
-                    "path": "subject",
+                    "path": "start",
                     "type": "string",
-                    "vendorPath": "sentiment",
+                    "vendorPath": "created_at",
                     "vendorType": "string"
                 }
             ],

@@ -1,0 +1,139 @@
+{
+    "configuration": [
+        {
+            "level": "organization",
+            "type": "addToDocumentation"
+        },
+        {
+            "level": "organization",
+            "type": "inherit"
+        },
+        {
+            "level": "organization",
+            "properties": {
+                "fromVendor": false,
+                "toVendor": false
+            },
+            "type": "passThrough"
+        }
+    ],
+    "elementKey": "sfdc",
+    "fields": [
+        {
+            "level": "organization",
+            "path": "accountId",
+            "type": "string",
+            "vendorPath": "CreatedById"
+        },
+        {
+            "level": "organization",
+            "path": "associationId",
+            "type": "string",
+            "vendorPath": "CreatedById"
+        },
+        {
+            "level": "organization",
+            "path": "associationType",
+            "type": "string",
+            "vendorPath": "CreatedById"
+        },
+        {
+            "level": "organization",
+            "path": "bccEmailAdress",
+            "type": "string",
+            "vendorPath": "BccAddress"
+        },
+        {
+            "level": "organization",
+            "path": "ccEmailAdress",
+            "type": "string",
+            "vendorPath": "CcAddress"
+        },
+        {
+            "level": "organization",
+            "path": "created",
+            "type": "string",
+            "vendorPath": "CreatedDate"
+        },
+        {
+            "level": "organization",
+            "path": "descriptionHtml",
+            "type": "string",
+            "vendorPath": "HtmlBody"
+        },
+        {
+            "level": "organization",
+            "path": "fromEmailAdress",
+            "type": "string",
+            "vendorPath": "FromAddress"
+        },
+        {
+            "level": "organization",
+            "path": "id",
+            "type": "string",
+            "vendorPath": "Id"
+        },
+        {
+            "level": "organization",
+            "path": "isDeleted",
+            "type": "boolean",
+            "vendorPath": "IsDeleted"
+        },
+        {
+            "level": "organization",
+            "path": "lastModified",
+            "type": "string",
+            "vendorPath": "LastModifiedDate"
+        },
+        {
+            "level": "organization",
+            "path": "name",
+            "type": "string",
+            "vendorPath": "Subject"
+        },
+        {
+            "level": "organization",
+            "path": "ownerAssigned",
+            "type": "string",
+            "vendorPath": "Subject"
+        },
+        {
+            "level": "organization",
+            "path": "parentId",
+            "type": "string",
+            "vendorPath": "RelatedToId"
+        },
+        {
+            "level": "organization",
+            "path": "parentType",
+            "type": "string",
+            "vendorPath": "CreatedById"
+        },
+        {
+            "level": "organization",
+            "path": "status",
+            "type": "string",
+            "vendorPath": "Status"
+        },
+        {
+            "level": "organization",
+            "path": "syncKey",
+            "type": "string",
+            "vendorPath": "Id"
+        },
+        {
+            "level": "organization",
+            "path": "toEmailAdress",
+            "type": "string",
+            "vendorPath": "ToAddress"
+        }
+    ],
+    "isLegacy": false,
+    "objectName": "crmEmails",
+    "script": {
+        "filterEmptyResponse": false,
+        "level": "organization",
+        "mimeType": "application/javascript"
+    },
+    "vendorName": "EmailMessage"
+}

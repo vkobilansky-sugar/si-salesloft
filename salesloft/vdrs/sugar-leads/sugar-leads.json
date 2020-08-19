@@ -1,6 +1,6 @@
 {
     "definition": {
-        "createdDate": "2020-08-12 17:44:30.835943",
+        "createdDate": "2020-08-12 17:44:33.403077",
         "fields": [
             {
                 "displayName": "Company Name",
@@ -9,15 +9,57 @@
                 "type": "string"
             },
             {
-                "displayName": "Home Phone",
+                "displayName": "Current MAP",
+                "level": "account",
+                "path": "current_map",
+                "type": "string"
+            },
+            {
+                "displayName": "Current MAP Contract",
+                "level": "account",
+                "path": "current_map_contract",
+                "type": "string"
+            },
+            {
+                "displayName": "Do not call",
+                "level": "account",
+                "path": "do_not_call",
+                "type": "string"
+            },
+            {
+                "displayName": "Home Phon",
                 "level": "account",
                 "path": "home_phone",
                 "type": "string"
             },
             {
-                "displayName": "Personal LinkedIn Account",
+                "displayName": "Lead Source",
+                "level": "account",
+                "path": "lead_source",
+                "type": "string"
+            },
+            {
+                "displayName": "LinkedIn URL",
                 "level": "account",
                 "path": "linkedin_url",
+                "type": "string"
+            },
+            {
+                "displayName": "Marketing Suspended",
+                "level": "account",
+                "path": "marketing_suspended_c ",
+                "type": "string"
+            },
+            {
+                "displayName": "Marketo Lead Score",
+                "level": "account",
+                "path": "marketo_lead_score",
+                "type": "string"
+            },
+            {
+                "displayName": "Next Steps",
+                "level": "account",
+                "path": "next_steps",
                 "type": "string"
             },
             {
@@ -27,39 +69,21 @@
                 "type": "string"
             },
             {
-                "displayName": "Account Name",
+                "displayName": "Status",
                 "level": "account",
-                "path": "sugar_account_name",
+                "path": "stage",
                 "type": "string"
             },
             {
-                "displayName": "Assigned To",
-                "level": "account",
-                "path": "sugar_assigned_to",
-                "type": "string"
-            },
-            {
-                "displayName": "Primary Address City",
+                "displayName": "City",
                 "level": "account",
                 "path": "sugar_city",
                 "type": "string"
             },
             {
-                "displayName": "Company Industry",
-                "level": "account",
-                "path": "sugar_company_industry",
-                "type": "string"
-            },
-            {
-                "displayName": "Primary Address Country",
+                "displayName": "Country",
                 "level": "account",
                 "path": "sugar_country",
-                "type": "string"
-            },
-            {
-                "displayName": "Do not call",
-                "level": "account",
-                "path": "sugar_do_not_call",
                 "type": "string"
             },
             {
@@ -75,21 +99,9 @@
                 "type": "string"
             },
             {
-                "displayName": "Industry",
-                "level": "account",
-                "path": "sugar_industry",
-                "type": "string"
-            },
-            {
                 "displayName": "Last Name",
                 "level": "account",
                 "path": "sugar_last_name",
-                "type": "string"
-            },
-            {
-                "displayName": "Marketing Suspended",
-                "level": "account",
-                "path": "sugar_marketing_suspended",
                 "type": "string"
             },
             {
@@ -99,7 +111,7 @@
                 "type": "string"
             },
             {
-                "displayName": "Sugar Record Type",
+                "displayName": "Sugar Object Type",
                 "level": "account",
                 "path": "sugar_object",
                 "type": "string"
@@ -111,22 +123,16 @@
                 "type": "string"
             },
             {
-                "displayName": "SalesLoft Record",
+                "displayName": "Link to SalesLoft Record",
                 "level": "account",
                 "path": "sugar_sl_record",
                 "type": "string"
             },
             {
-                "displayName": "Primary Address State",
+                "displayName": "State",
                 "level": "account",
                 "path": "sugar_state",
                 "type": "string"
-            },
-            {
-                "displayName": "Tags",
-                "level": "account",
-                "path": "sugar_tags[*].name",
-                "type": "array[string]"
             },
             {
                 "displayName": "Job Title",
@@ -153,36 +159,11 @@
                 "type": "string"
             }
         ],
-        "objectName": "sugar-contacts",
+        "objectName": "sugar-leads",
         "vdrShared": false,
         "vdrShareLevel": "account"
     },
     "transformation": {
-        "salesloft": {
-            "configuration": [
-                {
-                    "level": "account",
-                    "type": "addToDocumentation"
-                },
-                {
-                    "level": "account",
-                    "type": "inherit"
-                }
-            ],
-            "elementKey": "salesloft",
-            "fields": [
-                {
-                    "level": "account",
-                    "path": "sugar_id",
-                    "type": "string",
-                    "vendorPath": "id",
-                    "vendorType": "string"
-                }
-            ],
-            "isLegacy": false,
-            "objectName": "sugar-contacts",
-            "vendorName": "contacts"
-        },
         "sugarenterprise": {
             "configuration": [
                 {
@@ -213,6 +194,27 @@
                 },
                 {
                     "level": "account",
+                    "path": "current_map",
+                    "type": "string",
+                    "vendorPath": "current_map_dd_c",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "current_map_contract",
+                    "type": "string",
+                    "vendorPath": "current_map_contract_c",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "do_not_call",
+                    "type": "string",
+                    "vendorPath": "do_not_call",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
                     "path": "home_phone",
                     "type": "string",
                     "vendorPath": "phone_home",
@@ -220,10 +222,37 @@
                 },
                 {
                     "level": "account",
+                    "path": "lead_source",
+                    "type": "string",
+                    "vendorPath": "lead_source",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
                     "path": "linkedin_url",
                     "type": "string",
-                    "vendorPath": "linkedin_c",
+                    "vendorPath": "linkedin_url_c",
                     "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "marketing_suspended_c ",
+                    "type": "string",
+                    "vendorPath": "marketing_suspended_c",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "marketo_lead_score",
+                    "type": "string",
+                    "vendorPath": "mkto_lead_score",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "next_steps",
+                    "type": "string",
+                    "vendorPath": "next_step_c"
                 },
                 {
                     "level": "account",
@@ -234,16 +263,9 @@
                 },
                 {
                     "level": "account",
-                    "path": "sugar_account_name",
+                    "path": "stage",
                     "type": "string",
-                    "vendorPath": "account_name",
-                    "vendorType": "string"
-                },
-                {
-                    "level": "account",
-                    "path": "sugar_assigned_to",
-                    "type": "string",
-                    "vendorPath": "assigned_user_link.full_name",
+                    "vendorPath": "status",
                     "vendorType": "string"
                 },
                 {
@@ -255,23 +277,9 @@
                 },
                 {
                     "level": "account",
-                    "path": "sugar_company_industry",
-                    "type": "string",
-                    "vendorPath": "hint_account_industry_c",
-                    "vendorType": "string"
-                },
-                {
-                    "level": "account",
                     "path": "sugar_country",
                     "type": "string",
                     "vendorPath": "primary_address_country",
-                    "vendorType": "string"
-                },
-                {
-                    "level": "account",
-                    "path": "sugar_do_not_call",
-                    "type": "string",
-                    "vendorPath": "do_not_call",
                     "vendorType": "string"
                 },
                 {
@@ -290,23 +298,9 @@
                 },
                 {
                     "level": "account",
-                    "path": "sugar_industry",
-                    "type": "string",
-                    "vendorPath": "hint_account_industry_c",
-                    "vendorType": "string"
-                },
-                {
-                    "level": "account",
                     "path": "sugar_last_name",
                     "type": "string",
                     "vendorPath": "last_name",
-                    "vendorType": "string"
-                },
-                {
-                    "level": "account",
-                    "path": "sugar_marketing_suspended",
-                    "type": "string",
-                    "vendorPath": "marketing_suspended_c",
                     "vendorType": "string"
                 },
                 {
@@ -346,13 +340,6 @@
                 },
                 {
                     "level": "account",
-                    "path": "sugar_tags[*].name",
-                    "type": "array[string]",
-                    "vendorPath": "tag[*].name",
-                    "vendorType": "string"
-                },
-                {
-                    "level": "account",
                     "path": "sugar_title",
                     "type": "string",
                     "vendorPath": "title",
@@ -376,15 +363,15 @@
                     "level": "account",
                     "path": "website",
                     "type": "string",
-                    "vendorPath": "hint_account_website_c",
+                    "vendorPath": "website",
                     "vendorType": "string"
                 }
             ],
             "isLegacy": false,
-            "objectName": "sugar-contacts",
-            "vendorName": "contacts"
+            "objectName": "sugar-leads",
+            "vendorName": "leads"
         }
     },
-    "vdrName": "sugar-contacts",
+    "vdrName": "sugar-leads",
     "vdrVersion": "v2"
 }
