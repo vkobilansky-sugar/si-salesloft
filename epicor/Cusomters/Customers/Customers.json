@@ -1,0 +1,658 @@
+{
+    "definition": {
+        "createdDate": "2020-08-24 21:33:05.718642",
+        "fields": [
+            {
+                "displayName": "Account Type",
+                "level": "account",
+                "path": "account_type",
+                "type": "string"
+            },
+            {
+                "displayName": "annual_revenue",
+                "level": "account",
+                "path": "annual_revenue",
+                "type": "number"
+            },
+            {
+                "displayName": "assigned_user_code",
+                "level": "account",
+                "path": "assigned_user_code",
+                "type": "string"
+            },
+            {
+                "displayName": "billing_address_city",
+                "level": "account",
+                "path": "billing_address_city",
+                "type": "string"
+            },
+            {
+                "displayName": "billing_address_country",
+                "level": "account",
+                "path": "billing_address_country",
+                "type": "string"
+            },
+            {
+                "displayName": "billing_address_postalcode",
+                "level": "account",
+                "path": "billing_address_postalcode",
+                "type": "string"
+            },
+            {
+                "displayName": "billing_address_state",
+                "level": "account",
+                "path": "billing_address_state",
+                "type": "string"
+            },
+            {
+                "displayName": "billing_address_street",
+                "level": "account",
+                "path": "billing_address_street",
+                "type": "string"
+            },
+            {
+                "displayName": "Company Name",
+                "level": "account",
+                "path": "company",
+                "type": "string"
+            },
+            {
+                "displayName": "credit_hold",
+                "level": "account",
+                "path": "credit_hold",
+                "type": "boolean"
+            },
+            {
+                "displayName": "Customer ID",
+                "level": "account",
+                "path": "customer_id",
+                "type": "string"
+            },
+            {
+                "displayName": "customer_number",
+                "level": "account",
+                "path": "customer_number",
+                "type": "number"
+            },
+            {
+                "displayName": "Customer Type",
+                "level": "account",
+                "path": "description",
+                "type": "string"
+            },
+            {
+                "displayName": "discount_percent",
+                "level": "account",
+                "path": "discount_percent",
+                "type": "string"
+            },
+            {
+                "displayName": "email",
+                "level": "account",
+                "path": "email",
+                "type": "string"
+            },
+            {
+                "displayName": "employees",
+                "level": "account",
+                "path": "employees",
+                "type": "string"
+            },
+            {
+                "displayName": "Industry",
+                "level": "account",
+                "path": "industry",
+                "type": "string"
+            },
+            {
+                "displayName": "Name",
+                "level": "account",
+                "path": "name",
+                "type": "string"
+            },
+            {
+                "displayName": "phone_fax",
+                "level": "account",
+                "path": "phone_fax",
+                "type": "number"
+            },
+            {
+                "displayName": "rating",
+                "level": "account",
+                "path": "rating",
+                "type": "string"
+            },
+            {
+                "displayName": "salesrep_code",
+                "level": "account",
+                "path": "salesrep_code",
+                "type": "string"
+            },
+            {
+                "displayName": "shipping_address_city",
+                "level": "account",
+                "path": "shipping_address_city",
+                "type": "string"
+            },
+            {
+                "displayName": "shipping_address_country",
+                "level": "account",
+                "path": "shipping_address_country",
+                "type": "string"
+            },
+            {
+                "displayName": "shipping_address_postalcode",
+                "level": "account",
+                "path": "shipping_address_postalcode",
+                "type": "string"
+            },
+            {
+                "displayName": "shipping_address_state",
+                "level": "account",
+                "path": "shipping_address_state",
+                "type": "string"
+            },
+            {
+                "displayName": "shipping_address_street",
+                "level": "account",
+                "path": "shipping_address_street",
+                "type": "string"
+            },
+            {
+                "displayName": "territory",
+                "level": "account",
+                "path": "territory",
+                "type": "string"
+            },
+            {
+                "displayName": "territory_id",
+                "level": "account",
+                "path": "territory_id",
+                "type": "string"
+            },
+            {
+                "displayName": "ticker_symbol",
+                "level": "account",
+                "path": "ticker_symbol",
+                "type": "string"
+            },
+            {
+                "displayName": "total_open_balance",
+                "level": "account",
+                "path": "total_open_balance",
+                "type": "string"
+            },
+            {
+                "displayName": "website",
+                "level": "account",
+                "path": "website",
+                "type": "string"
+            }
+        ],
+        "objectName": "Customers",
+        "vdrShared": false,
+        "vdrShareLevel": "account"
+    },
+    "transformation": {
+        "epicor": {
+            "configuration": [
+                {
+                    "level": "account",
+                    "type": "addToDocumentation"
+                },
+                {
+                    "level": "account",
+                    "type": "inherit"
+                },
+                {
+                    "level": "account",
+                    "properties": {
+                        "fromVendor": false,
+                        "toVendor": false
+                    },
+                    "type": "passThrough"
+                }
+            ],
+            "elementKey": "epicor",
+            "fields": [
+                {
+                    "level": "account",
+                    "path": "account_type",
+                    "type": "string",
+                    "vendorPath": "CustomerType",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "annual_revenue",
+                    "type": "number",
+                    "vendorPath": "AnnualRevenue",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "assigned_user_code",
+                    "type": "string",
+                    "vendorPath": "SalesRepCode",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "billing_address_city",
+                    "type": "string",
+                    "vendorPath": "BTCity",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "billing_address_country",
+                    "type": "string",
+                    "vendorPath": "BTCountry",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "billing_address_postalcode",
+                    "type": "string",
+                    "vendorPath": "BTZip",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "billing_address_state",
+                    "type": "string",
+                    "vendorPath": "BTState",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "billing_address_street",
+                    "type": "string",
+                    "vendorPath": "BTAddress1",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "company",
+                    "type": "string",
+                    "vendorPath": "Company"
+                },
+                {
+                    "level": "account",
+                    "path": "credit_hold",
+                    "type": "boolean",
+                    "vendorPath": "CreditHold",
+                    "vendorType": "boolean"
+                },
+                {
+                    "level": "account",
+                    "path": "customer_id",
+                    "type": "string",
+                    "vendorPath": "CustID",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "customer_number",
+                    "type": "number",
+                    "vendorPath": "CustNum",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "description",
+                    "type": "string",
+                    "vendorPath": "CustTypeDescription",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "discount_percent",
+                    "type": "string",
+                    "vendorPath": "DiscountPercent",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "email",
+                    "type": "string",
+                    "vendorPath": "EMailAddress",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "employees",
+                    "type": "string",
+                    "vendorPath": "NumberOfEmployees",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "industry",
+                    "type": "string",
+                    "vendorPath": "Industry",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "name",
+                    "type": "string",
+                    "vendorPath": "Name",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "phone_fax",
+                    "type": "number",
+                    "vendorPath": "BTFaxNum",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "rating",
+                    "type": "string",
+                    "vendorPath": "Rating",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "salesrep_code",
+                    "type": "string",
+                    "vendorPath": "SalesRepCode",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "shipping_address_city",
+                    "type": "string",
+                    "vendorPath": "City",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "shipping_address_country",
+                    "type": "string",
+                    "vendorPath": "Country",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "shipping_address_postalcode",
+                    "type": "string",
+                    "vendorPath": "Zip",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "shipping_address_state",
+                    "type": "string",
+                    "vendorPath": "State",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "shipping_address_street",
+                    "type": "string",
+                    "vendorPath": "Address1",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "territory",
+                    "type": "string",
+                    "vendorPath": "TerritoryDesc",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "territory_id",
+                    "type": "string",
+                    "vendorPath": "TerritoryID",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "ticker_symbol",
+                    "type": "string",
+                    "vendorPath": "TickerSymbol",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "total_open_balance",
+                    "type": "string",
+                    "vendorPath": "TotOpenCredit",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "website",
+                    "type": "string",
+                    "vendorPath": "CustURL",
+                    "vendorType": "string"
+                }
+            ],
+            "isLegacy": false,
+            "objectName": "Customers",
+            "vendorName": "customers"
+        },
+        "sugarsell": {
+            "configuration": [
+                {
+                    "level": "account",
+                    "type": "addToDocumentation"
+                },
+                {
+                    "level": "account",
+                    "type": "inherit"
+                },
+                {
+                    "level": "account",
+                    "properties": {
+                        "fromVendor": false,
+                        "toVendor": false
+                    },
+                    "type": "passThrough"
+                }
+            ],
+            "elementKey": "sugarsell",
+            "fields": [
+                {
+                    "level": "account",
+                    "path": "account_type",
+                    "type": "string",
+                    "vendorPath": "account_type",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "annual_revenue",
+                    "type": "number",
+                    "vendorPath": "annual_revenue",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "assigned_user_code",
+                    "type": "string",
+                    "vendorPath": "assigned_user_code",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "billing_address_city",
+                    "type": "string",
+                    "vendorPath": "billing_address_city",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "billing_address_country",
+                    "type": "string",
+                    "vendorPath": "billing_address_country",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "billing_address_postalcode",
+                    "type": "string",
+                    "vendorPath": "billing_address_postalcode",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "billing_address_state",
+                    "type": "string",
+                    "vendorPath": "billing_address_state",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "billing_address_street",
+                    "type": "string",
+                    "vendorPath": "billing_address_street",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "credit_hold",
+                    "type": "boolean",
+                    "vendorPath": "credit_hold_c",
+                    "vendorType": "boolean"
+                },
+                {
+                    "level": "account",
+                    "path": "customer_id",
+                    "type": "string",
+                    "vendorPath": "customer_id_c"
+                },
+                {
+                    "level": "account",
+                    "path": "customer_number",
+                    "type": "number",
+                    "vendorPath": "customer_num_c"
+                },
+                {
+                    "level": "account",
+                    "path": "description",
+                    "type": "string",
+                    "vendorPath": "description"
+                },
+                {
+                    "level": "account",
+                    "path": "discount_percent",
+                    "type": "string",
+                    "vendorPath": "discount_percent_c"
+                },
+                {
+                    "level": "account",
+                    "path": "email",
+                    "type": "string",
+                    "vendorPath": "email1"
+                },
+                {
+                    "level": "account",
+                    "path": "employees",
+                    "type": "string",
+                    "vendorPath": "employees"
+                },
+                {
+                    "level": "account",
+                    "path": "industry",
+                    "type": "string",
+                    "vendorPath": "industry"
+                },
+                {
+                    "level": "account",
+                    "path": "name",
+                    "type": "string",
+                    "vendorPath": "name",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "phone_fax",
+                    "type": "number",
+                    "vendorPath": "phone_fax"
+                },
+                {
+                    "level": "account",
+                    "path": "rating",
+                    "type": "string",
+                    "vendorPath": "rating"
+                },
+                {
+                    "level": "account",
+                    "path": "salesrep_code",
+                    "type": "string",
+                    "vendorPath": "salesrep_code_c"
+                },
+                {
+                    "level": "account",
+                    "path": "shipping_address_city",
+                    "type": "string",
+                    "vendorPath": "shipping_address_city"
+                },
+                {
+                    "level": "account",
+                    "path": "shipping_address_country",
+                    "type": "string",
+                    "vendorPath": "shipping_address_country"
+                },
+                {
+                    "level": "account",
+                    "path": "shipping_address_postalcode",
+                    "type": "string",
+                    "vendorPath": "shipping_address_postalcode"
+                },
+                {
+                    "level": "account",
+                    "path": "shipping_address_state",
+                    "type": "string",
+                    "vendorPath": "shipping_address_state"
+                },
+                {
+                    "level": "account",
+                    "path": "shipping_address_street",
+                    "type": "string",
+                    "vendorPath": "shipping_address_street"
+                },
+                {
+                    "level": "account",
+                    "path": "territory",
+                    "type": "string",
+                    "vendorPath": "territory_c"
+                },
+                {
+                    "level": "account",
+                    "path": "territory_id",
+                    "type": "string",
+                    "vendorPath": "territory_id_c"
+                },
+                {
+                    "level": "account",
+                    "path": "ticker_symbol",
+                    "type": "string",
+                    "vendorPath": "ticker_symbol"
+                },
+                {
+                    "level": "account",
+                    "path": "total_open_balance",
+                    "type": "string",
+                    "vendorPath": "total_open_bal_c"
+                },
+                {
+                    "level": "account",
+                    "path": "website",
+                    "type": "string",
+                    "vendorPath": "website"
+                }
+            ],
+            "isLegacy": false,
+            "objectName": "Customers",
+            "vendorName": "accounts"
+        }
+    },
+    "vdrName": "Customers",
+    "vdrVersion": "v2"
+}
