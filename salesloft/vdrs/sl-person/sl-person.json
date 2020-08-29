@@ -39,9 +39,21 @@
                 "type": "string"
             },
             {
+                "displayName": "Owner ID",
+                "level": "account",
+                "path": "owner_id",
+                "type": "string"
+            },
+            {
                 "displayName": "SalesLoft ID",
                 "level": "account",
                 "path": "sl_id",
+                "type": "string"
+            },
+            {
+                "displayName": "Stage ID",
+                "level": "account",
+                "path": "sl_stage",
                 "type": "string"
             },
             {
@@ -150,6 +162,10 @@
             "configuration": [
                 {
                     "level": "account",
+                    "type": "addToDocumentation"
+                },
+                {
+                    "level": "account",
                     "type": "inherit"
                 },
                 {
@@ -207,6 +223,13 @@
                 },
                 {
                     "level": "account",
+                    "path": "owner_id",
+                    "type": "string",
+                    "vendorPath": "owner_id",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
                     "path": "sl_id",
                     "type": "string",
                     "vendorPath": "id",
@@ -214,9 +237,16 @@
                 },
                 {
                     "level": "account",
-                    "path": "stage",
+                    "path": "sl_stage",
                     "type": "string",
                     "vendorPath": "person_stage.id",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "stage",
+                    "type": "string",
+                    "vendorPath": "person_stage_id",
                     "vendorType": "string"
                 },
                 {

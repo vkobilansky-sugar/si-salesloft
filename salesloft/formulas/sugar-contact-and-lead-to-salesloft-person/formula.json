@@ -15,7 +15,7 @@
         }
     ],
     "debugLoggingEnabled": false,
-    "debugLoggingExpires": "2020-08-12T20:49:34Z",
+    "debugLoggingExpires": "2020-08-23T01:46:03Z",
     "engine": "v3",
     "id": 9895,
     "name": "sugar-contact-and-lead-to-salesloft-person",
@@ -38,10 +38,23 @@
                 "exitSugarContactNotFound"
             ],
             "onSuccess": [
-                "validateContactRecord"
+                "getAssignedUserToContact"
             ],
             "properties": {
                 "api": "/sugar-contacts/${trigger.event.objectId}",
+                "elementInstanceId": "${config.origin}",
+                "method": "GET"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "getAssignedUserToContact",
+            "onFailure": [],
+            "onSuccess": [
+                "validateContactRecord"
+            ],
+            "properties": {
+                "api": "/sugar-employees/${steps.getSugarContact.response.body.assigned_user_id}",
                 "elementInstanceId": "${config.origin}",
                 "method": "GET"
             },
@@ -73,13 +86,36 @@
                 "exitCannotCheckPersonByContactEmail"
             ],
             "onSuccess": [
-                "createPayloadForPersonFromContact"
+                "prepActiveUsersQueryForContact"
             ],
             "properties": {
                 "api": "/sl-person",
                 "elementInstanceId": "${config.destination}",
                 "method": "GET",
                 "query": "${steps.prepCheckPersonFromContactQuery.query}"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "prepActiveUsersQueryForContact",
+            "onFailure": [],
+            "onSuccess": [
+                "getAllSalesLoftUsersForContact"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "getAllSalesLoftUsersForContact",
+            "onFailure": [],
+            "onSuccess": [
+                "createPayloadForPersonFromContact"
+            ],
+            "properties": {
+                "api": "/sl-users",
+                "elementInstanceId": "${config.destination}",
+                "method": "GET",
+                "query": "${steps.prepActiveUsersQueryForContact.query}"
             },
             "type": "elementRequest"
         },
@@ -207,10 +243,24 @@
                 "exitSugarLeadNotFound"
             ],
             "onSuccess": [
-                "validateLeadRecord"
+                "getAssignedUserToLead"
             ],
             "properties": {
                 "api": "/sugar-leads/${trigger.event.objectId}",
+                "elementInstanceId": "${config.origin}",
+                "method": "GET"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "getAssignedUserToLead",
+            "onFailure": [],
+            "onSuccess": [
+                "validateLeadRecord"
+            ],
+            "properties": {
+                "api": "/sugar-employees/${steps.getSugarLead.response.body.assigned_user_id}",
+                "body": "",
                 "elementInstanceId": "${config.origin}",
                 "method": "GET"
             },
@@ -242,13 +292,53 @@
                 "exitCannotCheckPersonByLeadEmail"
             ],
             "onSuccess": [
-                "createPayloadForPersonFromLead"
+                "getAllStages"
             ],
             "properties": {
                 "api": "/sl-person",
                 "elementInstanceId": "${config.destination}",
                 "method": "GET",
                 "query": "${steps.prepCheckPersonFromLeadQuery.query}"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "getAllStages",
+            "onFailure": [
+                "exitCouldNotGetStages"
+            ],
+            "onSuccess": [
+                "prepActiveUsersQuery"
+            ],
+            "properties": {
+                "api": "/sl-stages",
+                "elementInstanceId": "${config.destination}",
+                "method": "GET"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "prepActiveUsersQuery",
+            "onFailure": [],
+            "onSuccess": [
+                "getAllSalesLoftUsers"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "getAllSalesLoftUsers",
+            "onFailure": [
+                "exitCannotGetUsers"
+            ],
+            "onSuccess": [
+                "createPayloadForPersonFromLead"
+            ],
+            "properties": {
+                "api": "/sl-users",
+                "elementInstanceId": "${config.destination}",
+                "method": "GET",
+                "query": "${steps.prepActiveUsersQuery.query}"
             },
             "type": "elementRequest"
         },
@@ -343,6 +433,20 @@
         },
         {
             "name": "exitCannotCreatePersonFromLead",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "exitCannotGetUsers",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "exitCouldNotGetStages",
             "onFailure": [],
             "onSuccess": [],
             "properties": {},

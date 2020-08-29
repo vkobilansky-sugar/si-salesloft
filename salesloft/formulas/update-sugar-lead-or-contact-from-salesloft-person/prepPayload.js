@@ -1,13 +1,3 @@
-let sugarRecord = steps.getPersonDetails.response.body;
-sugarRecord['sugar_sl_record'] = 
-`https://app.salesloft.com/app/people/${trigger.event.objectId}`;
-              
-
-function getKeyByValue(object, value) {
-  return Object.keys(object).find(key => object[key] === value);
-}
-
-
 const stagesToStatus = {
   "New" : "New", 
   "Pursuing" : "Pursuing",
@@ -23,7 +13,20 @@ const stagesToStatus = {
   "Warm Contact" :  "Warm Contact",
 };
 
-    
-sugarRecord['stage'] = getKeyByValue(stagesToStatus, steps.getStageNameById.response.body.name);
+let sugarRecord = steps.getPersonDetails.response.body;
+sugarRecord['sugar_sl_record'] = 
+`https://app.salesloft.com/app/people/${trigger.event.objectId}`;
+
+let slStage = 'New';
+
+if (steps.getStageNameById) {
+  slStage = steps.getStageNameById.response.body.name;
+}
+
+function getKeyByValue(object, value) {
+  return Object.keys(object).find(key => object[key] === value);
+}
+
+sugarRecord['stage'] = getKeyByValue(stagesToStatus, slStage);
 
 done({payload: sugarRecord});

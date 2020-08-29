@@ -1,0 +1,40 @@
+{
+    "configuration": [
+        {
+            "level": "account",
+            "type": "addToDocumentation"
+        },
+        {
+            "level": "account",
+            "type": "inherit"
+        },
+        {
+            "level": "account",
+            "properties": {
+                "fromVendor": false,
+                "toVendor": false
+            },
+            "type": "passThrough"
+        }
+    ],
+    "elementKey": "salesloft",
+    "fields": [
+        {
+            "level": "account",
+            "path": "id",
+            "type": "string",
+            "vendorPath": "id",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "name",
+            "type": "string",
+            "vendorPath": "name",
+            "vendorType": "string"
+        }
+    ],
+    "isLegacy": false,
+    "objectName": "sl-stages",
+    "vendorName": "stages"
+}

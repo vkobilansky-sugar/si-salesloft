@@ -29,7 +29,7 @@
         {
             "level": "account",
             "path": "annual_revenue",
-            "type": "string",
+            "type": "number",
             "vendorPath": "AnnualRevenue",
             "vendorType": "string"
         },
@@ -73,6 +73,13 @@
             "path": "billing_address_street",
             "type": "string",
             "vendorPath": "BTAddress1",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "company",
+            "type": "string",
+            "vendorPath": "Company",
             "vendorType": "string"
         },
         {
@@ -135,13 +142,13 @@
             "level": "account",
             "path": "name",
             "type": "string",
-            "vendorPath": "Name",
+            "vendorPath": "BTName",
             "vendorType": "string"
         },
         {
             "level": "account",
             "path": "phone_fax",
-            "type": "string",
+            "type": "number",
             "vendorPath": "BTFaxNum",
             "vendorType": "string"
         },

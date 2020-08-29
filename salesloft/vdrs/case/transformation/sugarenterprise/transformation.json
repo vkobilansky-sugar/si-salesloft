@@ -1,0 +1,138 @@
+{
+    "configuration": [
+        {
+            "level": "account",
+            "type": "addToDocumentation"
+        },
+        {
+            "level": "account",
+            "type": "inherit"
+        },
+        {
+            "level": "account",
+            "properties": {
+                "fromVendor": false,
+                "toVendor": false
+            },
+            "type": "passThrough"
+        }
+    ],
+    "elementKey": "sugarenterprise",
+    "fields": [
+        {
+            "level": "account",
+            "path": "account_id",
+            "type": "string",
+            "vendorPath": "account_id",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "account_name",
+            "type": "string",
+            "vendorPath": "account_name",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "assigned_user_id",
+            "type": "string",
+            "vendorPath": "assigned_user_id",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "assigned_user_name",
+            "type": "string",
+            "vendorPath": "assigned_user_name",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "category",
+            "type": "string",
+            "vendorPath": "type",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "date_entered",
+            "type": "date",
+            "vendorPath": "date_entered",
+            "vendorType": "date"
+        },
+        {
+            "level": "account",
+            "path": "date_modified",
+            "type": "date",
+            "vendorPath": "date_modified",
+            "vendorType": "date"
+        },
+        {
+            "level": "account",
+            "path": "description",
+            "type": "string",
+            "vendorPath": "description",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "follow_up_date",
+            "type": "date",
+            "vendorPath": "follow_up_datetime",
+            "vendorType": "date"
+        },
+        {
+            "level": "account",
+            "path": "partner_id",
+            "type": "string",
+            "vendorPath": "account_id",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "partner_name",
+            "type": "string",
+            "vendorPath": "account_name",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "priority",
+            "type": "string",
+            "vendorPath": "priority_level_c",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "product",
+            "type": "string",
+            "vendorPath": "product_category_c",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "source",
+            "type": "string",
+            "vendorPath": "source",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "status",
+            "type": "string",
+            "vendorPath": "status",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "subject",
+            "type": "string",
+            "vendorPath": "name",
+            "vendorType": "string"
+        }
+    ],
+    "isLegacy": false,
+    "objectName": "case",
+    "vendorName": "cases"
+}

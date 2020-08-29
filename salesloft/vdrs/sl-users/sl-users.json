@@ -3,9 +3,27 @@
         "createdDate": "2020-08-17 16:22:32.594928",
         "fields": [
             {
+                "displayName": "First Name",
+                "level": "account",
+                "path": "first_name",
+                "type": "string"
+            },
+            {
                 "displayName": "Sending Email",
                 "level": "account",
                 "path": "fromEmailAddress",
+                "type": "string"
+            },
+            {
+                "displayName": "ID",
+                "level": "account",
+                "path": "id",
+                "type": "string"
+            },
+            {
+                "displayName": "Last Name",
+                "level": "account",
+                "path": "last_name",
                 "type": "string"
             }
         ],
@@ -37,9 +55,30 @@
             "fields": [
                 {
                     "level": "account",
+                    "path": "first_name",
+                    "type": "string",
+                    "vendorPath": "first_name",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
                     "path": "fromEmailAddress",
                     "type": "string",
-                    "vendorPath": "sending_email_address"
+                    "vendorPath": "sending_email_address",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "id",
+                    "type": "string",
+                    "vendorPath": "id"
+                },
+                {
+                    "level": "account",
+                    "path": "last_name",
+                    "type": "string",
+                    "vendorPath": "last_name",
+                    "vendorType": "string"
                 }
             ],
             "isLegacy": false,

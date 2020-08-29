@@ -1,0 +1,26 @@
+{
+    "createdDate": "2020-08-21 18:08:07.888628",
+    "fields": [
+        {
+            "displayName": "email",
+            "level": "account",
+            "path": "email",
+            "type": "string"
+        },
+        {
+            "displayName": "First Name",
+            "level": "account",
+            "path": "first_name",
+            "type": "string"
+        },
+        {
+            "displayName": "ID",
+            "level": "account",
+            "path": "id",
+            "type": "string"
+        }
+    ],
+    "objectName": "sugar-employees",
+    "vdrShared": false,
+    "vdrShareLevel": "account"
+}

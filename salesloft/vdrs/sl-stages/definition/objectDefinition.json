@@ -1,0 +1,20 @@
+{
+    "createdDate": "2020-08-21 12:14:44.230294",
+    "fields": [
+        {
+            "displayName": "ID",
+            "level": "account",
+            "path": "id",
+            "type": "string"
+        },
+        {
+            "displayName": "Stage Name",
+            "level": "account",
+            "path": "name",
+            "type": "string"
+        }
+    ],
+    "objectName": "sl-stages",
+    "vdrShared": false,
+    "vdrShareLevel": "account"
+}

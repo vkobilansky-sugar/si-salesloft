@@ -15,7 +15,7 @@
         }
     ],
     "debugLoggingEnabled": false,
-    "debugLoggingExpires": "2020-08-07T00:10:44Z",
+    "debugLoggingExpires": "2020-08-23T01:39:03Z",
     "engine": "v3",
     "id": 9894,
     "name": "update-sugar-lead-or-contact-from-salesloft-person",
@@ -53,19 +53,21 @@
                 "exitBadPersonRecord"
             ],
             "onSuccess": [
-                "prepStageNamePayload"
+                "testStageName"
             ],
             "properties": {},
             "type": "filter"
         },
         {
-            "name": "prepStageNamePayload",
-            "onFailure": [],
+            "name": "testStageName",
+            "onFailure": [
+                "prepPayload"
+            ],
             "onSuccess": [
                 "getStageNameById"
             ],
             "properties": {},
-            "type": "script"
+            "type": "filter"
         },
         {
             "name": "getStageNameById",
@@ -76,7 +78,7 @@
                 "prepPayload"
             ],
             "properties": {
-                "api": "/stages/${steps.prepStageNamePayload.stage}",
+                "api": "/stages/${steps.getPersonDetails.response.body.sl_stage}",
                 "elementInstanceId": "${config.source}",
                 "method": "GET"
             },

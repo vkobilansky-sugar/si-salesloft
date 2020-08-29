@@ -2,6 +2,12 @@
     "createdDate": "2020-08-12 17:44:33.403077",
     "fields": [
         {
+            "displayName": "Assigned User ID",
+            "level": "account",
+            "path": "assigned_user_id",
+            "type": "string"
+        },
+        {
             "displayName": "Company Name",
             "level": "account",
             "path": "company_name",

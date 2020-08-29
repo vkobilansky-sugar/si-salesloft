@@ -38,9 +38,21 @@
             "type": "string"
         },
         {
+            "displayName": "Owner ID",
+            "level": "account",
+            "path": "owner_id",
+            "type": "string"
+        },
+        {
             "displayName": "SalesLoft ID",
             "level": "account",
             "path": "sl_id",
+            "type": "string"
+        },
+        {
+            "displayName": "Stage ID",
+            "level": "account",
+            "path": "sl_stage",
             "type": "string"
         },
         {

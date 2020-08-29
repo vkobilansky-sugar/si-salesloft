@@ -21,9 +21,30 @@
     "fields": [
         {
             "level": "account",
+            "path": "first_name",
+            "type": "string",
+            "vendorPath": "first_name",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
             "path": "fromEmailAddress",
             "type": "string",
-            "vendorPath": "sending_email_address"
+            "vendorPath": "sending_email_address",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "id",
+            "type": "string",
+            "vendorPath": "id"
+        },
+        {
+            "level": "account",
+            "path": "last_name",
+            "type": "string",
+            "vendorPath": "last_name",
+            "vendorType": "string"
         }
     ],
     "isLegacy": false,

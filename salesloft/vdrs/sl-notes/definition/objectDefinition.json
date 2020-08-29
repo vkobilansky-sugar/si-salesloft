@@ -18,6 +18,12 @@
             "level": "account",
             "path": "note_content",
             "type": "string"
+        },
+        {
+            "displayName": "User ID",
+            "level": "account",
+            "path": "user_id",
+            "type": "string"
         }
     ],
     "objectName": "sl-notes",

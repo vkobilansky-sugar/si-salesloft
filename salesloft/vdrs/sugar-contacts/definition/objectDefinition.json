@@ -2,6 +2,12 @@
     "createdDate": "2020-08-12 17:44:30.835943",
     "fields": [
         {
+            "displayName": "Assigned User ID",
+            "level": "account",
+            "path": "assigned_user_id",
+            "type": "string"
+        },
+        {
             "displayName": "Company Name",
             "level": "account",
             "path": "company_name",
@@ -11,6 +17,12 @@
             "displayName": "Home Phone",
             "level": "account",
             "path": "home_phone",
+            "type": "string"
+        },
+        {
+            "displayName": "Lead Source",
+            "level": "account",
+            "path": "lead_source",
             "type": "string"
         },
         {

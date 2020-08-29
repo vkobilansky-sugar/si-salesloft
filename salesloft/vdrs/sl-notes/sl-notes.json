@@ -19,6 +19,12 @@
                 "level": "account",
                 "path": "note_content",
                 "type": "string"
+            },
+            {
+                "displayName": "User ID",
+                "level": "account",
+                "path": "user_id",
+                "type": "string"
             }
         ],
         "objectName": "sl-notes",
@@ -58,7 +64,8 @@
                     "level": "account",
                     "path": "note_associated_id",
                     "type": "string",
-                    "vendorPath": "associated_with.id"
+                    "vendorPath": "associated_with.id",
+                    "vendorType": "string"
                 },
                 {
                     "level": "account",
@@ -66,6 +73,12 @@
                     "type": "string",
                     "vendorPath": "content",
                     "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "user_id",
+                    "type": "string",
+                    "vendorPath": "user.id"
                 }
             ],
             "isLegacy": false,

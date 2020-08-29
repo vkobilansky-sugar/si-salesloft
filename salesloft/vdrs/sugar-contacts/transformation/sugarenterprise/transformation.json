@@ -21,6 +21,13 @@
     "fields": [
         {
             "level": "account",
+            "path": "assigned_user_id",
+            "type": "string",
+            "vendorPath": "assigned_user_id",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
             "path": "company_name",
             "type": "string",
             "vendorPath": "account_name",
@@ -32,6 +39,12 @@
             "type": "string",
             "vendorPath": "phone_home",
             "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "lead_source",
+            "type": "string",
+            "vendorPath": "lead_source"
         },
         {
             "level": "account",

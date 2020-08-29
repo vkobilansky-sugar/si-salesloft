@@ -15,9 +15,9 @@
         }
     ],
     "debugLoggingEnabled": false,
-    "debugLoggingExpires": "2020-07-22T06:58:28Z",
+    "debugLoggingExpires": "2020-08-23T01:23:31Z",
     "engine": "v3",
-    "id": 37878,
+    "id": 9903,
     "name": "create-sugar-lead-from-salesloft-person",
     "singleThreaded": false,
     "steps": [
@@ -34,9 +34,11 @@
         },
         {
             "name": "getPersonDetails",
-            "onFailure": [],
+            "onFailure": [
+                "exitCannotGetPersonDetails"
+            ],
             "onSuccess": [
-                "prepSugarLeadQuery"
+                "validateRecord"
             ],
             "properties": {
                 "api": "/sl-person/${trigger.event.objectId}",
@@ -44,6 +46,17 @@
                 "method": "GET"
             },
             "type": "elementRequest"
+        },
+        {
+            "name": "validateRecord",
+            "onFailure": [
+                "exitDoNotCreatePerson"
+            ],
+            "onSuccess": [
+                "prepSugarLeadQuery"
+            ],
+            "properties": {},
+            "type": "filter"
         },
         {
             "name": "prepSugarLeadQuery",
@@ -101,7 +114,9 @@
         },
         {
             "name": "createSugarLead",
-            "onFailure": [],
+            "onFailure": [
+                "exitCannotCreateSugarLead"
+            ],
             "onSuccess": [
                 "prepUpdatePersonPayload"
             ],
@@ -124,7 +139,9 @@
         },
         {
             "name": "updatePerson",
-            "onFailure": [],
+            "onFailure": [
+                "exitCannotUpdatePerson"
+            ],
             "onSuccess": [],
             "properties": {
                 "api": "/sl-person/${trigger.event.objectId}",
@@ -135,8 +152,24 @@
             "type": "elementRequest"
         },
         {
-            "name": "updateSugarLead",
+            "name": "exitCannotUpdatePerson",
             "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "exitCannotCreateSugarLead",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "updateSugarLead",
+            "onFailure": [
+                "exitCannotUpdateSugarLead"
+            ],
             "onSuccess": [
                 "prepUpdatePersonPayload"
             ],
@@ -149,11 +182,32 @@
             "type": "elementRequest"
         },
         {
+            "name": "exitCannotUpdateSugarLead",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "filter"
+        },
+        {
             "name": "exitCantCreateLead",
             "onFailure": [],
             "onSuccess": [],
             "properties": {},
             "type": "script"
+        },
+        {
+            "name": "exitDoNotCreatePerson",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "exitCannotGetPersonDetails",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "filter"
         },
         {
             "name": "exitWrongEvent",

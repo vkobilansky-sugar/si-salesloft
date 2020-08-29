@@ -1,0 +1,47 @@
+{
+    "configuration": [
+        {
+            "level": "account",
+            "type": "addToDocumentation"
+        },
+        {
+            "level": "account",
+            "type": "inherit"
+        },
+        {
+            "level": "account",
+            "properties": {
+                "fromVendor": false,
+                "toVendor": false
+            },
+            "type": "passThrough"
+        }
+    ],
+    "elementKey": "sugarenterprise",
+    "fields": [
+        {
+            "level": "account",
+            "path": "email",
+            "type": "string",
+            "vendorPath": "email1",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "first_name",
+            "type": "string",
+            "vendorPath": "first_name",
+            "vendorType": "string"
+        },
+        {
+            "level": "account",
+            "path": "id",
+            "type": "string",
+            "vendorPath": "id",
+            "vendorType": "string"
+        }
+    ],
+    "isLegacy": false,
+    "objectName": "sugar-employees",
+    "vendorName": "Employees"
+}

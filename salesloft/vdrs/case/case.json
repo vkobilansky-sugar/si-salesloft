@@ -1,0 +1,370 @@
+{
+    "definition": {
+        "createdDate": "2020-08-12 17:44:20.682502",
+        "fields": [
+            {
+                "displayName": "",
+                "level": "account",
+                "path": "account_id",
+                "type": "string"
+            },
+            {
+                "displayName": "",
+                "level": "account",
+                "path": "account_name",
+                "type": "string"
+            },
+            {
+                "displayName": "",
+                "level": "account",
+                "path": "assigned_user_id",
+                "type": "string"
+            },
+            {
+                "displayName": "",
+                "level": "account",
+                "path": "assigned_user_name",
+                "type": "string"
+            },
+            {
+                "displayName": "",
+                "level": "account",
+                "path": "category",
+                "type": "string"
+            },
+            {
+                "displayName": "",
+                "level": "account",
+                "path": "date_entered",
+                "type": "date"
+            },
+            {
+                "displayName": "",
+                "level": "account",
+                "path": "date_modified",
+                "type": "date"
+            },
+            {
+                "displayName": "",
+                "level": "account",
+                "path": "description",
+                "type": "string"
+            },
+            {
+                "displayName": "",
+                "level": "account",
+                "path": "follow_up_date",
+                "type": "date"
+            },
+            {
+                "displayName": "",
+                "level": "account",
+                "path": "partner_id",
+                "type": "string"
+            },
+            {
+                "displayName": "",
+                "level": "account",
+                "path": "partner_name",
+                "type": "string"
+            },
+            {
+                "displayName": "",
+                "level": "account",
+                "path": "priority",
+                "type": "string"
+            },
+            {
+                "displayName": "",
+                "level": "account",
+                "path": "product",
+                "type": "string"
+            },
+            {
+                "displayName": "",
+                "level": "account",
+                "path": "source",
+                "type": "string"
+            },
+            {
+                "displayName": "",
+                "level": "account",
+                "path": "status",
+                "type": "string"
+            },
+            {
+                "displayName": "",
+                "level": "account",
+                "path": "subject",
+                "type": "string"
+            }
+        ],
+        "objectName": "case",
+        "vdrShared": false,
+        "vdrShareLevel": "account"
+    },
+    "transformation": {
+        "sugarenterprise": {
+            "configuration": [
+                {
+                    "level": "account",
+                    "type": "addToDocumentation"
+                },
+                {
+                    "level": "account",
+                    "type": "inherit"
+                },
+                {
+                    "level": "account",
+                    "properties": {
+                        "fromVendor": false,
+                        "toVendor": false
+                    },
+                    "type": "passThrough"
+                }
+            ],
+            "elementKey": "sugarenterprise",
+            "fields": [
+                {
+                    "level": "account",
+                    "path": "account_id",
+                    "type": "string",
+                    "vendorPath": "account_id",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "account_name",
+                    "type": "string",
+                    "vendorPath": "account_name",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "assigned_user_id",
+                    "type": "string",
+                    "vendorPath": "assigned_user_id",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "assigned_user_name",
+                    "type": "string",
+                    "vendorPath": "assigned_user_name",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "category",
+                    "type": "string",
+                    "vendorPath": "type",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "date_entered",
+                    "type": "date",
+                    "vendorPath": "date_entered",
+                    "vendorType": "date"
+                },
+                {
+                    "level": "account",
+                    "path": "date_modified",
+                    "type": "date",
+                    "vendorPath": "date_modified",
+                    "vendorType": "date"
+                },
+                {
+                    "level": "account",
+                    "path": "description",
+                    "type": "string",
+                    "vendorPath": "description",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "follow_up_date",
+                    "type": "date",
+                    "vendorPath": "follow_up_datetime",
+                    "vendorType": "date"
+                },
+                {
+                    "level": "account",
+                    "path": "partner_id",
+                    "type": "string",
+                    "vendorPath": "account_id",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "partner_name",
+                    "type": "string",
+                    "vendorPath": "account_name",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "priority",
+                    "type": "string",
+                    "vendorPath": "priority_level_c",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "product",
+                    "type": "string",
+                    "vendorPath": "product_category_c",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "source",
+                    "type": "string",
+                    "vendorPath": "source",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "status",
+                    "type": "string",
+                    "vendorPath": "status",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "subject",
+                    "type": "string",
+                    "vendorPath": "name",
+                    "vendorType": "string"
+                }
+            ],
+            "isLegacy": false,
+            "objectName": "case",
+            "vendorName": "cases"
+        },
+        "sugarserve": {
+            "configuration": [
+                {
+                    "level": "account",
+                    "type": "addToDocumentation"
+                },
+                {
+                    "level": "account",
+                    "type": "inherit"
+                },
+                {
+                    "level": "account",
+                    "properties": {
+                        "fromVendor": false,
+                        "toVendor": false
+                    },
+                    "type": "passThrough"
+                }
+            ],
+            "elementKey": "sugarserve",
+            "fields": [
+                {
+                    "level": "account",
+                    "path": "account_id",
+                    "type": "string",
+                    "vendorPath": "accounts_cases_1accounts_ida"
+                },
+                {
+                    "level": "account",
+                    "path": "account_name",
+                    "type": "string",
+                    "vendorPath": "accounts_cases_1_name"
+                },
+                {
+                    "level": "account",
+                    "path": "assigned_user_id",
+                    "type": "string",
+                    "vendorPath": "assigned_user_id"
+                },
+                {
+                    "level": "account",
+                    "path": "assigned_user_name",
+                    "type": "string",
+                    "vendorPath": "assigned_user_name"
+                },
+                {
+                    "level": "account",
+                    "path": "category",
+                    "type": "string",
+                    "vendorPath": "product_category_c"
+                },
+                {
+                    "level": "account",
+                    "path": "date_entered",
+                    "type": "date",
+                    "vendorPath": "date_entered"
+                },
+                {
+                    "level": "account",
+                    "path": "date_modified",
+                    "type": "date",
+                    "vendorPath": "date_modified"
+                },
+                {
+                    "level": "account",
+                    "path": "description",
+                    "type": "string",
+                    "vendorPath": "description"
+                },
+                {
+                    "level": "account",
+                    "path": "follow_up_date",
+                    "type": "date",
+                    "vendorPath": "follow_up_date_c"
+                },
+                {
+                    "level": "account",
+                    "path": "partner_id",
+                    "type": "string",
+                    "vendorPath": "account_id"
+                },
+                {
+                    "level": "account",
+                    "path": "partner_name",
+                    "type": "string",
+                    "vendorPath": "account_name"
+                },
+                {
+                    "level": "account",
+                    "path": "priority",
+                    "type": "string",
+                    "vendorPath": "priority_level_c"
+                },
+                {
+                    "level": "account",
+                    "path": "product",
+                    "type": "string",
+                    "vendorPath": "related_to_c"
+                },
+                {
+                    "level": "account",
+                    "path": "source",
+                    "type": "string",
+                    "vendorPath": "source_c"
+                },
+                {
+                    "level": "account",
+                    "path": "status",
+                    "type": "string",
+                    "vendorPath": "status"
+                },
+                {
+                    "level": "account",
+                    "path": "subject",
+                    "type": "string",
+                    "vendorPath": "name"
+                }
+            ],
+            "isLegacy": false,
+            "objectName": "case",
+            "vendorName": "cases"
+        }
+    },
+    "vdrName": "case",
+    "vdrVersion": "v2"
+}

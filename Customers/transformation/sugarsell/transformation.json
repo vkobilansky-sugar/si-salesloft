@@ -29,7 +29,7 @@
         {
             "level": "account",
             "path": "annual_revenue",
-            "type": "string",
+            "type": "number",
             "vendorPath": "annual_revenue",
             "vendorType": "string"
         },
@@ -134,7 +134,7 @@
         {
             "level": "account",
             "path": "phone_fax",
-            "type": "string",
+            "type": "number",
             "vendorPath": "phone_fax"
         },
         {

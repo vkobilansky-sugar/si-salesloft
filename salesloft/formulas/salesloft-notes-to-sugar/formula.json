@@ -36,7 +36,7 @@
         {
             "name": "getNoteDetails",
             "onFailure": [
-                "exitCallNotFound"
+                "exitNoteNotFound"
             ],
             "onSuccess": [
                 "getPersonForNote"
@@ -56,13 +56,28 @@
                 "exitPersonNotFound"
             ],
             "onSuccess": [
-                "isNoteForLead"
+                "getUserForNote"
             ],
             "properties": {
                 "api": "/sl-person/${steps.getNoteDetails.response.body.note_associated_id}",
                 "elementInstanceId": "${config.salesloft}",
                 "method": "GET",
                 "query": ""
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "getUserForNote",
+            "onFailure": [
+                "exitCannotGetUserForNote"
+            ],
+            "onSuccess": [
+                "isNoteForLead"
+            ],
+            "properties": {
+                "api": "/sl-users/${steps.getNoteDetails.response.body.user_id}",
+                "elementInstanceId": "${config.salesloft}",
+                "method": "GET"
             },
             "type": "elementRequest"
         },
@@ -182,6 +197,13 @@
             "type": "filter"
         },
         {
+            "name": "exitCannotGetUserForNote",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "filter"
+        },
+        {
             "name": "exitPersonNotFound",
             "onFailure": [],
             "onSuccess": [],
@@ -189,7 +211,7 @@
             "type": "script"
         },
         {
-            "name": "exitCallNotFound",
+            "name": "exitNoteNotFound",
             "onFailure": [],
             "onSuccess": [],
             "properties": {},

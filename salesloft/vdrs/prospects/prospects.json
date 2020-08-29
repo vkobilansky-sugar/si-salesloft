@@ -1,0 +1,53 @@
+{
+    "definition": {
+        "createdDate": "2020-04-15 02:11:51.605792",
+        "fields": [],
+        "objectName": "prospects",
+        "vdrShared": true,
+        "vdrShareLevel": "organization"
+    },
+    "transformation": {
+        "intercom": {
+            "configuration": [],
+            "elementKey": "intercom",
+            "fields": [],
+            "isLegacy": false,
+            "objectName": "prospects",
+            "vendorName": "leads"
+        },
+        "pipedrive": {
+            "configuration": [],
+            "elementKey": "pipedrive",
+            "fields": [],
+            "isLegacy": false,
+            "objectName": "prospects",
+            "vendorName": "contacts"
+        },
+        "salesloft": {
+            "configuration": [],
+            "elementKey": "salesloft",
+            "fields": [],
+            "isLegacy": false,
+            "objectName": "prospects",
+            "vendorName": "contacts"
+        },
+        "sugarsell": {
+            "configuration": [],
+            "elementKey": "sugarsell",
+            "fields": [],
+            "isLegacy": false,
+            "objectName": "prospects",
+            "vendorName": "leads"
+        },
+        "zohocrmv2": {
+            "configuration": [],
+            "elementKey": "zohocrmv2",
+            "fields": [],
+            "isLegacy": false,
+            "objectName": "prospects",
+            "vendorName": "leads"
+        }
+    },
+    "vdrName": "prospects",
+    "vdrVersion": "v2"
+}

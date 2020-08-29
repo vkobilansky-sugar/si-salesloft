@@ -1,5 +1,5 @@
 {
-    "createdDate": "2020-08-18 15:19:26.163339",
+    "createdDate": "2020-08-24 21:33:05.718642",
     "fields": [
         {
             "displayName": "Account Type",
@@ -11,7 +11,7 @@
             "displayName": "annual_revenue",
             "level": "account",
             "path": "annual_revenue",
-            "type": "string"
+            "type": "number"
         },
         {
             "displayName": "assigned_user_code",
@@ -47,6 +47,12 @@
             "displayName": "billing_address_street",
             "level": "account",
             "path": "billing_address_street",
+            "type": "string"
+        },
+        {
+            "displayName": "Company Name",
+            "level": "account",
+            "path": "company",
             "type": "string"
         },
         {
@@ -107,7 +113,7 @@
             "displayName": "phone_fax",
             "level": "account",
             "path": "phone_fax",
-            "type": "string"
+            "type": "number"
         },
         {
             "displayName": "rating",

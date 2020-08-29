@@ -16,7 +16,7 @@
         }
     ],
     "debugLoggingEnabled": false,
-    "debugLoggingExpires": "2020-08-11T05:27:47Z",
+    "debugLoggingExpires": "2020-08-22T20:42:04Z",
     "engine": "v3",
     "id": 9892,
     "name": "salesloft-calls-to-sugar",
@@ -39,7 +39,7 @@
                 "exitCallNotFound"
             ],
             "onSuccess": [
-                "getCallNote"
+                "checkCallNote"
             ],
             "properties": {
                 "api": "/sl-calls/${trigger.event.objectId}",
@@ -51,10 +51,19 @@
             "type": "elementRequest"
         },
         {
-            "name": "getCallNote",
+            "name": "checkCallNote",
             "onFailure": [
-                "exitNoteNotFound"
+                "getPersonForPhoneCall"
             ],
+            "onSuccess": [
+                "getCallNote"
+            ],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "getCallNote",
+            "onFailure": [],
             "onSuccess": [
                 "getPersonForPhoneCall"
             ],
@@ -117,13 +126,6 @@
             "onSuccess": [],
             "properties": {},
             "type": "script"
-        },
-        {
-            "name": "exitNoteNotFound",
-            "onFailure": [],
-            "onSuccess": [],
-            "properties": {},
-            "type": "filter"
         },
         {
             "name": "exitCallNotFound",

@@ -9,5 +9,7 @@ if (steps.filterCheckPersonByLeadEmail.continue === true) {
 }
 
 sugarLead['sync_to_salesloft'] = 0;
-                  
+
+delete sugarLead['stage'];
+
 done({payload: sugarLead});

@@ -1,0 +1,66 @@
+{
+    "definition": {
+        "createdDate": "2020-08-21 12:14:44.230294",
+        "fields": [
+            {
+                "displayName": "ID",
+                "level": "account",
+                "path": "id",
+                "type": "string"
+            },
+            {
+                "displayName": "Stage Name",
+                "level": "account",
+                "path": "name",
+                "type": "string"
+            }
+        ],
+        "objectName": "sl-stages",
+        "vdrShared": false,
+        "vdrShareLevel": "account"
+    },
+    "transformation": {
+        "salesloft": {
+            "configuration": [
+                {
+                    "level": "account",
+                    "type": "addToDocumentation"
+                },
+                {
+                    "level": "account",
+                    "type": "inherit"
+                },
+                {
+                    "level": "account",
+                    "properties": {
+                        "fromVendor": false,
+                        "toVendor": false
+                    },
+                    "type": "passThrough"
+                }
+            ],
+            "elementKey": "salesloft",
+            "fields": [
+                {
+                    "level": "account",
+                    "path": "id",
+                    "type": "string",
+                    "vendorPath": "id",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "name",
+                    "type": "string",
+                    "vendorPath": "name",
+                    "vendorType": "string"
+                }
+            ],
+            "isLegacy": false,
+            "objectName": "sl-stages",
+            "vendorName": "stages"
+        }
+    },
+    "vdrName": "sl-stages",
+    "vdrVersion": "v2"
+}

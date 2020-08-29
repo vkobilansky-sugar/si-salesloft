@@ -1,0 +1,104 @@
+{
+    "createdDate": "2020-08-12 17:44:20.682502",
+    "fields": [
+        {
+            "displayName": "",
+            "level": "account",
+            "path": "account_id",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "account",
+            "path": "account_name",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "account",
+            "path": "assigned_user_id",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "account",
+            "path": "assigned_user_name",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "account",
+            "path": "category",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "account",
+            "path": "date_entered",
+            "type": "date"
+        },
+        {
+            "displayName": "",
+            "level": "account",
+            "path": "date_modified",
+            "type": "date"
+        },
+        {
+            "displayName": "",
+            "level": "account",
+            "path": "description",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "account",
+            "path": "follow_up_date",
+            "type": "date"
+        },
+        {
+            "displayName": "",
+            "level": "account",
+            "path": "partner_id",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "account",
+            "path": "partner_name",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "account",
+            "path": "priority",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "account",
+            "path": "product",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "account",
+            "path": "source",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "account",
+            "path": "status",
+            "type": "string"
+        },
+        {
+            "displayName": "",
+            "level": "account",
+            "path": "subject",
+            "type": "string"
+        }
+    ],
+    "objectName": "case",
+    "vdrShared": false,
+    "vdrShareLevel": "account"
+}

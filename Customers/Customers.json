@@ -1,6 +1,6 @@
 {
     "definition": {
-        "createdDate": "2020-08-18 15:19:26.163339",
+        "createdDate": "2020-08-24 21:33:05.718642",
         "fields": [
             {
                 "displayName": "Account Type",
@@ -12,7 +12,7 @@
                 "displayName": "annual_revenue",
                 "level": "account",
                 "path": "annual_revenue",
-                "type": "string"
+                "type": "number"
             },
             {
                 "displayName": "assigned_user_code",
@@ -48,6 +48,12 @@
                 "displayName": "billing_address_street",
                 "level": "account",
                 "path": "billing_address_street",
+                "type": "string"
+            },
+            {
+                "displayName": "Company Name",
+                "level": "account",
+                "path": "company",
                 "type": "string"
             },
             {
@@ -108,7 +114,7 @@
                 "displayName": "phone_fax",
                 "level": "account",
                 "path": "phone_fax",
-                "type": "string"
+                "type": "number"
             },
             {
                 "displayName": "rating",
@@ -188,7 +194,7 @@
         "vdrShareLevel": "account"
     },
     "transformation": {
-        "epicor": {
+        "epicor-new": {
             "configuration": [
                 {
                     "level": "account",
@@ -207,7 +213,7 @@
                     "type": "passThrough"
                 }
             ],
-            "elementKey": "epicor",
+            "elementKey": "epicor-new",
             "fields": [
                 {
                     "level": "account",
@@ -219,7 +225,7 @@
                 {
                     "level": "account",
                     "path": "annual_revenue",
-                    "type": "string",
+                    "type": "number",
                     "vendorPath": "AnnualRevenue",
                     "vendorType": "string"
                 },
@@ -263,6 +269,13 @@
                     "path": "billing_address_street",
                     "type": "string",
                     "vendorPath": "BTAddress1",
+                    "vendorType": "string"
+                },
+                {
+                    "level": "account",
+                    "path": "company",
+                    "type": "string",
+                    "vendorPath": "Company",
                     "vendorType": "string"
                 },
                 {
@@ -325,13 +338,13 @@
                     "level": "account",
                     "path": "name",
                     "type": "string",
-                    "vendorPath": "Name",
+                    "vendorPath": "BTName",
                     "vendorType": "string"
                 },
                 {
                     "level": "account",
                     "path": "phone_fax",
-                    "type": "string",
+                    "type": "number",
                     "vendorPath": "BTFaxNum",
                     "vendorType": "string"
                 },
@@ -424,6 +437,14 @@
             "objectName": "Customers",
             "vendorName": "customers"
         },
+        "epicor-new": {
+            "configuration": [],
+            "elementKey": "epicor-new",
+            "fields": [],
+            "isLegacy": false,
+            "objectName": "Customers",
+            "vendorName": "customers"
+        },
         "sugarsell": {
             "configuration": [
                 {
@@ -455,7 +476,7 @@
                 {
                     "level": "account",
                     "path": "annual_revenue",
-                    "type": "string",
+                    "type": "number",
                     "vendorPath": "annual_revenue",
                     "vendorType": "string"
                 },
@@ -560,7 +581,7 @@
                 {
                     "level": "account",
                     "path": "phone_fax",
-                    "type": "string",
+                    "type": "number",
                     "vendorPath": "phone_fax"
                 },
                 {

@@ -1,0 +1,32 @@
+{
+    "createdDate": "2020-08-12 17:44:32.08532",
+    "fields": [
+        {
+            "displayName": "From ID",
+            "level": "account",
+            "path": "from_id",
+            "type": "string"
+        },
+        {
+            "displayName": "From Object",
+            "level": "account",
+            "path": "from_object",
+            "type": "string"
+        },
+        {
+            "displayName": "To ID",
+            "level": "account",
+            "path": "to_id",
+            "type": "string"
+        },
+        {
+            "displayName": "To Object",
+            "level": "account",
+            "path": "to_object",
+            "type": "string"
+        }
+    ],
+    "objectName": "sugar-emails",
+    "vdrShared": false,
+    "vdrShareLevel": "account"
+}

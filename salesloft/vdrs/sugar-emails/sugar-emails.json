@@ -1,0 +1,88 @@
+{
+    "definition": {
+        "createdDate": "2020-08-12 17:44:32.08532",
+        "fields": [
+            {
+                "displayName": "From ID",
+                "level": "account",
+                "path": "from_id",
+                "type": "string"
+            },
+            {
+                "displayName": "From Object",
+                "level": "account",
+                "path": "from_object",
+                "type": "string"
+            },
+            {
+                "displayName": "To ID",
+                "level": "account",
+                "path": "to_id",
+                "type": "string"
+            },
+            {
+                "displayName": "To Object",
+                "level": "account",
+                "path": "to_object",
+                "type": "string"
+            }
+        ],
+        "objectName": "sugar-emails",
+        "vdrShared": false,
+        "vdrShareLevel": "account"
+    },
+    "transformation": {
+        "sugarenterprise": {
+            "configuration": [
+                {
+                    "level": "account",
+                    "type": "addToDocumentation"
+                },
+                {
+                    "level": "account",
+                    "type": "inherit"
+                },
+                {
+                    "level": "account",
+                    "properties": {
+                        "fromVendor": false,
+                        "toVendor": false
+                    },
+                    "type": "passThrough"
+                }
+            ],
+            "elementKey": "sugarenterprise",
+            "fields": [
+                {
+                    "level": "account",
+                    "path": "from_id",
+                    "type": "string",
+                    "vendorPath": "from.create[0].parent_id"
+                },
+                {
+                    "level": "account",
+                    "path": "from_object",
+                    "type": "string",
+                    "vendorPath": "from.create[0].parent_type"
+                },
+                {
+                    "level": "account",
+                    "path": "to_id",
+                    "type": "string",
+                    "vendorPath": "to.create[0].parent_id"
+                },
+                {
+                    "level": "account",
+                    "path": "to_object",
+                    "type": "string",
+                    "vendorPath": "to.create[0].parent_type"
+                }
+            ],
+            "isLegacy": false,
+            "objectName": "sugar-emails",
+            "vendorName": "emails"
+        }
+    },
+    "vdrName": "sugar-emails",
+    "vdrVersion": "v2"
+}

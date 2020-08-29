@@ -18,9 +18,13 @@ if (callRecord.hasOwnProperty('duration')) {
 
 }
 
-callRecord.name = callRecord.disposition + ' - ' + callRecord.sentiment;
-callRecord.description = steps.getCallNote.response.body.note_content;
-callRecord.status = 'Completed';
+if(steps.getCallNote) {
+  callRecord.description = steps.getCallNote.response.body.note_content;
+}
+
+callRecord.name = `${callRecord.disposition} ${callRecord.sentiment ? ' - ' + callRecord.sentiment : ''}`;
+
+callRecord.status = 'Held';
 
 done({ 
   payload: callRecord

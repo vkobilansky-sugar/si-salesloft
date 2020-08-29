@@ -1,7 +1,7 @@
 
 const sugarObject = trigger.event.objectType
   
-if (sugarObject === 'Contact' || sugarObject === 'contacts') {
+if (sugarObject === 'Contact' || sugarObject === 'Contacts' || sugarObject === 'contacts') {
   done(true)
 } 
 

@@ -21,6 +21,12 @@
     "fields": [
         {
             "level": "account",
+            "path": "assigned_user_id",
+            "type": "string",
+            "vendorPath": "assigned_user_id"
+        },
+        {
+            "level": "account",
             "path": "company_name",
             "type": "string",
             "vendorPath": "account_name",
@@ -86,7 +92,8 @@
             "level": "account",
             "path": "next_steps",
             "type": "string",
-            "vendorPath": "next_step_c"
+            "vendorPath": "next_step_c",
+            "vendorType": "string"
         },
         {
             "level": "account",
