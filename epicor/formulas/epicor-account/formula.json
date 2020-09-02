@@ -1,0 +1,165 @@
+{
+    "active": true,
+    "configuration": [
+        {
+            "key": "sugar-epicore",
+            "name": "sugar-epicore",
+            "required": false,
+            "type": "elementInstance"
+        },
+        {
+            "key": "sugarsell",
+            "name": "sugarsell",
+            "required": false,
+            "type": "elementInstance"
+        }
+    ],
+    "debugLoggingEnabled": false,
+    "debugLoggingExpires": "2020-08-27T21:49:29Z",
+    "engine": "v3",
+    "id": 39428,
+    "name": "epicor-account",
+    "singleThreaded": false,
+    "steps": [
+        {
+            "name": "checkEvent",
+            "onFailure": [],
+            "onSuccess": [
+                "getSugarAccountDetails"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "getSugarAccountDetails",
+            "onFailure": [
+                "exitCouldNotGetSugarAccount"
+            ],
+            "onSuccess": [
+                "prepEpicorAccountByNameQuery"
+            ],
+            "properties": {
+                "api": "/Customers/${trigger.event.objectId}",
+                "elementInstanceId": "${config.sugarsell}",
+                "method": "GET"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "prepEpicorAccountByNameQuery",
+            "onFailure": [],
+            "onSuccess": [
+                "getEpicorAccountByName"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "getEpicorAccountByName",
+            "onFailure": [
+                "exitCouldNotFindEpicorCustomerAccount"
+            ],
+            "onSuccess": [
+                "createOrUpdate"
+            ],
+            "properties": {
+                "api": "/sii_customers",
+                "elementInstanceId": "${config.sugar-epicore}",
+                "method": "GET",
+                "query": "${steps.prepEpicorAccountByNameQuery.query}"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "createOrUpdate",
+            "onFailure": [
+                "prepCreateCustomerPayload"
+            ],
+            "onSuccess": [
+                "prepUpdateEpicorCustomerPayload"
+            ],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "prepUpdateEpicorCustomerPayload",
+            "onFailure": [],
+            "onSuccess": [
+                "updateEpicorCustomer"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "updateEpicorCustomer",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {
+                "api": "/sii_customers",
+                "body": "${steps.prepUpadateEpicorCustomerPayload.payload}",
+                "elementInstanceId": "${config.sugar-epicore}",
+                "method": "PATCH"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "prepCreateCustomerPayload",
+            "onFailure": [],
+            "onSuccess": [
+                "createEpicorCustomer"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "createEpicorCustomer",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {
+                "api": "/sii_customers",
+                "body": "${steps.prepCreateCustomerPayload.payload}",
+                "elementInstanceId": "${config.sugar-epicore}",
+                "method": "POST"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "exitCouldNotFindEpicorCustomerAccount",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "exitCouldNotGetSugarAccount",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "filter"
+        }
+    ],
+    "triggers": [
+        {
+            "async": true,
+            "name": "trigger",
+            "onFailure": [],
+            "onSuccess": [
+                "checkEvent"
+            ],
+            "properties": {
+                "elementInstanceId": "${config.sugarsell}"
+            },
+            "type": "event"
+        },
+        {
+            "async": true,
+            "name": "trigger",
+            "onFailure": [],
+            "onSuccess": [
+                "checkEvent"
+            ],
+            "properties": {},
+            "type": "manual"
+        }
+    ]
+}

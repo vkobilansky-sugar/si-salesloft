@@ -1,0 +1,156 @@
+{
+    "active": true,
+    "configuration": [
+        {
+            "key": "epicor",
+            "name": "epicor",
+            "required": false,
+            "type": "elementInstance"
+        },
+        {
+            "key": "sugar",
+            "name": "sugar",
+            "required": false,
+            "type": "elementInstance"
+        }
+    ],
+    "debugLoggingEnabled": true,
+    "debugLoggingExpires": "2020-09-03T03:51:51Z",
+    "engine": "v3",
+    "id": 39529,
+    "name": "epicor-contact",
+    "singleThreaded": false,
+    "steps": [
+        {
+            "name": "checkEvent",
+            "onFailure": [],
+            "onSuccess": [
+                "getSugarContactDetails"
+            ],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "getSugarContactDetails",
+            "onFailure": [
+                "exitCouldNotFindSugarRecord"
+            ],
+            "onSuccess": [
+                "prepSearchContactByEmailQuery"
+            ],
+            "properties": {
+                "api": "/sii_contacts/${trigger.event.objectId}",
+                "elementInstanceId": "${config.sugar}",
+                "method": "GET"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "prepSearchContactByEmailQuery",
+            "onFailure": [],
+            "onSuccess": [
+                "getEpicorContactByEmail"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "getEpicorContactByEmail",
+            "onFailure": [],
+            "onSuccess": [
+                "createOrUpdate"
+            ],
+            "properties": {
+                "api": "/sii_contacts",
+                "elementInstanceId": "${config.epicor}",
+                "method": "GET",
+                "query": "${steps.prepSearchContactByEmailQuery.query}"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "createOrUpdate",
+            "onFailure": [
+                "prepCreateEpicorContactPayload"
+            ],
+            "onSuccess": [
+                "prepUpdateEpicorContactPayload"
+            ],
+            "properties": {},
+            "type": "filter"
+        },
+        {
+            "name": "prepUpdateEpicorContactPayload",
+            "onFailure": [],
+            "onSuccess": [
+                "updateEpicorContact"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "updateEpicorContact",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {
+                "api": "/sii_contacts",
+                "body": "${steps.prepUpdateEpicorContactPayload.payload}",
+                "elementInstanceId": "${config.epicor}",
+                "method": "PATCH"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "prepCreateEpicorContactPayload",
+            "onFailure": [],
+            "onSuccess": [
+                "createEpicorContact"
+            ],
+            "properties": {},
+            "type": "script"
+        },
+        {
+            "name": "createEpicorContact",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {
+                "api": "/sii_contacts",
+                "body": "${steps.prepCreateEpicorContactPayload.payload}",
+                "elementInstanceId": "${config.epicor}",
+                "method": "POST"
+            },
+            "type": "elementRequest"
+        },
+        {
+            "name": "exitCouldNotFindSugarRecord",
+            "onFailure": [],
+            "onSuccess": [],
+            "properties": {},
+            "type": "filter"
+        }
+    ],
+    "triggers": [
+        {
+            "async": true,
+            "name": "trigger",
+            "onFailure": [],
+            "onSuccess": [
+                "checkEvent"
+            ],
+            "properties": {
+                "elementInstanceId": "${config.sugar}"
+            },
+            "type": "event"
+        },
+        {
+            "async": true,
+            "name": "trigger",
+            "onFailure": [],
+            "onSuccess": [
+                "checkEvent"
+            ],
+            "properties": {},
+            "type": "manual"
+        }
+    ]
+}
